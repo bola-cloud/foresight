@@ -1,5 +1,5 @@
 <div class="container-fluid">
-    <div class="card">
+    <div class="card p-3">
         <div class="card-header d-flex justify-content-start">
             <button wire:click="openModal" class="btn btn-primary">Add Product</button>
         </div>
