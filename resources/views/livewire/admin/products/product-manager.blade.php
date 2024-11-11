@@ -1,6 +1,8 @@
 <div class="container-fluid">
     <div class="card">
-        <button wire:click="openModal" class="btn btn-primary">Add Product</button>
+        <div class="card-header d-flex justify-content-start">
+            <button wire:click="openModal" class="btn btn-primary">Add Product</button>
+        </div>
 
         @if($isOpen)
             <div class="modal fade show" style="display: block;">
