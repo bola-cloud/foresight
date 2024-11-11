@@ -3,6 +3,8 @@
 namespace App\Http\Livewire\Admin\Products;
 
 use Livewire\Component;
+use Livewire\WithFileUploads;
+use App\Models\Product;
 
 class ProductManager extends Component
 {
