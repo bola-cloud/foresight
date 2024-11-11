@@ -8,7 +8,6 @@
 
         <form method="POST" action="{{ route('register') }}">
             @csrf
-            <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
 
             <div>
                 <x-jet-label for="name" value="{{ __('Name') }}" />
@@ -17,15 +16,16 @@
 
             <div class="mt-4">
                 <x-jet-label for="mobile_phone" value="{{ __('Mobile Phone') }}" />
-                <x-jet-input id="email" class="block mt-1 w-full" type="number" name="mobile_phone" :value="old('mobile_phone')" required />
+                <x-jet-input id="mobile_phone" class="block mt-1 w-full" type="number" name="mobile_phone" :value="old('mobile_phone')" required />
             </div>
 
             <div class="mt-4">
-                <x-jet-label for="mobile_phone" value="{{ __('Mobile Phone') }}" />
-                <x-jet-input id="email" class="block mt-1 w-full" type="number" name="mobile_father" :value="old('mobile_father')" required />
+                <x-jet-label for="mobile_father" value="{{ __('Father\'s Mobile Phone') }}" />
+                <x-jet-input id="mobile_father" class="block mt-1 w-full" type="number" name="mobile_father" :value="old('mobile_father')" required />
             </div>
+
             <div class="mt-4">
-                <x-jet-label for="device_id" value="{{ __('Device id') }}" />
+                <x-jet-label for="device_id" value="{{ __('Device ID') }}" />
                 <x-jet-input id="device_id" class="block mt-1 w-full" type="text" name="device_id" :value="old('device_id')" required />
             </div>
 
@@ -34,22 +34,17 @@
                 <x-jet-input id="year_type" class="block mt-1 w-full" type="text" name="year_type" :value="old('year_type')" required />
             </div>
 
-            {{-- @if (Laravel\Jetstream\Jetstream::hasTermsAndPrivacyPolicyFeature())
-                <div class="mt-4">
-                    <x-jet-label for="terms">
-                        <div class="flex items-center">
-                            <x-jet-checkbox name="terms" id="terms"/>
+            <!-- Password Field -->
+            <div class="mt-4">
+                <x-jet-label for="password" value="{{ __('Password') }}" />
+                <x-jet-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="new-password" />
+            </div>
 
-                            <div class="ml-2">
-                                {!! __('I agree to the :terms_of_service and :privacy_policy', [
-                                        'terms_of_service' => '<a target="_blank" href="'.route('terms.show').'" class="underline text-sm text-gray-600 hover:text-gray-900">'.__('Terms of Service').'</a>',
-                                        'privacy_policy' => '<a target="_blank" href="'.route('policy.show').'" class="underline text-sm text-gray-600 hover:text-gray-900">'.__('Privacy Policy').'</a>',
-                                ]) !!}
-                            </div>
-                        </div>
-                    </x-jet-label>
-                </div>
-            @endif --}}
+            <!-- Password Confirmation Field -->
+            <div class="mt-4">
+                <x-jet-label for="password_confirmation" value="{{ __('Confirm Password') }}" />
+                <x-jet-input id="password_confirmation" class="block mt-1 w-full" type="password" name="password_confirmation" required autocomplete="new-password" />
+            </div>
 
             <div class="flex items-center justify-end mt-4">
                 <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">

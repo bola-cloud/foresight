@@ -16,12 +16,17 @@
         <form method="POST" action="{{ route('login') }}">
             @csrf
 
+            <!-- Mobile Phone Field -->
             <div>
                 <x-jet-label for="mobile_phone" value="{{ __('Mobile Phone') }}" />
-                <x-jet-input id="mobile_phone" class="block mt-1 w-full" type="tel" name="mobile_phone"  />
+                <x-jet-input id="mobile_phone" class="block mt-1 w-full" type="tel" name="mobile_phone" :value="old('mobile_phone')" required autofocus />
             </div>
-            
 
+            <!-- Password Field -->
+            <div class="mt-4">
+                <x-jet-label for="password" value="{{ __('Password') }}" />
+                <x-jet-input id="password" class="block mt-1 w-full" type="password" name="password" required />
+            </div>
 
             <div class="flex items-center justify-end mt-4">
                 <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('register') }}">
