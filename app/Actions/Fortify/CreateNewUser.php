@@ -34,6 +34,7 @@ class CreateNewUser implements CreatesNewUsers
             'mobile_father' => $input['mobile_father'],
             'device_id' => $input['device_id'],
             'year_type' => $input['year_type'],
+            'wallet' => "0",
         ]);
     }
 }

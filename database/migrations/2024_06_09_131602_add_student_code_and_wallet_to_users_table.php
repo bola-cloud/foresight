@@ -15,7 +15,7 @@ class AddStudentCodeAndWalletToUsersTable extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->string('student_code')->nullable();
-            $table->string('wallet')->default(0);
+            $table->integer('wallet')->default(0);
         });
     }
 
