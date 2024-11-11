@@ -112,6 +112,9 @@ use App\Http\Livewire\Admin\Transactions\TransactionIndex;
 use App\Http\Livewire\Admin\StudentQuestion\ShowQuestions;
 use App\Http\Livewire\Admin\StudentQuestion\AnswerQuestion;
 
+//Products
+use App\Http\Livewire\Admin\Products\ProductManager;
+
 use App\Http\Livewire\HOME;
 
 
@@ -123,6 +126,7 @@ Route::get('/asdasdasd',CoursesComponent::class)->name("courses_index");
 Route::get('/home-about',AboutHome::class)->name("home_about");
 Route::get('/home-contact',ContactHome::class)->name("home_contact");
 
+Route::get('/product-manager',ProductManager::class)->name("product_manager");
 
 Route::get('/home_admin',HomeController::class)->name("home_admin");
 Route::get('login', [CustomLoginController::class, 'showLoginForm'])->name('login');
