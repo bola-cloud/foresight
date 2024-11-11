@@ -31,7 +31,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label>Image</label>
-                                    <input type="file" wire:model="image" class="form-control">
+                                    <input type="file" wire:model="image" class="form-control" accept="image/*">
                                     @error('image') <span class="text-danger">{{ $message }}</span> @enderror
                                 </div>
                                 <button type="submit" class="btn btn-primary">Save</button>
