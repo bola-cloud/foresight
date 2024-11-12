@@ -47,13 +47,17 @@ class ProductManager extends Component
             'image' => 'image|max:1024', // 1MB Max
         ]);
 
-        $imagePath = $this->image ? $this->image->store('images', 'public') : null;
-
+        if ($this->image) {
+            $filename = $this->image->getClientOriginalName();
+            $this->image->storeAs('', $filename, 'public_product');
+            $new_file = 'product-images/' . $filename;
+        }
+        
         Product::updateOrCreate(['id' => $this->productId], [
             'title' => $this->title,
             'description' => $this->description,
             'price' => $this->price,
-            'image' => $imagePath,
+            'image' => $new_file,
         ]);
 
         session()->flash('message', $this->productId ? 'Product updated.' : 'Product created.');

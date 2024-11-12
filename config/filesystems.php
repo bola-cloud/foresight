@@ -69,6 +69,13 @@ return [
             'visibility' => 'public',
         ],
 
+        'public_product' => [
+            'driver' => 'local',
+            'root' => public_path('product-images'),
+            'url' => env('APP_URL').'/product-images',
+            'visibility' => 'public',
+        ],
+
         's3' => [
             'driver' => 's3',
             'key' => env('AWS_ACCESS_KEY_ID'),
