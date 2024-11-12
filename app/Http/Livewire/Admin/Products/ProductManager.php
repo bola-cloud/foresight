@@ -12,6 +12,7 @@ class ProductManager extends Component
 
     public $products, $title, $description, $price, $image, $productId;
     public $isOpen = false;
+    public $productIdToDelete;
 
     public function render()
     {
@@ -75,9 +76,16 @@ class ProductManager extends Component
         $this->openModal();
     }
 
-    public function delete($id)
+    public function confirmDelete($id)
     {
-        Product::find($id)->delete();
-        session()->flash('message', 'Product deleted.');
+        $this->productIdToDelete = $id;
+        $this->dispatchBrowserEvent('show-delete-confirmation');
+    }
+    
+    public function delete()
+    {
+        Product::find($this->productIdToDelete)->delete();
+        session()->flash('message', 'Product deleted successfully.');
+        $this->productIdToDelete = null;
     }
 }
