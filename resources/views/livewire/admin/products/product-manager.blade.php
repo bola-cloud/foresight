@@ -61,7 +61,9 @@
                         <td><img src="{{ asset($product->image) }}" width="50"></td>
                         <td>
                             <button wire:click="edit({{ $product->id }})" class="btn btn-info">Edit</button>
-                            <button wire:click.prevent="confirmDelete({{ $product->id }})" class="btn btn-danger">Delete</button>
+                            <button 
+                                onclick="confirmDelete({{ $product->id }})" 
+                                class="btn btn-danger">Delete</button>
                         </td>
                     </tr>
                 @endforeach
@@ -70,43 +72,14 @@
     </div>
 </div>
 
-<!-- Delete Confirmation Modal -->
-<div class="modal fade" id="deleteConfirmationModal" tabindex="-1" aria-labelledby="deleteConfirmationModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="deleteConfirmationModalLabel">Confirm Delete</h5>
-                <button type="button" class="close" wire:click="closeDeleteModal">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                Are you sure you want to delete this product?
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" wire:click="closeDeleteModal">Cancel</button>
-                <button type="button" class="btn btn-danger" wire:click="delete">Delete</button>
-            </div>
-        </div>
-    </div>
-</div>
-
 @push('style')
 <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
 @endpush
 
-@push('scripts')
 <script>
-    document.addEventListener('DOMContentLoaded', function () {
-        window.addEventListener('show-delete-confirmation', event => {
-            $('#deleteConfirmationModal').modal('show');
-        });
-        
-        window.addEventListener('hide-delete-confirmation', event => {
-            $('#deleteConfirmationModal').modal('hide');
-        });
-    });
+    function confirmDelete(id) {
+        if (confirm('Are you sure you want to delete this product?')) {
+            Livewire.emit('deleteProduct', id); // Trigger Livewire event to delete
+        }
+    }
 </script>
-@endpush

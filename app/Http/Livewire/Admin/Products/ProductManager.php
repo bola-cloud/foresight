@@ -12,7 +12,7 @@ class ProductManager extends Component
 
     public $products, $title, $description, $price, $image, $productId;
     public $isOpen = false;
-    public $productIdToDelete;
+    protected $listeners = ['deleteProduct' => 'delete'];
 
     public function render()
     {
@@ -76,25 +76,10 @@ class ProductManager extends Component
         $this->openModal();
     }
 
-    public function confirmDelete($id)
+
+    public function delete($id)
     {
-        $this->productIdToDelete = $id;
-        $this->dispatchBrowserEvent('show-delete-confirmation');
-    }
-    
-    public function delete()
-    {
-        if ($this->productIdToDelete) {
-            Product::find($this->productIdToDelete)->delete();
-            session()->flash('message', 'Product deleted successfully.');
-            $this->dispatchBrowserEvent('hide-delete-confirmation');
-            $this->productIdToDelete = null;
-        }
-    }
-    
-    public function closeDeleteModal()
-    {
-        $this->productIdToDelete = null;
-        $this->dispatchBrowserEvent('hide-delete-confirmation');
+        Product::find($id)->delete();
+        session()->flash('message', 'Product deleted successfully.');
     }
 }
