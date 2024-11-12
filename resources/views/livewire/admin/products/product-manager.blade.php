@@ -97,6 +97,7 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
 @endpush
 
+@push('scripts')
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         window.addEventListener('show-delete-confirmation', event => {
@@ -104,3 +105,4 @@
         });
     });
 </script>
+@endpush
