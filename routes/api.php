@@ -39,6 +39,8 @@ use App\Http\Controllers\Api\Wallet\BuyController;
 
 use  App\Http\Controllers\Api\Students\StudentController;
 
+use App\Http\Controllers\Api\Products\ProductController;
+
 Route::post('register',[AuthController::class,'register']);
 Route::post('login',[AuthController::class,'login']);
 Route::post('logout',[AuthController::class,'logout']);
@@ -47,6 +49,8 @@ Route::get('sliders/{year_type}',[SliderController::class,'slider']);
 
 Route::get('student/{id_user}',[ResultFinalComponent::class,'getResult']);
 
+
+Route::get('/products', [ProductController::class, 'index']);
 
 
     Route::get('getunits/{year}',[GetUnitComponent::class,'getcategory']);
