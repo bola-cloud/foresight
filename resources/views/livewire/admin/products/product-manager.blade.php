@@ -58,7 +58,7 @@
                         <td>{{ $product->title }}</td>
                         <td>{{ $product->description }}</td>
                         <td>{{ $product->price }}</td>
-                        <td><img src="{{ asset('storage/' . $product->image) }}" width="50"></td>
+                        <td><img src="{{ asset($product->image) }}" width="50"></td>
                         <td>
                             <button wire:click="edit({{ $product->id }})" class="btn btn-info">Edit</button>
                             <button wire:click="delete({{ $product->id }})" class="btn btn-danger">Delete</button>
