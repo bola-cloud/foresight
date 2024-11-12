@@ -76,7 +76,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="deleteConfirmationModalLabel">Confirm Delete</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <button type="button" class="close" wire:click="closeDeleteModal">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
@@ -84,8 +84,8 @@
                 Are you sure you want to delete this product?
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                <button type="button" class="btn btn-danger" wire:click="delete" data-dismiss="modal">Delete</button>
+                <button type="button" class="btn btn-secondary" wire:click="closeDeleteModal">Cancel</button>
+                <button type="button" class="btn btn-danger" wire:click="delete">Delete</button>
             </div>
         </div>
     </div>
@@ -102,6 +102,10 @@
     document.addEventListener('DOMContentLoaded', function () {
         window.addEventListener('show-delete-confirmation', event => {
             $('#deleteConfirmationModal').modal('show');
+        });
+        
+        window.addEventListener('hide-delete-confirmation', event => {
+            $('#deleteConfirmationModal').modal('hide');
         });
     });
 </script>

@@ -84,8 +84,17 @@ class ProductManager extends Component
     
     public function delete()
     {
-        Product::find($this->productIdToDelete)->delete();
-        session()->flash('message', 'Product deleted successfully.');
+        if ($this->productIdToDelete) {
+            Product::find($this->productIdToDelete)->delete();
+            session()->flash('message', 'Product deleted successfully.');
+            $this->dispatchBrowserEvent('hide-delete-confirmation');
+            $this->productIdToDelete = null;
+        }
+    }
+    
+    public function closeDeleteModal()
+    {
         $this->productIdToDelete = null;
+        $this->dispatchBrowserEvent('hide-delete-confirmation');
     }
 }
