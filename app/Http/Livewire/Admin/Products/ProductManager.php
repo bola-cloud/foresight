@@ -45,25 +45,35 @@ class ProductManager extends Component
             'title' => 'required',
             'description' => 'required',
             'price' => 'required|numeric',
-            'image' => 'image|max:1024', // 1MB Max
+            'image' => $this->productId ? 'nullable|image|max:1024' : 'required|image|max:1024', // Image required only for new products
         ]);
-
-        if ($this->image) {
+    
+        $new_file = null;
+    
+        if ($this->image && $this->image instanceof \Livewire\TemporaryUploadedFile) {
+            // Handle image upload only if a new image is provided
             $filename = $this->image->getClientOriginalName();
             $this->image->storeAs('', $filename, 'public_product');
             $new_file = 'product-images/' . $filename;
         }
-        
-        Product::updateOrCreate(['id' => $this->productId], [
+    
+        // Prepare data for updating/creating
+        $data = [
             'title' => $this->title,
             'description' => $this->description,
             'price' => $this->price,
-            'image' => $new_file,
-        ]);
-
+        ];
+    
+        // Add image to the data array only if a new image is provided
+        if ($new_file) {
+            $data['image'] = $new_file;
+        }
+    
+        Product::updateOrCreate(['id' => $this->productId], $data);
+    
         session()->flash('message', $this->productId ? 'Product updated.' : 'Product created.');
         $this->closeModal();
-    }
+    }    
 
     public function edit($id)
     {
