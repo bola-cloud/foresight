@@ -41,16 +41,22 @@ class ProductManager extends Component
 
     public function store()
     {
-        $this->validate([
+        $rules = [
             'title' => 'required',
             'description' => 'required',
             'price' => 'required|numeric',
-            'image' => $this->productId ? 'nullable|image|max:1024' : 'required|image|max:1024', // Image required only for new products
-        ]);
+        ];
+    
+        // Add image validation only for new products or if a new image is uploaded
+        if (!$this->productId || ($this->image instanceof \Livewire\TemporaryUploadedFile)) {
+            $rules['image'] = 'required|image|max:1024'; // Required only when creating a new product or replacing the image
+        }
+    
+        $this->validate($rules);
     
         $new_file = null;
     
-        if ($this->image && $this->image instanceof \Livewire\TemporaryUploadedFile) {
+        if ($this->image instanceof \Livewire\TemporaryUploadedFile) {
             // Handle image upload only if a new image is provided
             $filename = $this->image->getClientOriginalName();
             $this->image->storeAs('', $filename, 'public_product');
@@ -73,7 +79,8 @@ class ProductManager extends Component
     
         session()->flash('message', $this->productId ? 'Product updated.' : 'Product created.');
         $this->closeModal();
-    }    
+    }
+      
 
     public function edit($id)
     {
