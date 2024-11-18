@@ -152,43 +152,43 @@ data-open="click" data-menu="vertical-content-menu" data-col="2-columns">
       <div class="main-menu menu-static menu-light menu-accordion menu-shadow" data-scroll-to-active="true">
         <div class="main-menu-content">
           <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
-            <li class=" nav-item"><a href="index.html"><i class="la la-align-right"></i><span class="menu-title" data-i18n="nav.dash.main">Unit</span></a>
+            <li class=" nav-item"><a href="index.html"><i class="la la-align-right"></i><span class="menu-title" data-i18n="nav.dash.main">الوحدات</span></a>
               <ul class="menu-content">
-                <li class="{{ Route::currentRouteName() == "show_unit" ? 'active':'' }}"><a class="menu-item" href="{{ route("show_unit") }}" data-i18n="nav.dash.ecommerce">show unit</a>
+                <li class="{{ Route::currentRouteName() == "show_unit" ? 'active':'' }}"><a class="menu-item" href="{{ route("show_unit") }}" data-i18n="nav.dash.ecommerce">عرض الوحدات</a></li>
                 </li>
-                <li class="{{ Route::currentRouteName() == "add_unit" ? 'active':'' }}"><a class="menu-item" href="{{ route("add_unit") }}" data-i18n="nav.dash.ecommerce">add unit</a>
+                <li class="{{ Route::currentRouteName() == "add_unit" ? 'active':'' }}"><a class="menu-item" href="{{ route("add_unit") }}" data-i18n="nav.dash.ecommerce">اضافة الوحدات</a>
                 </li>
 
               </ul>
             </li>
 
-            <li class=" nav-item"><a href="index.html"><i class="fas fa-book"></i><span class="menu-title" data-i18n="nav.dash.main">Lectures</span></a>
+            <li class=" nav-item"><a href="index.html"><i class="fas fa-book"></i><span class="menu-title" data-i18n="nav.dash.main">المحضرات</span></a>
               <ul class="menu-content">
-                <li class="{{ Route::currentRouteName() == "lecture_add" ? 'active':'' }}"><a class="menu-item" href="{{ route("lecture_add") }}" data-i18n="nav.dash.ecommerce">Lecture add</a>
+                <li class="{{ Route::currentRouteName() == "lecture_add" ? 'active':'' }}"><a class="menu-item" href="{{ route("lecture_add") }}" data-i18n="nav.dash.ecommerce">اضافة محاضرة</a>
                 </li>
-                <li class="{{ Route::currentRouteName() == "lecture_index" ? 'active':'' }}"><a class="menu-item" href="{{ route("lecture_index") }}" data-i18n="nav.dash.ecommerce"> Lecture index</a>
+                <li class="{{ Route::currentRouteName() == "lecture_index" ? 'active':'' }}"><a class="menu-item" href="{{ route("lecture_index") }}" data-i18n="nav.dash.ecommerce">عرض المحاضرات</a>
                 </li>
 
               </ul>
             </li>
 
             <li class=" navigation-header"> 
-                <span data-i18n="nav.category.layouts">Videos</span><i class="la la-ellipsis-h ft-minus" data-toggle="tooltip"
+                <span data-i18n="nav.category.layouts">الفيديوهات</span><i class="la la-ellipsis-h ft-minus" data-toggle="tooltip"
                 data-placement="right" data-original-title="Layouts"></i>
             </li>
-            <li class=" nav-item"><a href=""><i class="la la-file-video-o"></i><span class="menu-title" data-i18n="nav.dash.main">Videos</span></a>
+            <li class=" nav-item"><a href=""><i class="la la-file-video-o"></i><span class="menu-title" data-i18n="nav.dash.main">الفيديوهات</span></a>
               <ul class="menu-content">
-                <li class="{{ Route::currentRouteName() == "add_video" ? 'active':'' }}"><a class="menu-item" href="{{ route("add_video") }}" data-i18n="nav.dash.ecommerce">add video</a>
+                <li class="{{ Route::currentRouteName() == "add_video" ? 'active':'' }}"><a class="menu-item" href="{{ route("add_video") }}" data-i18n="nav.dash.ecommerce">اضافة فيديو</a>
                 </li>
-                <li class="{{ Route::currentRouteName() == "add_free_video" ? 'active':'' }}"><a class="menu-item" href="{{ route("add_free_video") }}" data-i18n="nav.dash.ecommerce">add free video</a>
+                <li class="{{ Route::currentRouteName() == "add_free_video" ? 'active':'' }}"><a class="menu-item" href="{{ route("add_free_video") }}" data-i18n="nav.dash.ecommerce">اضافة فيديو مجاني</a>
                 </li>
-                <li class="{{ Route::currentRouteName() == "show_free_video" ? 'active':'' }}"><a class="menu-item" href="{{ route("show_free_video") }}" data-i18n="nav.dash.ecommerce">Show free videos </a>
+                <li class="{{ Route::currentRouteName() == "show_free_video" ? 'active':'' }}"><a class="menu-item" href="{{ route("show_free_video") }}" data-i18n="nav.dash.ecommerce">عرض الفيديوهات المجانية</a>
                 </li>
                 <?php
                         $url="http://127.0.0.1:8000";
 
                 ?>
-                <li class="{{ Route::currentRouteName() == "show_lecture_videos" ? 'active':'' }}"><a class="menu-item" href="{{ route("show_lecture_videos") }}" data-i18n="nav.dash.ecommerce"> Lecture Videos </a>
+                <li class="{{ Route::currentRouteName() == "show_lecture_videos" ? 'active':'' }}"><a class="menu-item" href="{{ route("show_lecture_videos") }}" data-i18n="nav.dash.ecommerce"> عرض فيديوهات المحاضرات </a>
                 </li>
                 {{-- <li class="{{ url()->current() == "$url/show_video/ONE" ? 'active':'' }}"><a class="menu-item" href="{{ route("show_video",['year_type'=>"ONE"]) }}" data-i18n="nav.dash.ecommerce">First grade secondary</a>
                 </li>
@@ -202,18 +202,18 @@ data-open="click" data-menu="vertical-content-menu" data-col="2-columns">
             </li>
 
             <li class=" navigation-header"> 
-              <span data-i18n="nav.category.layouts">Subscribtions</span><i class="la la-ellipsis-h ft-minus" data-toggle="tooltip"
+              <span data-i18n="nav.category.layouts">الاشتراكات</span><i class="la la-ellipsis-h ft-minus" data-toggle="tooltip"
               data-placement="right" data-original-title="Layouts"></i>
             </li>
-            <li class=" nav-item"><a href="index.html"><i class="fas fa-credit-card"></i><span class="menu-title" data-i18n="nav.dash.main">Students Sub</span></a>
+            <li class=" nav-item"><a href="index.html"><i class="fas fa-credit-card"></i><span class="menu-title" data-i18n="nav.dash.main">اشتراكات الطلاب</span></a>
               <ul class="menu-content">
-                <li class="{{ Route::currentRouteName() == "subscript_add" ? 'active':'' }}"><a class="menu-item" href="{{ route("subscript_add") }}" data-i18n="nav.dash.ecommerce">Add Subscribtions </a>
+                <li class="{{ Route::currentRouteName() == "subscript_add" ? 'active':'' }}"><a class="menu-item" href="{{ route("subscript_add") }}" data-i18n="nav.dash.ecommerce">اضافة اشتراك </a>
                 </li>
-                <li class="{{ Route::currentRouteName() == "subscript_index" ? 'active':'' }}"><a class="menu-item" href="{{ route("subscript_index") }}" data-i18n="nav.dash.ecommerce"> Subscribtions index</a>
+                <li class="{{ Route::currentRouteName() == "subscript_index" ? 'active':'' }}"><a class="menu-item" href="{{ route("subscript_index") }}" data-i18n="nav.dash.ecommerce"> عرض الاشتراكات</a>
                 </li>
-                <li class="{{ Route::currentRouteName() == "student_wallet" ? 'active':'' }}"><a class="menu-item" href="{{ route("student_wallet") }}" data-i18n="nav.dash.ecommerce"> Student Wallet</a>
+                <li class="{{ Route::currentRouteName() == "student_wallet" ? 'active':'' }}"><a class="menu-item" href="{{ route("student_wallet") }}" data-i18n="nav.dash.ecommerce"> محفظة الطالب</a>
                 </li>
-                <li class="{{ Route::currentRouteName() == "subscript_delete" ? 'active':'' }}"><a class="menu-item" href="{{ route("subscript_delete") }}" data-i18n="nav.dash.ecommerce"> Delete subscription</a>
+                <li class="{{ Route::currentRouteName() == "subscript_delete" ? 'active':'' }}"><a class="menu-item" href="{{ route("subscript_delete") }}" data-i18n="nav.dash.ecommerce"> حذف اشتراك</a>
                 </li>
               </ul>
             </li>
@@ -223,26 +223,26 @@ data-open="click" data-menu="vertical-content-menu" data-col="2-columns">
               data-placement="right" data-original-title="Layouts"></i>
             </li>
 
-            <li class=" nav-item"><a href="index.html"><i class="fas fa-credit-card"></i><span class="menu-title" data-i18n="nav.dash.main">All Transactions</span></a>
+            <li class=" nav-item"><a href="index.html"><i class="fas fa-credit-card"></i><span class="menu-title" data-i18n="nav.dash.main">العمليات المالية</span></a>
               <ul class="menu-content">
-                <li class="{{ Route::currentRouteName() == "transactions" ? 'active':'' }}"><a class="menu-item" href="{{ route("transactions") }}" data-i18n="nav.dash.ecommerce">Show  </a>
+                <li class="{{ Route::currentRouteName() == "transactions" ? 'active':'' }}"><a class="menu-item" href="{{ route("transactions") }}" data-i18n="nav.dash.ecommerce">عرض</a>
                 </li>
               </ul>
             </li>
 
             <li class=" navigation-header">
-              <span data-i18n="nav.category.layouts">Exams</span><i class="la la-ellipsis-h ft-minus" data-toggle="tooltip"
+              <span data-i18n="nav.category.layouts">الامتحانات</span><i class="la la-ellipsis-h ft-minus" data-toggle="tooltip"
               data-placement="right" data-original-title="Layouts"></i>
             </li>
-            <li class=" nav-item"><a href=""><i class="lla la-files-o"></i><span class="menu-title" data-i18n="nav.dash.main">Exams</span></a>
+            <li class=" nav-item"><a href=""><i class="lla la-files-o"></i><span class="menu-title" data-i18n="nav.dash.main">الامتحانات</span></a>
               <ul class="menu-content">
-                <li class="{{ Route::currentRouteName() == "add_exam" ? 'active':'' }}"><a class="menu-item" href="{{ route("add_exam") }}" data-i18n="nav.dash.ecommerce">add exam</a>
+                <li class="{{ Route::currentRouteName() == "add_exam" ? 'active':'' }}"><a class="menu-item" href="{{ route("add_exam") }}" data-i18n="nav.dash.ecommerce">اضافة امتحان</a>
                 </li>
                 <?php
                         $url="http://127.0.0.1:8000";
 
                 ?>
-                <li class="{{ url()->current() == "$url/show_exams" ? 'active':'' }}"><a class="menu-item" href="{{ route("show_exam") }}" data-i18n="nav.dash.ecommerce"> show exam</a>
+                <li class="{{ url()->current() == "$url/show_exams" ? 'active':'' }}"><a class="menu-item" href="{{ route("show_exam") }}" data-i18n="nav.dash.ecommerce"> عرض الامتحانات</a>
                 </li>
 
                 {{-- <li class="{{ url()->current() == "$url/show_exams/TWO" ? 'active':'' }}"><a class="menu-item" href="{{ route("show_exam",['year_type'=>"TWO"]) }}" data-i18n="nav.dash.ecommerce">Secound grade secondary</a>
@@ -254,17 +254,17 @@ data-open="click" data-menu="vertical-content-menu" data-col="2-columns">
             </li>
 
             <li class=" navigation-header">
-              <span data-i18n="nav.category.layouts">Students</span><i class="la la-ellipsis-h ft-minus" data-toggle="tooltip"
+              <span data-i18n="nav.category.layouts">الطلاب</span><i class="la la-ellipsis-h ft-minus" data-toggle="tooltip"
               data-placement="right" data-original-title="Layouts"></i>
             </li>
-            <li class=" nav-item"><a href="index.html"><i class="la la-male"></i><span class="menu-title" data-i18n="nav.dash.main">Students</span></a>
+            <li class=" nav-item"><a href="index.html"><i class="la la-male"></i><span class="menu-title" data-i18n="nav.dash.main">الطلاب</span></a>
               <ul class="menu-content">
                 <?php
                         $url="http://127.0.0.1:8000";
                 ?>
-                <li class="{{ Route::currentRouteName() == "add_student" ? 'active':'' }}"><a class="menu-item" href="{{ route("add_student") }}" data-i18n="nav.dash.ecommerce">Add student</a>
+                <li class="{{ Route::currentRouteName() == "add_student" ? 'active':'' }}"><a class="menu-item" href="{{ route("add_student") }}" data-i18n="nav.dash.ecommerce">اضافة طالب</a>
                 </li>
-                <li class="{{ Route::currentRouteName() == "student_search" ? 'active':'' }}"><a class="menu-item" href="{{ route("student_search") }}" data-i18n="nav.dash.ecommerce">Student Search</a>
+                <li class="{{ Route::currentRouteName() == "student_search" ? 'active':'' }}"><a class="menu-item" href="{{ route("student_search") }}" data-i18n="nav.dash.ecommerce">بحث عن طالب</a>
                 </li>
                 {{-- <li class="{{ url()->current() == "$url/show_student/ONE" ? 'active':'' }}"><a class="menu-item" href="{{ route("show_student",['year_type'=>"ONE"]) }}" data-i18n="nav.dash.ecommerce">First grade secondary</a>
                 </li>
@@ -322,18 +322,18 @@ data-open="click" data-menu="vertical-content-menu" data-col="2-columns">
             </li> --}}
 
               <li class=" navigation-header">
-                <span data-i18n="nav.category.layouts">Slider</span><i class="la la-ellipsis-h ft-minus" data-toggle="tooltip"
+                <span data-i18n="nav.category.layouts">سلايدر الاعلانات</span><i class="la la-ellipsis-h ft-minus" data-toggle="tooltip"
                 data-placement="right" data-original-title="Layouts"></i>
               </li>
-              <li class=" nav-item"><a href=""><i class="la la-sliders"></i><span class="menu-title" data-i18n="nav.dash.main">Slider</span></a>
+              <li class=" nav-item"><a href=""><i class="la la-sliders"></i><span class="menu-title" data-i18n="nav.dash.main">سلايدر</span></a>
                 <ul class="menu-content">
                   <?php
                           $url="http://127.0.0.1:8000";
                   ?>
-                  <li class="{{ Route::currentRouteName() == "add_slider" ? 'active':'' }}"><a class="menu-item" href="{{ route("add_slider") }}" data-i18n="nav.dash.ecommerce">add slider</a>
+                  <li class="{{ Route::currentRouteName() == "add_slider" ? 'active':'' }}"><a class="menu-item" href="{{ route("add_slider") }}" data-i18n="nav.dash.ecommerce">اضافة سلايدر</a>
                   </li>
 
-                  <li  class="{{ Route::currentRouteName() == "show_slider" ? 'active':'' }}"><a class="menu-item" href="{{ route("show_slider") }}" data-i18n="nav.dash.ecommerce">show slider</a>
+                  <li  class="{{ Route::currentRouteName() == "show_slider" ? 'active':'' }}"><a class="menu-item" href="{{ route("show_slider") }}" data-i18n="nav.dash.ecommerce">عرض سلايدر</a>
                   </li>
 
 
@@ -361,9 +361,12 @@ data-open="click" data-menu="vertical-content-menu" data-col="2-columns">
                   </li>
                 </ul>
               </li>     --}}
-              
+              <li class=" navigation-header">
+                <span data-i18n="nav.category.layouts"> ادارة المنتجات</span><i class="la la-ellipsis-h ft-minus" data-toggle="tooltip"
+                data-placement="right" data-original-title="Layouts"></i>
+              </li>
               <li class=" nav-item {{ Route::currentRouteName() == "product_manager" ? 'active':'' }}">
-                <a href="{{ route("product_manager") }}"><i class="la la-align-right"></i><span class="menu-title" data-i18n="nav.dash.main">Products</span></a>
+                <a href="{{ route("product_manager") }}"><i class="la la-align-right"></i><span class="menu-title" data-i18n="nav.dash.main">المنتجات</span></a>
               </li>
         </div>
       </div>
