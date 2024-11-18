@@ -23,18 +23,14 @@ class CreateNewUser implements CreatesNewUsers
         Validator::make($input, [
             'name' => ['required', 'string', 'max:255'],
             'mobile_phone' => ['required', 'numeric', 'unique:users'],
-            'mobile_father' => ['required', 'numeric', 'unique:users'],
             'device_id' => ['required', 'string'],
-            'year_type' => ['required', 'string'],
             'password' => $this->passwordRules(), // Use the predefined password validation rules
         ])->validate();        
 
         return User::create([
             'name' => $input['name'],
             'mobile_phone' => $input['mobile_phone'],
-            'mobile_father' => $input['mobile_father'],
             'device_id' => $input['device_id'],
-            'year_type' => $input['year_type'],
             'wallet' => "0",
             'password' => Hash::make($input['password']), // Hash the password
         ]);        
