@@ -27,7 +27,7 @@ class StudentSearch extends Component
             });
         }
 
-        $users = $query->paginate(10); // Paginate results (10 per page)
+        $users = $query->paginate(30); // Paginate results (10 per page)
 
         return view('livewire.admin.student.student-search', ['users' => $users])
             ->layout('layouts.admin');
