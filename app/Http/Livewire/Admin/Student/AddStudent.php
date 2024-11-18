@@ -72,11 +72,9 @@ class AddStudent extends Component
     public function render()
     {
         $enumOptions = $this->getEnumValues('users', 'case_reverse');
-        $year_type = $this->getEnumValues('users', 'year_type');
 
         return view('livewire.admin.student.add-student', [
             'enumOptions' => $enumOptions,
-            'year_type' => $year_type
         ])->layout('layouts.admin');
     }
 
