@@ -266,14 +266,14 @@ data-open="click" data-menu="vertical-content-menu" data-col="2-columns">
                 </li>
                 <li class="{{ Route::currentRouteName() == "student_search" ? 'active':'' }}"><a class="menu-item" href="{{ route("student_search") }}" data-i18n="nav.dash.ecommerce">Student Search</a>
                 </li>
-                <li class="{{ url()->current() == "$url/show_student/ONE" ? 'active':'' }}"><a class="menu-item" href="{{ route("show_student",['year_type'=>"ONE"]) }}" data-i18n="nav.dash.ecommerce">First grade secondary</a>
+                {{-- <li class="{{ url()->current() == "$url/show_student/ONE" ? 'active':'' }}"><a class="menu-item" href="{{ route("show_student",['year_type'=>"ONE"]) }}" data-i18n="nav.dash.ecommerce">First grade secondary</a>
                 </li>
 
                 <li class="{{ url()->current() == "$url/show_student/TWO" ? 'active':'' }}"><a class="menu-item" href="{{ route("show_student",['year_type'=>"TWO"]) }}" data-i18n="nav.dash.ecommerce">Secound grade secondary</a>
                 </li>
 
                 <li class="{{ url()->current() == "$url/show_student/THREE" ? 'active':'' }}"><a class="menu-item" href="{{ route("show_student",['year_type'=>"THREE"]) }}" data-i18n="nav.dash.ecommerce">Third grade secondary</a>
-                </li>
+                </li> --}}
               </ul>
             </li>
 
