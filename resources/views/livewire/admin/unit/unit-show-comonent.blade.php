@@ -86,3 +86,13 @@
     </div>
     @endif
 </div>
+<script>
+    window.addEventListener('show-delete-modal', event => {
+        $('#deleteModal').modal('show');
+    });
+  
+    window.addEventListener('hide-delete-modal', event => {
+        $('#deleteModal').modal('hide');
+    });
+  </script>
+  
