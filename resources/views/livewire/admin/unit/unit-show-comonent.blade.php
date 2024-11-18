@@ -6,17 +6,6 @@
   </style>
   <section id="basic-form-layouts">
       <div class="row match-height">
-          <div class="col-md-12">
-              <div class="form-group">
-                  <label for="projectinput5">Year School</label>
-                  <select id="projectinput5" name="interested" class="form-control" wire:model="year_type">
-                      <option value="none" selected="">Choose</option>
-                      <option value="ONE">ONE</option>
-                      <option value="TWO">TWO</option>
-                      <option value="THREE">THREE</option>
-                  </select>
-              </div>
-          </div>
           <div class="col-12">
               <div class="card">
                   <div class="card-header">
