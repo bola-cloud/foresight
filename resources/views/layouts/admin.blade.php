@@ -341,7 +341,7 @@ data-open="click" data-menu="vertical-content-menu" data-col="2-columns">
               </li>
 
 
-              <li class=" navigation-header">
+              {{-- <li class=" navigation-header">
                 <span data-i18n="nav.category.layouts">Document</span><i class="la la-ellipsis-h ft-minus" data-toggle="tooltip"
                 data-placement="right" data-original-title="Layouts"></i>
               </li>
@@ -360,7 +360,7 @@ data-open="click" data-menu="vertical-content-menu" data-col="2-columns">
                   <li  class="{{ url()->current() == "$url/show_files/THREE" ? 'active':'' }}"><a class="menu-item" href="{{ route("show_files",['year_type'=>"THREE"]) }}" data-i18n="nav.dash.ecommerce">show third year</a>
                   </li>
                 </ul>
-              </li>    
+              </li>     --}}
               
               <li class=" nav-item {{ Route::currentRouteName() == "product_manager" ? 'active':'' }}">
                 <a href="{{ route("product_manager") }}"><i class="la la-align-right"></i><span class="menu-title" data-i18n="nav.dash.main">Products</span></a>
