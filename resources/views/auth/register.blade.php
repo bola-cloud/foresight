@@ -20,18 +20,8 @@
             </div>
 
             <div class="mt-4">
-                <x-jet-label for="mobile_father" value="{{ __('Father\'s Mobile Phone') }}" />
-                <x-jet-input id="mobile_father" class="block mt-1 w-full" type="number" name="mobile_father" :value="old('mobile_father')" required />
-            </div>
-
-            <div class="mt-4">
                 <x-jet-label for="device_id" value="{{ __('Device ID') }}" />
                 <x-jet-input id="device_id" class="block mt-1 w-full" type="text" name="device_id" :value="old('device_id')" required />
-            </div>
-
-            <div class="mt-4">
-                <x-jet-label for="year_type" value="{{ __('Year') }}" />
-                <x-jet-input id="year_type" class="block mt-1 w-full" type="text" name="year_type" :value="old('year_type')" required />
             </div>
 
             <!-- Password Field -->
