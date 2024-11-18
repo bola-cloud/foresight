@@ -1,15 +1,6 @@
 <div class="container-fluid card">
     <div class="row mb-4 mt-4">
         <div class="col-md-5">
-            <label for="subscriptionType" class="form-label">year filter</label>
-            <select class="form-select" aria-label="Default select example" id="subscriptionType" wire:model="year">
-                <option value="0" selected>choose year</option>
-                <option value="ONE">first year</option>
-                <option value="TWO">second year</option>
-                <option value="THREE">third year</option>
-            </select>
-        </div>
-        <div class="col-md-5">
             <label for="searchTerm" class="form-label">Search</label>
             <input type="text" class="form-control" id="searchTerm" wire:model.debounce.50ms="searchTerm" placeholder="Search for Students or Codes..." />
         </div>

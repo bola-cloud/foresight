@@ -8,11 +8,10 @@ use App\Models\User;
 class StudentSearch extends Component
 {
     public $searchTerm;
-    public $year;
 
     public function render()
     {
-        // Query to fetch users based on search term and year
+        // Query to fetch users based on search term and 
         $query = User::where('utype', 'USR');
 
         if ($this->searchTerm) {
@@ -22,10 +21,6 @@ class StudentSearch extends Component
                          ->orWhere('mobile_phone', 'like', '%' . $this->searchTerm . '%');
 
             });
-        }
-
-        if ($this->year && $this->year !== '0') {
-            $query->where('year_type', $this->year);
         }
 
         $users = $query->get();
