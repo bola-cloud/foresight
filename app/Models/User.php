@@ -33,7 +33,8 @@ class User extends Authenticatable
         'wallet',
         'utype',
         'current_team_id',
-        'profile_photo_path'
+        'profile_photo_path',
+        'password'
     ];
 
     public function question()
