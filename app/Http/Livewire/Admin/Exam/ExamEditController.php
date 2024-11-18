@@ -39,7 +39,7 @@ class ExamEditController extends Component
         $unitIds=$this->unit_selected;
         $exam->units()->attach($unitIds);
         session()->flash("message","you add exam");
-        return redirect()->route("show_exam",['year_type'=>$this->year]);
+        return redirect()->route("show_exam");
     }
     public function render()
     {
