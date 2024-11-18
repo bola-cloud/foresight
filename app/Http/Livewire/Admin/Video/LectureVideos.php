@@ -35,9 +35,18 @@ class LectureVideos extends Component
 
     private function convertToEmbedLink($link)
     {
-        parse_str(parse_url($link, PHP_URL_QUERY), $query);
-        return isset($query['v']) ? 'https://www.youtube.com/embed/' . $query['v'] : null;
-    }
+        if (strpos($link, 'youtu.be') !== false) {
+            // Handle short YouTube links (e.g., https://youtu.be/xyz)
+            $videoId = substr(parse_url($link, PHP_URL_PATH), 1);
+        } elseif (strpos($link, 'youtube.com/watch') !== false) {
+            // Handle standard YouTube links (e.g., https://www.youtube.com/watch?v=xyz)
+            parse_str(parse_url($link, PHP_URL_QUERY), $query);
+            $videoId = $query['v'] ?? null;
+        } else {
+            return null; // Invalid YouTube link
+        }
+        return $videoId ? "https://www.youtube.com/embed/{$videoId}" : null;
+    }    
 
     public function confirmDelete($videoId)
     {

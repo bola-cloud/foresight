@@ -15,18 +15,18 @@
             <div class="col-md-12">
                 <div class="row mt-4">
                     <div class="col-md-5">
-                        <label for="exampleFormControlInput1" class="form-label">Filter with units</label>
+                        <label for="exampleFormControlInput1" class="form-label">التصفية حسب الوحدة</label>
                         <select class="form-select" aria-label="Default select example" id="unid_id" wire:model="unid_id">
-                            <option selected>choose unit</option>
+                            <option selected>اختر الوحدة</option>
                             @foreach ($units as $unit)
                                 <option value="{{ $unit->id }}"> {{ $unit->name }} </option>
                             @endforeach
                         </select>
                     </div>
                     <div class="col-md-5">
-                        <label for="exampleFormControlInput1" class="form-label">Filter with lectures</label>
+                        <label for="exampleFormControlInput1" class="form-label">التصفية حسب المحاضرات</label>
                         <select class="form-select" aria-label="Default select example" id="lecture_id" wire:model="lecture_id">
-                            <option selected>choose lecture</option>
+                            <option selected>اختر المحاضرة</option>
                             @foreach ($lectures as $lecture)
                                 <option value="{{ $lecture['id'] }}"> {{ $lecture['name'] }} </option>
                             @endforeach
@@ -49,8 +49,8 @@
                                         <br>
                                         <div class="col-md-12">
                                             <div class="row d-flex flex-row">
-                                                <a href="{{ route('video_edit', $video->id) }}" class="btn btn-warning m-3 col-md-6">Edit</a>
-                                                <button class="btn btn-danger m-3 col-md-6" wire:click="confirmDelete({{ $video->id }})">Delete</button>
+                                                <a href="{{ route('video_edit', $video->id) }}" class="btn btn-warning m-3 col-md-6">تعديل</a>
+                                                <button class="btn btn-danger m-3 col-md-6" wire:click="confirmDelete({{ $video->id }})">حذف</button>
                                             </div>
                                         </div>
                                     </div>
@@ -58,7 +58,7 @@
                             @endforeach
                         </div>
                     @else
-                        <p class="text-center mt-4">No videos available for the selected lecture.</p>
+                        <p class="text-center mt-4">لا توجد فيديوهات متاحة للمحاضرة المختارة.</p>
                     @endif
                 </div>
             </div>
@@ -70,17 +70,17 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="deleteModalLabel">Confirm Delete</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <h5 class="modal-title" id="deleteModalLabel">تأكيد الحذف</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="إغلاق">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    Are you sure you want to delete this video?
+                    هل أنت متأكد أنك تريد حذف هذا الفيديو؟
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                    <button type="button" class="btn btn-danger" wire:click="deleteVideo">Delete</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">إلغاء</button>
+                    <button type="button" class="btn btn-danger" wire:click="deleteVideo">حذف</button>
                 </div>
             </div>
         </div>
