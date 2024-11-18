@@ -25,7 +25,6 @@ class VideoAddController extends Component
     public $unit_selected = [];
     public $title,$link;
     public $case_video=0;
-    public $year;
     public $image_video;
     public $fileId;
     public $description;
@@ -36,10 +35,9 @@ class VideoAddController extends Component
         'image_video' => 'required'
     ];
 
-    public function mount($year)
+    public function mount()
     {
-        $this->year = $year;
-        $this->units = Unit::where('year_type', $this->year)->get();
+        $this->units = Unit::all();
         // dd($this->units);
         $this->lectures = collect(); // Initialize as empty collection
     }
