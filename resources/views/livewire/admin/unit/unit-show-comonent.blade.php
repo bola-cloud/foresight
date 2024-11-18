@@ -10,14 +10,14 @@
                 <input 
                     type="text" 
                     class="form-control" 
-                    placeholder="Search by unit name" 
+                    placeholder="ابحث عن الوحدة" 
                     wire:model="search" 
                 />
             </div>
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4 class="card-title">Units</h4>
+                        <h4 class="card-title">الوحدات</h4>
                         <div class="heading-elements" style="top: 4px">
                             <ul class="list-inline mb-0">
                                 <li><a data-action="collapse"><i class="ft-minus"></i></a></li>
@@ -32,10 +32,10 @@
                             <table class="table">
                                 <thead class="table table-bordered mb-0">
                                     <tr>
-                                        <th>Name Unit</th>
-                                        <th>Cost</th>
-                                        <th>Image</th>
-                                        <th>Actions</th>
+                                        <th>اسم الوحدة</th>
+                                        <th>التكلفة</th>
+                                        <th>الصورة</th>
+                                        <th>الإجراءات</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -45,8 +45,8 @@
                                         <td><img src="{{ asset($unit->image_unit) }}" width="60" height="60"></td>
                                         <td>{{ $unit->cost }}</td>
                                         <td>
-                                            <a type="button" class="btn btn-primary" href="{{ route('edit_unit', ['ide' => $unit->id]) }}">Edit</a>
-                                            <button type="button" class="btn btn-danger" wire:click="confirmDelete({{ $unit->id }})">Delete</button>
+                                            <a type="button" class="btn btn-primary" href="{{ route('edit_unit', ['ide' => $unit->id]) }}">تعديل</a>
+                                            <button type="button" class="btn btn-danger" wire:click="confirmDelete({{ $unit->id }})">حذف</button>
                                         </td>
                                     </tr>
                                     @endforeach
@@ -64,17 +64,17 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="deleteModalLabel">Delete Confirmation</h5>
+                    <h5 class="modal-title" id="deleteModalLabel">تأكيد الحذف</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    Are you sure you want to delete this unit?
+                    هل أنت متأكد أنك تريد حذف هذه الوحدة؟
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                    <button type="button" class="btn btn-danger" wire:click="$emit('deleteConfirmed')">Delete</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">إلغاء</button>
+                    <button type="button" class="btn btn-danger" wire:click="$emit('deleteConfirmed')">حذف</button>
                 </div>
             </div>
         </div>
@@ -94,5 +94,4 @@
     window.addEventListener('hide-delete-modal', event => {
         $('#deleteModal').modal('hide');
     });
-  </script>
-  
+</script>
