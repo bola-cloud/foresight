@@ -236,7 +236,7 @@ data-open="click" data-menu="vertical-content-menu" data-col="2-columns">
             </li>
             <li class=" nav-item"><a href=""><i class="lla la-files-o"></i><span class="menu-title" data-i18n="nav.dash.main">Exams</span></a>
               <ul class="menu-content">
-                <li class="{{ Route::currentRouteName() == "select_year_exam" ? 'active':'' }}"><a class="menu-item" href="{{ route("select_year_exam") }}" data-i18n="nav.dash.ecommerce">add exam</a>
+                <li class="{{ Route::currentRouteName() == "add_exam" ? 'active':'' }}"><a class="menu-item" href="{{ route("add_exam") }}" data-i18n="nav.dash.ecommerce">add exam</a>
                 </li>
                 <?php
                         $url="http://127.0.0.1:8000";

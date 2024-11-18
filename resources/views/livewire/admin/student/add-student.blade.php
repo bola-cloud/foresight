@@ -16,38 +16,38 @@
                 @endif
                 <div class="card">
                     <div class="card-header text-center">
-                        <h5>Create new student</h5>
+                        <h5>إنشاء طالب جديد</h5>
                     </div>
                     <div class="card-body">
                         <form wire:submit.prevent="store" id="addStudent">
                             @csrf
                             <div class="mb-3">
-                                <label for="name" class="form-label">Student Name</label>
-                                <input type="text" class="form-control" wire:model="name" id="name" placeholder="Enter student name">
+                                <label for="name" class="form-label">اسم الطالب</label>
+                                <input type="text" class="form-control" wire:model="name" id="name" placeholder="أدخل اسم الطالب">
                                 @error('name') <div class="alert alert-danger">{{ $message }}</div> @enderror
                             </div>
                             <div class="mb-3">
-                                <label for="mobile_phone" class="form-label">Student Mobile</label>
-                                <input type="text" class="form-control" wire:model="mobile_phone" id="mobile_phone" placeholder="Enter student mobile">
+                                <label for="mobile_phone" class="form-label">رقم هاتف الطالب</label>
+                                <input type="text" class="form-control" wire:model="mobile_phone" id="mobile_phone" placeholder="أدخل رقم هاتف الطالب">
                                 @error('mobile_phone') <div class="alert alert-danger">{{ $message }}</div> @enderror
                             </div>
                             <div class="mb-3">
-                                <label for="mobile_father" class="form-label">Father's Mobile</label>
-                                <input type="text" class="form-control" wire:model="mobile_father" id="mobile_father" placeholder="Enter father's mobile">
+                                <label for="mobile_father" class="form-label">رقم هاتف الأب</label>
+                                <input type="text" class="form-control" wire:model="mobile_father" id="mobile_father" placeholder="أدخل رقم هاتف الأب">
                                 @error('mobile_father') <div class="alert alert-danger">{{ $message }}</div> @enderror
                             </div>
                             <div class="mb-3">
-                                <label for="case" class="form-label">Case</label>
+                                <label for="case" class="form-label">الحالة</label>
                                 <select class="form-select" id="case" wire:model="case">
-                                    <option value="0">Unpaid</option>
-                                    <option value="1">Paid</option>
+                                    <option value="0">غير مدفوع</option>
+                                    <option value="1">مدفوع</option>
                                 </select>
                                 @error('case') <div class="alert alert-danger">{{ $message }}</div> @enderror
                             </div>
                             <div class="mb-3">
-                                <label for="year" class="form-label">Year Type</label>
+                                <label for="year" class="form-label">العام الدراسي</label>
                                 <select class="form-select" id="year" wire:model="year">
-                                    <option value="">Select year</option>
+                                    <option value="">اختر العام</option>
                                     @foreach ($year_type as $year)
                                         <option value="{{ $year }}">{{ $year }}</option>
                                     @endforeach
@@ -55,14 +55,14 @@
                                 @error('year') <div class="alert alert-danger">{{ $message }}</div> @enderror
                             </div>
                             <div class="mb-3">
-                                <label for="code" class="form-label">Student Code</label>
+                                <label for="code" class="form-label">كود الطالب</label>
                                 <div class="d-flex">
-                                    <input type="text" class="form-control" wire:model="code" id="code" placeholder="Student code">
-                                    <button type="button" class="btn btn-success" wire:click="generateUniqueCode">Generate</button>
+                                    <input type="text" class="form-control" wire:model="code" id="code" placeholder="كود الطالب">
+                                    <button type="button" class="btn btn-success" wire:click="generateUniqueCode">إنشاء</button>
                                 </div>
                                 @error('code') <div class="alert alert-danger">{{ $message }}</div> @enderror
                             </div>
-                            <button type="submit" class="btn btn-danger btn-block">Store</button>
+                            <button type="submit" class="btn btn-danger btn-block">إضافة</button>
                         </form>
                     </div>
                 </div>

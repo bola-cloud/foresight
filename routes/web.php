@@ -156,7 +156,7 @@ Route::middleware(['auth:sanctum','verified','authadmin'])->group(function(){
     //kamel
   Route::post('upload_video',[UploadVideoController::class,'uploadLargeFiles'])->name('upload.video');
   ///exam
-  Route::get('add_year_exam',SELECTYEAREXAM::class)->name("select_year_exam");
+  // Route::get('add_year_exam',SELECTYEAREXAM::class)->name("select_year_exam");
   Route::get('add_exam/{year}',ExamAddController::class)->name("add_exam");
   Route::get('edit_exam/{id_exam}',ExamEditController::class)->name("edit_exam");
   Route::get('show_exams/{year_type}',ShowExamComponent::class)->name("show_exam");

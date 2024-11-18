@@ -12,15 +12,12 @@ class ExamAddController extends Component
     public $name_exam;
     public $unit_selected = [];
     public $units;
-    public $year;
     public $time;
 
     public function mount(){
-        $this->year;
     }
     protected $rules = [
         'name_exam' => 'required',
-        'year'=>'required',
         'time'=>'required|integer'
     ];
 
@@ -33,7 +30,6 @@ class ExamAddController extends Component
         $this->validate();
         $exam=new Exam;
         $exam->name_exam=$this->name_exam;
-        $exam->year_type=$this->year;
         $exam->time=$this->time;
         $exam->save();
         $unitIds=$this->unit_selected;
@@ -58,7 +54,7 @@ class ExamAddController extends Component
     }
     public function render()
     {
-        $this->units=Unit::where("year_type",$this->year)->get();
+        $this->units=Unit::all();
 
         return view('livewire.admin.exam.exam-add-controller')->layout('layouts.admin');
     }
