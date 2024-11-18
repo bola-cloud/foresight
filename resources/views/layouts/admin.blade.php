@@ -277,7 +277,7 @@ data-open="click" data-menu="vertical-content-menu" data-col="2-columns">
                 </ul>
               </li>
 
-              <li class=" navigation-header">
+              {{-- <li class=" navigation-header">
                 <span data-i18n="nav.category.layouts">Questions</span><i class="la la-ellipsis-h ft-minus" data-toggle="tooltip"
                 data-placement="right" data-original-title="Layouts"></i>
               </li>
@@ -308,7 +308,7 @@ data-open="click" data-menu="vertical-content-menu" data-col="2-columns">
 
 
                 </ul>
-              </li>
+              </li> --}}
 
               <li class=" navigation-header"> 
                 <span data-i18n="nav.category.layouts">Questions & Answers</span><i class="la la-ellipsis-h ft-minus" data-toggle="tooltip"
