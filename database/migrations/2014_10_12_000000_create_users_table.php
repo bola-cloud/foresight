@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('mobile_phone')->unique();
             $table->enum('utype',['ADM','USR','ASSIS'])->default("USR");
-            $table->enum('year_type',['ONE','TWO','THREE']);
+            // $table->enum('year_type',['ONE','TWO','THREE']);
             $table->enum('case_reverse',['0','1'])->default("0");
             $table->string('device_id')->unique();;
             // $table->string('password');
