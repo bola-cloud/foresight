@@ -65,7 +65,7 @@ a.btn.btn-primary.manual {
                                       </div>
                                     @endif
 
-                                    <img src="{{asset("istockphoto.jpg")}}">
+                                    <img src="{{asset("images/istockphoto.jpg")}}">
 
                                         @csrf
 
