@@ -8,15 +8,13 @@ use App\Models\Unit;
 
 class LectureIndex extends Component
 {
-    public $year_type,$unit_id;
+    public $search = '',$unit_id;
 
     public function render()
     {
         $lectures = Lecture::query()
-            ->when($this->year_type, function($query) {
-                $query->whereHas('unit', function($q) {
-                    $q->where('year_type', $this->year_type);
-                });
+            ->when($this->search, function($query) {
+                $query->where('name', 'like', '%' . $this->search . '%');
             })
             ->when($this->unit_id, function($query) {
                 $query->where('unit_id', $this->unit_id);
@@ -24,8 +22,9 @@ class LectureIndex extends Component
             ->get();
         
         $units = Unit::all();
-        return view('livewire.admin.lectures.lecture-index',['lectures'=>$lectures,'units'=>$units])->layout('layouts.admin');
-    }
+        return view('livewire.admin.lectures.lecture-index', ['lectures' => $lectures, 'units' => $units])
+            ->layout('layouts.admin');
+    }    
 
     public function delete($id)
     {

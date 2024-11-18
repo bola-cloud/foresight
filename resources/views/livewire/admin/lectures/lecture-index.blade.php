@@ -1,20 +1,13 @@
 <div>
     <div class="container-fluid">
         <div class="row mt-3 mb-5 d-flex justify-content-center">
-            <h3 class="d-flex justify-content-center">
-                All lectures
-            </h3>
+            <h3 class="d-flex justify-content-center">كل المحاضرات</h3>
             <div class="mb-3 col-md-4 mt-3">
-                <select class="form-select" aria-label="Default select example" wire:model="year_type">
-                    <option selected>Select Year</option>
-                    <option value="ONE">First Year</option>
-                    <option value="TWO">second Year</option>
-                    <option value="THREE">third Year</option>
-                </select>
+                <input type="text" class="form-control" placeholder="بحث باسم المحاضرة" wire:model="search">
             </div>
             <div class="mb-3 col-md-4 mt-3">
                 <select class="form-select" aria-label="Default select example" wire:model="unit_id">
-                    <option selected>Select Unit</option>
+                    <option selected>اختر الوحدة</option>
                     @foreach ($units as $unit)
                         <option value="{{ $unit->id }}">{{ $unit->name }}</option>
                     @endforeach
@@ -26,79 +19,63 @@
                 <table class="table align-middle mb-0 bg-white">
                     <thead class="bg-light">
                         <tr>
-                            <th>Lecture image</th>
-                            <th> Lecture name</th>
-                            <th>Lecture cost</th>
-                            <th>status</th>
-                            <th>description</th>
-                            <th>unit name</th>
-                            <th>actions</th>
+                            <th>صورة المحاضرة</th>
+                            <th>اسم المحاضرة</th>
+                            <th>تكلفة المحاضرة</th>
+                            <th>الحالة</th>
+                            <th>الوصف</th>
+                            <th>اسم الوحدة</th>
+                            <th>الإجراءات</th>
                         </tr>
                     </thead>
-                    @foreach($lectures as $key=>$lecture)
                     <tbody>
+                        @foreach($lectures as $lecture)
                         <tr>
                             <td>
-                                <div class="d-flex align-items-center">
-                                    <img
-                                        src="{{asset($lecture->image)}}"
-                                        alt=""
-                                        style="width: 75px; height: 75px"
-                                        class="rounded-circle"
-                                        />
-                                    <!-- <div class="ms-3">
-                                        <p class="fw-bold mb-1">John Doe</p>
-                                        <p class="text-muted mb-0">john.doe@gmail.com</p>
-                                    </div> -->
-                                </div>
+                                <img src="{{ asset($lecture->image) }}" alt="" style="width: 75px; height: 75px" class="rounded-circle">
                             </td>
+                            <td>{{ $lecture->name }}</td>
+                            <td>{{ $lecture->cost }}</td>
                             <td>
-                                <p class="fw-normal mb-1">{{$lecture->name}}</p>
-                                <p class="text-muted mb-0">IT department</p>
+                                @if($lecture->status === "active")
+                                    <span class="badge badge-success rounded-pill d-inline">نشطة</span>
+                                @else
+                                    <span class="badge badge-danger rounded-pill d-inline">غير نشطة</span>
+                                @endif
                             </td>
+                            <td>{{ $lecture->description }}</td>
+                            <td>{{ $lecture->unit->name }}</td>
                             <td>
-                                {{ $lecture->cost }}
-                              </td>
-                            @if($lecture->status=="active")
-                            <td>
-                                <span class="badge badge-success rounded-pill d-inline ">{{$lecture->status}}</span>
-                            </td>
-                            @else
-                                <td>
-                                    <span class="badge badge-danger rounded-pill d-inline ">{{$lecture->status}}</span>
-                                </td>
-                            @endif
-                            <td>{{$lecture->description}}</td>
-                            <td>{{$lecture->unit->name}}</td>
-                            <td>
-                                <button type="button" class="btn btn-danger" id="button-modal" data-bs-toggle="modal" data-bs-target="#delete{{$lecture->id}}" >
-                                    <i class="fa fa-trash" aria-hidden="true"></i>
+                                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#delete{{ $lecture->id }}">
+                                    <i class="fa fa-trash"></i>
                                 </button>
-                                <a class="btn btn-warning" href="{{route('lecture_edit', $lecture->id) }}" >
+                                <a href="{{ route('lecture_edit', $lecture->id) }}" class="btn btn-warning">
                                     <i class="far fa-edit"></i>
                                 </a>
                             </td>
                         </tr>
-                        <div class="modal fade" id="delete{{$lecture->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <!-- Delete Modal -->
+                        <div class="modal fade" id="delete{{ $lecture->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog">
                                 <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">Delete Lecture </h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body">
-                                    Do you want to delete {{$lecture->name}}
-                                </div>
-                                <div class="modal-footer">
-                                    <form wire:submit="delete({{$lecture->id}})" id="deleteForm"></form>
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">close</button>
-                                    <button type="submit" class="btn btn-danger" form="deleteForm">delete</button>
-                                </div>
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">حذف المحاضرة</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        هل تريد بالتأكيد حذف {{ $lecture->name }}؟
+                                    </div>
+                                    <div class="modal-footer">
+                                        <form wire:submit.prevent="delete({{ $lecture->id }})">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">إلغاء</button>
+                                            <button type="submit" class="btn btn-danger">حذف</button>
+                                        </form>
+                                    </div>
                                 </div>
                             </div>
                         </div>
+                        @endforeach
                     </tbody>
-                    @endforeach
                 </table>
             </div>
         </div>
