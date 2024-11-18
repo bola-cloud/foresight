@@ -32,7 +32,7 @@ class UnitShowComonent extends Component
 
     public function render()
     {
-        $units = Unit::all();
+        $units = Unit::where('name', 'like', '%' . $this->search . '%')->get();
         return view('livewire.admin.unit.unit-show-comonent', ['units' => $units])->layout('layouts.admin');
-    }
+    }    
 }

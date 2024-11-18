@@ -6,6 +6,15 @@
   </style>
   <section id="basic-form-layouts">
       <div class="row match-height">
+            <div class="col-md-12 mb-3">
+                <input 
+                    type="text" 
+                    class="form-control" 
+                    placeholder="Search by unit name" 
+                    wire:model="search" 
+                />
+            </div>
+        
           <div class="col-12">
               <div class="card">
                   <div class="card-header">
