@@ -45,16 +45,6 @@
                                 @error('case') <div class="alert alert-danger">{{ $message }}</div> @enderror
                             </div>
                             <div class="mb-3">
-                                <label for="year" class="form-label">العام الدراسي</label>
-                                <select class="form-select" id="year" wire:model="year">
-                                    <option value="">اختر العام</option>
-                                    @foreach ($year_type as $year)
-                                        <option value="{{ $year }}">{{ $year }}</option>
-                                    @endforeach
-                                </select>
-                                @error('year') <div class="alert alert-danger">{{ $message }}</div> @enderror
-                            </div>
-                            <div class="mb-3">
                                 <label for="code" class="form-label">كود الطالب</label>
                                 <div class="d-flex">
                                     <input type="text" class="form-control" wire:model="code" id="code" placeholder="كود الطالب">
