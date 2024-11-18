@@ -28,13 +28,8 @@
                             </div>
                             <div class="mb-3">
                                 <label for="mobile_phone" class="form-label">رقم هاتف الطالب</label>
-                                <input type="text" class="form-control" wire:model="mobile_phone" id="mobile_phone" placeholder="أدخل رقم هاتف الطالب">
+                                <input type="number" class="form-control" wire:model="mobile_phone" id="mobile_phone" placeholder="أدخل رقم هاتف الطالب">
                                 @error('mobile_phone') <div class="alert alert-danger">{{ $message }}</div> @enderror
-                            </div>
-                            <div class="mb-3">
-                                <label for="mobile_father" class="form-label">رقم هاتف الأب</label>
-                                <input type="text" class="form-control" wire:model="mobile_father" id="mobile_father" placeholder="أدخل رقم هاتف الأب">
-                                @error('mobile_father') <div class="alert alert-danger">{{ $message }}</div> @enderror
                             </div>
                             <div class="mb-3">
                                 <label for="case" class="form-label">الحالة</label>

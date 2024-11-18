@@ -8,7 +8,7 @@ use Illuminate\Validation\ValidationException;
 
 class AddStudent extends Component
 {
-    public $errorMessage, $code, $name, $mobile_father, $case = null, $mobile_phone;
+    public $errorMessage, $code, $name, $case = null, $mobile_phone;
 
     public function generateUniqueCode()
     {
@@ -30,7 +30,6 @@ class AddStudent extends Component
     {
         $validatedData = $this->validate([
             'name' => 'required|string|max:255',
-            'mobile_father' => 'required|string|max:15',
             'code' => 'required|string|max:50',
             'mobile_phone' => 'required|string|size:11|unique:users,mobile_phone',
         ]);
@@ -40,7 +39,6 @@ class AddStudent extends Component
 
             $new_user = new User();
             $new_user->name = $this->name;
-            $new_user->mobile_father = $this->mobile_father;
             $new_user->student_code = $this->code;
             $new_user->mobile_phone = $this->mobile_phone;
             $new_user->wallet = 0;
@@ -61,7 +59,6 @@ class AddStudent extends Component
     {
         $this->code = null;
         $this->name = null;
-        $this->mobile_father = null;
         $this->case = null;
         $this->mobile_phone = null;
     }
