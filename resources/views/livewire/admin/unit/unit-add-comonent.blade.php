@@ -49,17 +49,6 @@
                             name="fname" wire:model="cost">
                           </div>
                         </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                              <label for="projectinput5">year school</label>
-                              <select id="projectinput5" name="interested" class="form-control"  wire:model="year_unit">
-                                <option value="none" selected="">choose</option>
-                                <option value="ONE">ONE</option>
-                                <option value="TWO">TWO</option>
-                                <option value="THREE">THREE</option>
-                              </select>
-                            </div>
-                          </div>
                           <div class="col-md-12">
                             <label class="col-md-3 label-control" for="projectinput1"> image unit</label>
                             <div class="col-md-5">

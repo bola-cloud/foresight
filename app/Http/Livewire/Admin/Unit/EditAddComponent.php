@@ -12,7 +12,6 @@ class EditAddComponent extends Component
     use WithFileUploads;
 
     public $name_unit;
-    public $year_unit;
     public $ide;
     public $cost;
     public $image_unit;
@@ -22,7 +21,6 @@ class EditAddComponent extends Component
     {
         $unit = Unit::findOrFail($ide);
         $this->name_unit = $unit->name;
-        $this->year_unit = $unit->year_type;
         $this->cost = $unit->cost;
         $this->image_unit = $unit->image_unit;
         $this->ide = $ide;
@@ -30,7 +28,6 @@ class EditAddComponent extends Component
 
     protected $rules = [
         'name_unit' => 'required',
-        'year_unit' => 'required',
         'cost' => 'required|numeric',
         'image_unit_new' => 'nullable|image|max:1024' // Ensuring the new image is valid
     ];
@@ -42,7 +39,6 @@ class EditAddComponent extends Component
         $unit = Unit::findOrFail($this->ide);
         $unit->name = $this->name_unit;
         $unit->cost = $this->cost;
-        $unit->year_type = $this->year_unit;
 
         if ($this->image_unit_new) {
             // Delete the old image if it exists

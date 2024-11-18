@@ -11,12 +11,10 @@ class UnitAddComonent extends Component
       use WithFileUploads;
     public $name_unit;
 
-    public $year_unit;
     public $image_unit,$cost;
     protected $rules = [
         'name_unit' => 'required',
         'cost' => 'required|numeric',
-        'year_unit' => 'required',
         'image_unit'=>'required'
     ];
 
@@ -26,14 +24,11 @@ class UnitAddComonent extends Component
         $this->validate();
         $unit = new Unit;
 
-        if(Unit::where('name', $this->name_unit)->where('year_type',$this->year_unit)->exists() ){
+        if(Unit::where('name', $this->name_unit)->exists() ){
             session()->flash("message","you add this unit before");
         }else{
             $unit->name=$this->name_unit;
             $unit->cost=$this->cost;
-            if($this->year_unit!==""){
-            $unit->year_type=$this->year_unit;
-            }
 
             if ($this->image_unit) {
                 $filename = $this->image_unit->getClientOriginalName();

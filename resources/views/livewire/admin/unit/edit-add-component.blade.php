@@ -26,7 +26,6 @@
                               <div class="form-body">
                                   <h4 class="form-section"><i class="ft-user"></i> Unit Info</h4>
                                   @error('name_unit') <span class="error">{{ $message }}</span> @enderror
-                                  @error('year_unit') <span class="error">{{ $message }}</span> @enderror
                                   @error('cost') <span class="error">{{ $message }}</span> @enderror
                                   @error('image_unit_new') <span class="error">{{ $message }}</span> @enderror
 
@@ -49,17 +48,6 @@
                                           </div>
                                       </div>
 
-                                      <div class="col-md-6">
-                                          <div class="form-group">
-                                              <label for="year_unit">Year School</label>
-                                              <select id="year_unit" class="form-control" wire:model="year_unit">
-                                                  <option value="none" selected="">Choose</option>
-                                                  <option value="ONE">ONE</option>
-                                                  <option value="TWO">TWO</option>
-                                                  <option value="THREE">THREE</option>
-                                              </select>
-                                          </div>
-                                      </div>
                                       <div class="col-md-12">
                                           <label class="col-md-3 label-control" for="image_unit">Image Unit</label>
                                           <div class="col-md-5">

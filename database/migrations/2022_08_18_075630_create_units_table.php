@@ -16,7 +16,7 @@ class CreateUnitsTable extends Migration
         Schema::create('units', function (Blueprint $table) {
             $table->id();
             $table->string("name");
-            $table->enum('year_type',['ONE','TWO','THREE']);
+            // $table->enum('year_type',['ONE','TWO','THREE']);
             $table->timestamps();
         });
     }

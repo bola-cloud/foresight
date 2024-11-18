@@ -32,7 +32,7 @@ class UnitShowComonent extends Component
 
     public function render()
     {
-        $units = Unit::where("year_type", $this->year_type)->get();
+        $units = Unit::all();
         return view('livewire.admin.unit.unit-show-comonent', ['units' => $units])->layout('layouts.admin');
     }
 }
