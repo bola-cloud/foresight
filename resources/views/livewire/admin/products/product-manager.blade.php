@@ -1,7 +1,7 @@
 <div class="container-fluid">
     <div class="card p-3">
         <div class="card-header d-flex justify-content-start">
-            <button wire:click="openModal" class="btn btn-primary">Add Product</button>
+            <button wire:click="openModal" class="btn btn-primary">إضافة منتج</button>
         </div>
 
         @if($isOpen)
@@ -9,32 +9,32 @@
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title">{{ $productId ? 'Edit Product' : 'Add Product' }}</h5>
+                            <h5 class="modal-title">{{ $productId ? 'تعديل المنتج' : 'إضافة منتج' }}</h5>
                             <button wire:click="closeModal" class="close">&times;</button>
                         </div>
                         <div class="modal-body">
                             <form wire:submit.prevent="store">
                                 <div class="form-group">
-                                    <label>Title</label>
+                                    <label>العنوان</label>
                                     <input type="text" wire:model="title" class="form-control">
                                     @error('title') <span class="text-danger">{{ $message }}</span> @enderror
                                 </div>
                                 <div class="form-group">
-                                    <label>Description</label>
+                                    <label>الوصف</label>
                                     <textarea wire:model="description" class="form-control"></textarea>
                                     @error('description') <span class="text-danger">{{ $message }}</span> @enderror
                                 </div>
                                 <div class="form-group">
-                                    <label>Price</label>
+                                    <label>السعر</label>
                                     <input type="number" step="0.01" wire:model="price" class="form-control">
                                     @error('price') <span class="text-danger">{{ $message }}</span> @enderror
                                 </div>
                                 <div class="form-group">
-                                    <label>Image</label>
+                                    <label>الصورة</label>
                                     <input type="file" wire:model="image" class="form-control" accept="image/*">
                                     @error('image') <span class="text-danger">{{ $message }}</span> @enderror
                                 </div>
-                                <button type="submit" class="btn btn-primary">Save</button>
+                                <button type="submit" class="btn btn-primary">حفظ</button>
                             </form>
                         </div>
                     </div>
@@ -45,11 +45,11 @@
         <table class="table">
             <thead>
                 <tr>
-                    <th>Title</th>
-                    <th>Description</th>
-                    <th>Price</th>
-                    <th>Image</th>
-                    <th>Actions</th>
+                    <th>العنوان</th>
+                    <th>الوصف</th>
+                    <th>السعر</th>
+                    <th>الصورة</th>
+                    <th>الإجراءات</th>
                 </tr>
             </thead>
             <tbody>
@@ -60,10 +60,10 @@
                         <td>{{ $product->price }}</td>
                         <td><img src="{{ asset($product->image) }}" width="50"></td>
                         <td>
-                            <button wire:click="edit({{ $product->id }})" class="btn btn-info">Edit</button>
+                            <button wire:click="edit({{ $product->id }})" class="btn btn-info">تعديل</button>
                             <button 
                                 onclick="confirmDelete({{ $product->id }})" 
-                                class="btn btn-danger">Delete</button>
+                                class="btn btn-danger">حذف</button>
                         </td>
                     </tr>
                 @endforeach
@@ -78,7 +78,7 @@
 
 <script>
     function confirmDelete(id) {
-        if (confirm('Are you sure you want to delete this product?')) {
+        if (confirm('هل أنت متأكد أنك تريد حذف هذا المنتج؟')) {
             Livewire.emit('deleteProduct', id); // Trigger Livewire event to delete
         }
     }
