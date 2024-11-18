@@ -173,6 +173,35 @@ data-open="click" data-menu="vertical-content-menu" data-col="2-columns">
             </li>
 
             <li class=" navigation-header"> 
+                <span data-i18n="nav.category.layouts">Videos</span><i class="la la-ellipsis-h ft-minus" data-toggle="tooltip"
+                data-placement="right" data-original-title="Layouts"></i>
+            </li>
+            <li class=" nav-item"><a href=""><i class="la la-file-video-o"></i><span class="menu-title" data-i18n="nav.dash.main">Videos</span></a>
+              <ul class="menu-content">
+                <li class="{{ Route::currentRouteName() == "add_video" ? 'active':'' }}"><a class="menu-item" href="{{ route("select_year_video") }}" data-i18n="nav.dash.ecommerce">add video</a>
+                </li>
+                <li class="{{ Route::currentRouteName() == "add_free_video" ? 'active':'' }}"><a class="menu-item" href="{{ route("add_free_video") }}" data-i18n="nav.dash.ecommerce">add free video</a>
+                </li>
+                <li class="{{ Route::currentRouteName() == "show_free_video" ? 'active':'' }}"><a class="menu-item" href="{{ route("show_free_video") }}" data-i18n="nav.dash.ecommerce">Show free videos </a>
+                </li>
+                <?php
+                        $url="http://127.0.0.1:8000";
+
+                ?>
+                <li class="{{ Route::currentRouteName() == "show_lecture_videos" ? 'active':'' }}"><a class="menu-item" href="{{ route("show_lecture_videos") }}" data-i18n="nav.dash.ecommerce"> Lecture Videos </a>
+                </li>
+                {{-- <li class="{{ url()->current() == "$url/show_video/ONE" ? 'active':'' }}"><a class="menu-item" href="{{ route("show_video",['year_type'=>"ONE"]) }}" data-i18n="nav.dash.ecommerce">First grade secondary</a>
+                </li>
+
+                <li class="{{ url()->current() == "$url/show_video/TWO" ? 'active':'' }}"><a class="menu-item" href="{{ route("show_video",['year_type'=>"TWO"]) }}" data-i18n="nav.dash.ecommerce">Secound grade secondary</a>
+                </li>
+
+                <li class="{{ url()->current() == "$url/show_video/THREE" ? 'active':'' }}"><a class="menu-item" href="{{ route("show_video",['year_type'=>"THREE"]) }}" data-i18n="nav.dash.ecommerce">Third grade secondary</a>
+                </li> --}}
+              </ul>
+            </li>
+
+            <li class=" navigation-header"> 
               <span data-i18n="nav.category.layouts">Subscribtions</span><i class="la la-ellipsis-h ft-minus" data-toggle="tooltip"
               data-placement="right" data-original-title="Layouts"></i>
             </li>
@@ -201,81 +230,52 @@ data-open="click" data-menu="vertical-content-menu" data-col="2-columns">
               </ul>
             </li>
 
+            <li class=" navigation-header">
+              <span data-i18n="nav.category.layouts">Exams</span><i class="la la-ellipsis-h ft-minus" data-toggle="tooltip"
+              data-placement="right" data-original-title="Layouts"></i>
+            </li>
+            <li class=" nav-item"><a href=""><i class="lla la-files-o"></i><span class="menu-title" data-i18n="nav.dash.main">Exams</span></a>
+              <ul class="menu-content">
+                <li class="{{ Route::currentRouteName() == "select_year_exam" ? 'active':'' }}"><a class="menu-item" href="{{ route("select_year_exam") }}" data-i18n="nav.dash.ecommerce">add exam</a>
+                </li>
+                <?php
+                        $url="http://127.0.0.1:8000";
 
-            <li class=" navigation-header"> 
-                <span data-i18n="nav.category.layouts">Videos</span><i class="la la-ellipsis-h ft-minus" data-toggle="tooltip"
-                data-placement="right" data-original-title="Layouts"></i>
-              </li>
-            <li class=" nav-item"><a href=""><i class="la la-file-video-o"></i><span class="menu-title" data-i18n="nav.dash.main">Videos</span></a>
-                <ul class="menu-content">
-                  <li class="{{ Route::currentRouteName() == "add_video" ? 'active':'' }}"><a class="menu-item" href="{{ route("select_year_video") }}" data-i18n="nav.dash.ecommerce">add video</a>
-                  </li>
-                  <li class="{{ Route::currentRouteName() == "add_free_video" ? 'active':'' }}"><a class="menu-item" href="{{ route("add_free_video") }}" data-i18n="nav.dash.ecommerce">add free video</a>
-                  </li>
-                  <li class="{{ Route::currentRouteName() == "show_free_video" ? 'active':'' }}"><a class="menu-item" href="{{ route("show_free_video") }}" data-i18n="nav.dash.ecommerce">Show free videos </a>
-                  </li>
-                  <?php
-                          $url="http://127.0.0.1:8000";
+                ?>
+                <li class="{{ url()->current() == "$url/show_exams/ONE" ? 'active':'' }}"><a class="menu-item" href="{{ route("show_exam",['year_type'=>"ONE"]) }}" data-i18n="nav.dash.ecommerce">First grade secondary</a>
+                </li>
 
-                  ?>
-                  <li class="{{ Route::currentRouteName() == "show_lecture_videos" ? 'active':'' }}"><a class="menu-item" href="{{ route("show_lecture_videos") }}" data-i18n="nav.dash.ecommerce"> Lecture Videos </a>
-                  </li>
-                  {{-- <li class="{{ url()->current() == "$url/show_video/ONE" ? 'active':'' }}"><a class="menu-item" href="{{ route("show_video",['year_type'=>"ONE"]) }}" data-i18n="nav.dash.ecommerce">First grade secondary</a>
-                  </li>
+                <li class="{{ url()->current() == "$url/show_exams/TWO" ? 'active':'' }}"><a class="menu-item" href="{{ route("show_exam",['year_type'=>"TWO"]) }}" data-i18n="nav.dash.ecommerce">Secound grade secondary</a>
+                </li>
 
-                  <li class="{{ url()->current() == "$url/show_video/TWO" ? 'active':'' }}"><a class="menu-item" href="{{ route("show_video",['year_type'=>"TWO"]) }}" data-i18n="nav.dash.ecommerce">Secound grade secondary</a>
-                  </li>
+                <li class="{{ url()->current() == "$url/show_exams/THREE" ? 'active':'' }}"><a class="menu-item" href="{{ route("show_exam",['year_type'=>"THREE"]) }}" data-i18n="nav.dash.ecommerce">Third grade secondary</a>
+                </li>
+              </ul>
+            </li>
 
-                  <li class="{{ url()->current() == "$url/show_video/THREE" ? 'active':'' }}"><a class="menu-item" href="{{ route("show_video",['year_type'=>"THREE"]) }}" data-i18n="nav.dash.ecommerce">Third grade secondary</a>
-                  </li> --}}
-                </ul>
-              </li>
-              <li class=" navigation-header">
-                <span data-i18n="nav.category.layouts">Exams</span><i class="la la-ellipsis-h ft-minus" data-toggle="tooltip"
-                data-placement="right" data-original-title="Layouts"></i>
-              </li>
-              <li class=" nav-item"><a href=""><i class="lla la-files-o"></i><span class="menu-title" data-i18n="nav.dash.main">Exams</span></a>
-                <ul class="menu-content">
-                  <li class="{{ Route::currentRouteName() == "select_year_exam" ? 'active':'' }}"><a class="menu-item" href="{{ route("select_year_exam") }}" data-i18n="nav.dash.ecommerce">add exam</a>
-                  </li>
-                  <?php
-                          $url="http://127.0.0.1:8000";
+            <li class=" navigation-header">
+              <span data-i18n="nav.category.layouts">Students</span><i class="la la-ellipsis-h ft-minus" data-toggle="tooltip"
+              data-placement="right" data-original-title="Layouts"></i>
+            </li>
+            <li class=" nav-item"><a href="index.html"><i class="la la-male"></i><span class="menu-title" data-i18n="nav.dash.main">Students</span></a>
+              <ul class="menu-content">
+                <?php
+                        $url="http://127.0.0.1:8000";
+                ?>
+                <li class="{{ Route::currentRouteName() == "add_student" ? 'active':'' }}"><a class="menu-item" href="{{ route("add_student") }}" data-i18n="nav.dash.ecommerce">Add student</a>
+                </li>
+                <li class="{{ Route::currentRouteName() == "student_search" ? 'active':'' }}"><a class="menu-item" href="{{ route("student_search") }}" data-i18n="nav.dash.ecommerce">Student Search</a>
+                </li>
+                <li class="{{ url()->current() == "$url/show_student/ONE" ? 'active':'' }}"><a class="menu-item" href="{{ route("show_student",['year_type'=>"ONE"]) }}" data-i18n="nav.dash.ecommerce">First grade secondary</a>
+                </li>
 
-                  ?>
-                  <li class="{{ url()->current() == "$url/show_exams/ONE" ? 'active':'' }}"><a class="menu-item" href="{{ route("show_exam",['year_type'=>"ONE"]) }}" data-i18n="nav.dash.ecommerce">First grade secondary</a>
-                  </li>
+                <li class="{{ url()->current() == "$url/show_student/TWO" ? 'active':'' }}"><a class="menu-item" href="{{ route("show_student",['year_type'=>"TWO"]) }}" data-i18n="nav.dash.ecommerce">Secound grade secondary</a>
+                </li>
 
-                  <li class="{{ url()->current() == "$url/show_exams/TWO" ? 'active':'' }}"><a class="menu-item" href="{{ route("show_exam",['year_type'=>"TWO"]) }}" data-i18n="nav.dash.ecommerce">Secound grade secondary</a>
-                  </li>
-
-                  <li class="{{ url()->current() == "$url/show_exams/THREE" ? 'active':'' }}"><a class="menu-item" href="{{ route("show_exam",['year_type'=>"THREE"]) }}" data-i18n="nav.dash.ecommerce">Third grade secondary</a>
-                  </li>
-                </ul>
-              </li>
-
-              <li class=" navigation-header">
-                <span data-i18n="nav.category.layouts">Students</span><i class="la la-ellipsis-h ft-minus" data-toggle="tooltip"
-                data-placement="right" data-original-title="Layouts"></i>
-              </li>
-              <li class=" nav-item"><a href="index.html"><i class="la la-male"></i><span class="menu-title" data-i18n="nav.dash.main">Students</span></a>
-                <ul class="menu-content">
-                  <?php
-                          $url="http://127.0.0.1:8000";
-                  ?>
-                  <li class="{{ Route::currentRouteName() == "add_student" ? 'active':'' }}"><a class="menu-item" href="{{ route("add_student") }}" data-i18n="nav.dash.ecommerce">Add student</a>
-                  </li>
-                  <li class="{{ Route::currentRouteName() == "student_search" ? 'active':'' }}"><a class="menu-item" href="{{ route("student_search") }}" data-i18n="nav.dash.ecommerce">Student Search</a>
-                  </li>
-                  <li class="{{ url()->current() == "$url/show_student/ONE" ? 'active':'' }}"><a class="menu-item" href="{{ route("show_student",['year_type'=>"ONE"]) }}" data-i18n="nav.dash.ecommerce">First grade secondary</a>
-                  </li>
-
-                  <li class="{{ url()->current() == "$url/show_student/TWO" ? 'active':'' }}"><a class="menu-item" href="{{ route("show_student",['year_type'=>"TWO"]) }}" data-i18n="nav.dash.ecommerce">Secound grade secondary</a>
-                  </li>
-
-                  <li class="{{ url()->current() == "$url/show_student/THREE" ? 'active':'' }}"><a class="menu-item" href="{{ route("show_student",['year_type'=>"THREE"]) }}" data-i18n="nav.dash.ecommerce">Third grade secondary</a>
-                  </li>
-                </ul>
-              </li>
+                <li class="{{ url()->current() == "$url/show_student/THREE" ? 'active':'' }}"><a class="menu-item" href="{{ route("show_student",['year_type'=>"THREE"]) }}" data-i18n="nav.dash.ecommerce">Third grade secondary</a>
+                </li>
+              </ul>
+            </li>
 
               {{-- <li class=" navigation-header">
                 <span data-i18n="nav.category.layouts">Questions</span><i class="la la-ellipsis-h ft-minus" data-toggle="tooltip"
@@ -310,16 +310,16 @@ data-open="click" data-menu="vertical-content-menu" data-col="2-columns">
                 </ul>
               </li> --}}
 
-              <li class=" navigation-header"> 
-                <span data-i18n="nav.category.layouts">Questions & Answers</span><i class="la la-ellipsis-h ft-minus" data-toggle="tooltip"
-                data-placement="right" data-original-title="Layouts"></i>
-              </li>
-              <li class=" nav-item"><a href="index.html"><i class="fas fa-credit-card"></i><span class="menu-title" data-i18n="nav.dash.main">Students Questions</span></a>
-                <ul class="menu-content">
-                  <li class="{{ Route::currentRouteName() == "show-questions" ? 'active':'' }}"><a class="menu-item" href="{{ route("show-questions") }}" data-i18n="nav.dash.ecommerce">All Questions </a>
-                  </li>
-                </ul>
-              </li>
+            <li class=" navigation-header"> 
+              <span data-i18n="nav.category.layouts">Questions & Answers</span><i class="la la-ellipsis-h ft-minus" data-toggle="tooltip"
+              data-placement="right" data-original-title="Layouts"></i>
+            </li>
+            <li class=" nav-item"><a href="index.html"><i class="fas fa-credit-card"></i><span class="menu-title" data-i18n="nav.dash.main">Students Questions</span></a>
+              <ul class="menu-content">
+                <li class="{{ Route::currentRouteName() == "show-questions" ? 'active':'' }}"><a class="menu-item" href="{{ route("show-questions") }}" data-i18n="nav.dash.ecommerce">All Questions </a>
+                </li>
+              </ul>
+            </li>
 
               <li class=" navigation-header">
                 <span data-i18n="nav.category.layouts">Slider</span><i class="la la-ellipsis-h ft-minus" data-toggle="tooltip"
