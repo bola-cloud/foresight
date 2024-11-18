@@ -13,11 +13,8 @@
             </div>
           <div class="col-12">
             <div class="card">
-              <div class="card-header">
-                  <h4 class="card-title">الاختبار مرتبط بسنة {{ $exam->year_    }}</h4>
-  
+              <div class="card-header">  
                 <h4 class="card-title">الأسئلة مرتبطة بالاختبار {{ $exam->name_exam }}</h4>
-  
               </div>
   
               @if(Session::has("message"))
