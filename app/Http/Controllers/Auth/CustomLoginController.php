@@ -32,7 +32,7 @@ class CustomLoginController extends Controller
             Auth::login($user);
     
             // Redirect to the intended page or home_admin
-            return redirect()->intended('home_admin');
+            return redirect()->route('home_admin');
         }
     
         // If authentication fails, return back with an error
