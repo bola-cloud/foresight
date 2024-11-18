@@ -121,20 +121,20 @@ use App\Http\Livewire\HOME;
 // Route::get('/',HOME::class);
 
 //Home
-Route::get('/',HomeLanding::class)->name("home_landing");
+// Route::get('/',HomeLanding::class)->name("home_landing");
 Route::get('/asdasdasd',CoursesComponent::class)->name("courses_index");
 Route::get('/home-about',AboutHome::class)->name("home_about");
 Route::get('/home-contact',ContactHome::class)->name("home_contact");
 
 Route::get('/product-manager',ProductManager::class)->name("product_manager");
 
-Route::get('/home_admin',HomeController::class)->name("home_admin");
 Route::get('login', [CustomLoginController::class, 'showLoginForm'])->name('login');
 Route::post('login', [CustomLoginController::class, 'login']);
 
 ///for admin
 Route::middleware(['auth:sanctum','verified','authadmin'])->group(function(){
   ///unit
+  Route::get('/',HomeController::class)->name("home_admin");
 
   Route::get('showunits',UnitShowComonent::class)->name("show_unit");
   Route::get('addunit',UnitAddComonent::class)->name("add_unit");
