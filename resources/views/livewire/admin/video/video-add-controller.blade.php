@@ -9,7 +9,7 @@
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-header text-center">
-                        <h5>رفع ملف</h5>
+                        <h5>رفع فيديو</h5>
                     </div>
                     <div class="card-body">
                         <form wire:submit.prevent="store">
