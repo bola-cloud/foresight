@@ -141,12 +141,12 @@ Route::middleware(['auth:sanctum','verified','authadmin'])->group(function(){
   Route::get('editunit/{ide}',EditAddComponent::class)->name("edit_unit");
   
   ///video 
-  Route::get('add_year_video',SELECTYEARVIDEO::class)->name("select_year_video");
+  // Route::get('add_year_video',SELECTYEARVIDEO::class)->name("select_year_video");
   Route::get('free/video/add',AddFreeVideo::class)->name("add_free_video");
   Route::get('free/video/show',ShowFreeVideos::class)->name("show_free_video");
   Route::get('/admin/videos/free/edit/{video}', EditFreeVideo::class)->name('edit_free_video');
-  Route::post('addvideo/{year}', [VideoAddController::class,'store']);
-  Route::get('addvideo/{year}',VideoAddController::class)->name("add_video");
+  Route::post('addvideo', [VideoAddController::class,'store']);
+  Route::get('addvideo',VideoAddController::class)->name("add_video");
   Route::get('editvideo/{id_video}',VideoEditController::class)->name("edit_video");
   Route::get('show_videos/{year_type}',ShowVideoComponent::class)->name("show_video");
   Route::get("show_video_data/{ide}",ShowVideoDataComponent::class)->name("show_data_video");

@@ -178,7 +178,7 @@ data-open="click" data-menu="vertical-content-menu" data-col="2-columns">
             </li>
             <li class=" nav-item"><a href=""><i class="la la-file-video-o"></i><span class="menu-title" data-i18n="nav.dash.main">Videos</span></a>
               <ul class="menu-content">
-                <li class="{{ Route::currentRouteName() == "add_video" ? 'active':'' }}"><a class="menu-item" href="{{ route("select_year_video") }}" data-i18n="nav.dash.ecommerce">add video</a>
+                <li class="{{ Route::currentRouteName() == "add_video" ? 'active':'' }}"><a class="menu-item" href="{{ route("add_video") }}" data-i18n="nav.dash.ecommerce">add video</a>
                 </li>
                 <li class="{{ Route::currentRouteName() == "add_free_video" ? 'active':'' }}"><a class="menu-item" href="{{ route("add_free_video") }}" data-i18n="nav.dash.ecommerce">add free video</a>
                 </li>
