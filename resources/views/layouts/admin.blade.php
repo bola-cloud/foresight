@@ -112,7 +112,7 @@ data-open="click" data-menu="vertical-content-menu" data-col="2-columns">
           <ul class="nav navbar-nav float-right">
             <li class="dropdown dropdown-user nav-item">
               <a class="dropdown-toggle nav-link dropdown-user-link" href="#" data-toggle="dropdown">
-                <span class="mr-1">Hello,
+                <span class="mr-1">مرحبا
                   <span class="user-name text-bold-700">{{auth()->user()->name}}</span>
                 </span>
                 <span class="avatar avatar-online">
@@ -219,11 +219,11 @@ data-open="click" data-menu="vertical-content-menu" data-col="2-columns">
             </li>
 
             <li class=" navigation-header"> 
-              <span data-i18n="nav.category.layouts">Transactions</span><i class="la la-ellipsis-h ft-minus" data-toggle="tooltip"
+              <span data-i18n="nav.category.layouts">الماليات</span><i class="la la-ellipsis-h ft-minus" data-toggle="tooltip"
               data-placement="right" data-original-title="Layouts"></i>
             </li>
 
-            <li class=" nav-item"><a href="index.html"><i class="fas fa-credit-card"></i><span class="menu-title" data-i18n="nav.dash.main">العمليات المالية</span></a>
+            <li class=" nav-item"><a href="index.html"><i class="fas fa-credit-card"></i><span class="menu-title" data-i18n="nav.dash.main"> العمليات المالية</span></a>
               <ul class="menu-content">
                 <li class="{{ Route::currentRouteName() == "transactions" ? 'active':'' }}"><a class="menu-item" href="{{ route("transactions") }}" data-i18n="nav.dash.ecommerce">عرض</a>
                 </li>
