@@ -8,7 +8,7 @@ use App\Models\Unit;
 class UnitShowComonent extends Component
 {
 
-    public $year_type;
+    public $search;
     public $unitToDelete;
 
     protected $listeners = ['deleteConfirmed' => 'deleteUnit'];
