@@ -242,10 +242,10 @@ data-open="click" data-menu="vertical-content-menu" data-col="2-columns">
                         $url="http://127.0.0.1:8000";
 
                 ?>
-                {{-- <li class="{{ url()->current() == "$url/show_exams/ONE" ? 'active':'' }}"><a class="menu-item" href="{{ route("show_exam",['year_type'=>"ONE"]) }}" data-i18n="nav.dash.ecommerce">First grade secondary</a>
+                <li class="{{ url()->current() == "$url/show_exams" ? 'active':'' }}"><a class="menu-item" href="{{ route("show_exam") }}" data-i18n="nav.dash.ecommerce"> show exam</a>
                 </li>
 
-                <li class="{{ url()->current() == "$url/show_exams/TWO" ? 'active':'' }}"><a class="menu-item" href="{{ route("show_exam",['year_type'=>"TWO"]) }}" data-i18n="nav.dash.ecommerce">Secound grade secondary</a>
+                {{-- <li class="{{ url()->current() == "$url/show_exams/TWO" ? 'active':'' }}"><a class="menu-item" href="{{ route("show_exam",['year_type'=>"TWO"]) }}" data-i18n="nav.dash.ecommerce">Secound grade secondary</a>
                 </li>
 
                 <li class="{{ url()->current() == "$url/show_exams/THREE" ? 'active':'' }}"><a class="menu-item" href="{{ route("show_exam",['year_type'=>"THREE"]) }}" data-i18n="nav.dash.ecommerce">Third grade secondary</a> --}}
