@@ -242,13 +242,13 @@ data-open="click" data-menu="vertical-content-menu" data-col="2-columns">
                         $url="http://127.0.0.1:8000";
 
                 ?>
-                <li class="{{ url()->current() == "$url/show_exams/ONE" ? 'active':'' }}"><a class="menu-item" href="{{ route("show_exam",['year_type'=>"ONE"]) }}" data-i18n="nav.dash.ecommerce">First grade secondary</a>
+                {{-- <li class="{{ url()->current() == "$url/show_exams/ONE" ? 'active':'' }}"><a class="menu-item" href="{{ route("show_exam",['year_type'=>"ONE"]) }}" data-i18n="nav.dash.ecommerce">First grade secondary</a>
                 </li>
 
                 <li class="{{ url()->current() == "$url/show_exams/TWO" ? 'active':'' }}"><a class="menu-item" href="{{ route("show_exam",['year_type'=>"TWO"]) }}" data-i18n="nav.dash.ecommerce">Secound grade secondary</a>
                 </li>
 
-                <li class="{{ url()->current() == "$url/show_exams/THREE" ? 'active':'' }}"><a class="menu-item" href="{{ route("show_exam",['year_type'=>"THREE"]) }}" data-i18n="nav.dash.ecommerce">Third grade secondary</a>
+                <li class="{{ url()->current() == "$url/show_exams/THREE" ? 'active':'' }}"><a class="menu-item" href="{{ route("show_exam",['year_type'=>"THREE"]) }}" data-i18n="nav.dash.ecommerce">Third grade secondary</a> --}}
                 </li>
               </ul>
             </li>
@@ -310,7 +310,7 @@ data-open="click" data-menu="vertical-content-menu" data-col="2-columns">
                 </ul>
               </li> --}}
 
-            <li class=" navigation-header"> 
+            {{-- <li class=" navigation-header"> 
               <span data-i18n="nav.category.layouts">Questions & Answers</span><i class="la la-ellipsis-h ft-minus" data-toggle="tooltip"
               data-placement="right" data-original-title="Layouts"></i>
             </li>
@@ -319,7 +319,7 @@ data-open="click" data-menu="vertical-content-menu" data-col="2-columns">
                 <li class="{{ Route::currentRouteName() == "show-questions" ? 'active':'' }}"><a class="menu-item" href="{{ route("show-questions") }}" data-i18n="nav.dash.ecommerce">All Questions </a>
                 </li>
               </ul>
-            </li>
+            </li> --}}
 
               <li class=" navigation-header">
                 <span data-i18n="nav.category.layouts">Slider</span><i class="la la-ellipsis-h ft-minus" data-toggle="tooltip"
