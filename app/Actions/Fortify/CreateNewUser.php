@@ -28,7 +28,7 @@ class CreateNewUser implements CreatesNewUsers
             'year_type' => ['required', 'string'],
             'password' => $this->passwordRules(), // Use the predefined password validation rules
         ])->validate();        
-        dd($input['password']); // Add this line temporarily
+
         return User::create([
             'name' => $input['name'],
             'mobile_phone' => $input['mobile_phone'],
