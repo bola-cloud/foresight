@@ -34,17 +34,7 @@
                           name="fname" wire:model="title">
                         </div>
                       </div>
-                      <div class="col-md-6">
-                          <div class="form-group">
-                            <label for="projectinput5">السنة الدراسية</label>
-                            <select id="projectinput5" name="interested" class="form-control"  wire:model="year_type">
-                              <option value="none" selected="">اختر</option>
-                              <option value="ONE">الأولى</option>
-                              <option value="TWO">الثانية</option>
-                              <option value="THREE">الثالثة</option>
-                            </select>
-                          </div>
-                        </div>
+                
                         <div class="col-md-12">
                           <label class="col-md-3 label-control" for="projectinput1">صورة السلايدر</label>
                           <div class="col-md-5">
