@@ -1,8 +1,8 @@
 <div>
   <style>
       span.error {
-  color: red;
-}
+        color: red;
+      }
   </style>
   <section id="basic-form-layouts">
       <div class="row match-height">

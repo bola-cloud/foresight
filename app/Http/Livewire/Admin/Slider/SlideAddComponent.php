@@ -14,20 +14,20 @@ class SlideAddComponent extends Component
     public $title;
 
 
-    public function addslider(){
-
-        $slider=new Slider;
-        $slider->title=$this->title;
-        if($this->image!=null){
-            $imagename=time().'.'.$this->image->extension();
-                $disk = Storage::disk('photos');
-                $path = $disk->putFileAs('sliders', $this->image, $imagename);
-            $slider->image=$path;
-                }
-     $slider->save();
-     return redirect()->route("show_slider");
-
-    }
+    public function addslider()
+    {
+        $slider = new Slider;
+        $slider->title = $this->title;
+    
+        if ($this->image) {
+            $imagename = time() . '.' . $this->image->extension();
+            $path = $this->image->storeAs('photos', $imagename, 'public'); // 'public' disk will use the defined 'photos' directory
+            $slider->image = $path;
+        }
+    
+        $slider->save();
+        return redirect()->route("show_slider");
+    }    
 
 
 
