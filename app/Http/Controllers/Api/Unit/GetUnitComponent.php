@@ -10,7 +10,7 @@ use Auth;
 
 class GetUnitComponent extends Controller
 {
-      public function getcategory($year)
+      public function getcategory()
       {
             $units = Unit::all();
 

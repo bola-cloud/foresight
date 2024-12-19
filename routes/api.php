@@ -53,7 +53,7 @@ Route::get('student/{id_user}',[ResultFinalComponent::class,'getResult']);
 Route::get('/products', [ProductController::class, 'index']);
 
 
-    Route::get('getunits/{year}',[GetUnitComponent::class,'getcategory']);
+    Route::get('getunits/',[GetUnitComponent::class,'getcategory']);
     Route::get('videomena/{month}/{year_type}/{id_user}',[VideosShowComponent::class,'checkvalidate']);
     Route::get('exams_return/{year_type}/{id_student}',[ExamController::class,'returnexams']);
     Route::get('questions/{id_exam}',[Questions::class,'returnquestions']);
