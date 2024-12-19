@@ -1,38 +1,97 @@
 <?php
 
 namespace App\Http\Livewire\Admin\Slider;
-
 use Livewire\Component;
-use App\Models\Slider;
 use Livewire\WithFileUploads;
-use Storage;
+use App\Models\Slider;
+
 class SlideAddComponent extends Component
 {
 
     use WithFileUploads;
-    public $image;
-    public $title;
 
+    public $title, $image, $sliderId, $isOpen = false;
+    public $sliders;
 
-    public function addslider()
-    {
-        $slider = new Slider;
-        $slider->title = $this->title;
-    
-        if ($this->image) {
-            $imagename = time() . '.' . $this->image->extension();
-            $path = $this->image->storeAs('photos', $imagename, 'public'); // 'public' disk will use the defined 'photos' directory
-            $slider->image = $path;
-        }
-    
-        $slider->save();
-        return redirect()->route("show_slider");
-    }    
-
-
+    protected $listeners = ['deleteSlider' => 'delete'];
 
     public function render()
     {
+        $this->sliders = Slider::all();
         return view('livewire.admin.slider.slide-add-component')->layout('layouts.admin');
+    }
+
+    public function openModal()
+    {
+        $this->isOpen = true;
+    }
+
+    public function closeModal()
+    {
+        $this->isOpen = false;
+        $this->resetInputFields();
+    }
+
+    private function resetInputFields()
+    {
+        $this->title = '';
+        $this->image = null;
+        $this->sliderId = null;
+    }
+
+    public function store()
+    {
+        $rules = [
+            'title' => 'required|string|max:255',
+        ];
+
+        // Validate image only for new sliders or if a new image is uploaded
+        if (!$this->sliderId || ($this->image instanceof \Livewire\TemporaryUploadedFile)) {
+            $rules['image'] = 'required|image|max:1024';
+        }
+
+        $this->validate($rules);
+
+        $new_file = null;
+
+        if ($this->image instanceof \Livewire\TemporaryUploadedFile) {
+            $filename = time() . '.' . $this->image->extension();
+            $this->image->storeAs('sliders', $filename, 'public');
+            $new_file = 'sliders/' . $filename;
+        }
+
+        // Prepare data for updating/creating
+        $data = [
+            'title' => $this->title,
+        ];
+
+        if ($new_file) {
+            $data['image'] = $new_file;
+        }
+
+        Slider::updateOrCreate(['id' => $this->sliderId], $data);
+
+        session()->flash('message', $this->sliderId ? 'Slider updated successfully.' : 'Slider created successfully.');
+        $this->closeModal();
+    }
+
+    public function edit($id)
+    {
+        $slider = Slider::findOrFail($id);
+        $this->sliderId = $id;
+        $this->title = $slider->title;
+        $this->image = $slider->image;
+        $this->openModal();
+    }
+
+    public function delete($id)
+    {
+        $slider = Slider::findOrFail($id);
+        if ($slider->image) {
+            \Storage::disk('public')->delete($slider->image);
+        }
+        $slider->delete();
+
+        session()->flash('message', 'Slider deleted successfully.');
     }
 }
