@@ -10,7 +10,7 @@ use Auth;
 class VideosShowComponent extends Controller
 {
 
-    public function checkvalidate($month,$year_type,$id_user){
+    public function checkvalidate($month,$id_user){
        
         if(User::where('id',$id_user)->first()->case_reverse=="0"){
             return response(
@@ -18,7 +18,7 @@ class VideosShowComponent extends Controller
             ,400);
         }else{
 
-            $videos=Video::where('month',$month)->where('year_type',$year_type)->get();
+            $videos=Video::where('month',$month)->get();
 
             return response(
                 $videos

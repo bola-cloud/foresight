@@ -9,10 +9,10 @@ use App\Models\ChoiceResult;
 use Auth;
 class ExamController extends Controller
 {
- public function returnexams($year_type, $id_student)
+ public function returnexams($id_student)
     {
 
-        $exams = Exam::where("year_type", $year_type)->where('show_exam', 1)->get();
+        $exams = Exam::where('show_exam', 1)->get();
 
         $exams_done = ChoiceResult::where("user_id", $id_student)->pluck('exam_id')->toArray();
 

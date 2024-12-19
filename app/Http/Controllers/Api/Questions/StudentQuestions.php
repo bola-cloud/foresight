@@ -61,9 +61,9 @@ class StudentQuestions extends Controller
 
 
 
-    public function show($year_type)
+    public function show()
     {
-        $questions=StudentQuestion::where('year_type',$year_type)->get();
+        $questions=StudentQuestion::all();
 
            return response()->json($questions, 200);
     }

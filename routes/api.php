@@ -45,7 +45,7 @@ Route::post('register',[AuthController::class,'register']);
 Route::post('login',[AuthController::class,'login']);
 Route::post('logout',[AuthController::class,'logout']);
 
-Route::get('sliders/{year_type}',[SliderController::class,'slider']);
+Route::get('sliders',[SliderController::class,'slider']);
 
 Route::get('student/{id_user}',[ResultFinalComponent::class,'getResult']);
 
@@ -54,8 +54,8 @@ Route::get('/products', [ProductController::class, 'index']);
 
 
     Route::get('getunits/',[GetUnitComponent::class,'getcategory']);
-    Route::get('videomena/{month}/{year_type}/{id_user}',[VideosShowComponent::class,'checkvalidate']);
-    Route::get('exams_return/{year_type}/{id_student}',[ExamController::class,'returnexams']);
+    Route::get('videomena/{month}/{id_user}',[VideosShowComponent::class,'checkvalidate']);
+    Route::get('exams_return/{id_student}',[ExamController::class,'returnexams']);
     Route::get('questions/{id_exam}',[Questions::class,'returnquestions']);
     Route::get('validatepass/{exam_id}/{password}',[GetvalidatePassword::class,'validatepassword']);
     Route::post('resultchoice',[ResultComponent::class,'checkanswerchoice']);
@@ -68,7 +68,7 @@ Route::get('/products', [ProductController::class, 'index']);
     //Post & get Student Question & answers
     Route::post('student-questions', [StudentQuestions::class, 'store']);
     Route::get('/student-questions/{unit_id}', [StudentQuestions::class, 'index']);
-    Route::get('/student-questions/show/{year_type}', [StudentQuestions::class, 'show']);
+    Route::get('/student-questions/show', [StudentQuestions::class, 'show']);
     // answers [get answer of specific question - store answers ]
     Route::apiResource('/question/answers', QuestionAnswers::class);
 
