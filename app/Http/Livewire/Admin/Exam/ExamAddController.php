@@ -49,7 +49,7 @@ class ExamAddController extends Component
 
 
         session()->flash("message","you add exam");
-        return redirect()->route("show_exam",['year_type'=>$this->year]);
+        return redirect()->route("show_exam");
 
     }
     public function render()
