@@ -12,14 +12,12 @@ class SlideAddComponent extends Component
     use WithFileUploads;
     public $image;
     public $title;
-    public $year_type;
 
 
     public function addslider(){
 
         $slider=new Slider;
         $slider->title=$this->title;
-        $slider->year_type=$this->year_type;
         if($this->image!=null){
             $imagename=time().'.'.$this->image->extension();
                 $disk = Storage::disk('photos');
