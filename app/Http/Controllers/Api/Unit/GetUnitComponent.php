@@ -10,12 +10,11 @@ use Auth;
 
 class GetUnitComponent extends Controller
 {
-    public function getcategory($year){
+      public function getcategory($year)
+      {
+            $units = Unit::all();
 
-
- $units = Unit::where("year_type", $year)->get();
-
-return response()->json($units, 200);
+            return response()->json($units, 200);
 
       }
 }

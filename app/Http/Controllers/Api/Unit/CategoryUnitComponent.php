@@ -14,7 +14,7 @@ class CategoryUnitComponent extends Controller
 
         if(Auth::check()){
 
-            $units=Unit::where("year_type",Auth::user()->year_type)->get();
+            $units=Unit::all();
             $response=[
                 'message'=>"units are get",
                 'Result'=>$units,
