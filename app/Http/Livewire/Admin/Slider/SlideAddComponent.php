@@ -55,9 +55,10 @@ class SlideAddComponent extends Component
         $new_file = null;
 
         if ($this->image instanceof \Livewire\TemporaryUploadedFile) {
-            $filename = time() . '.' . $this->image->extension();
-            $this->image->storeAs('sliders', $filename, 'public');
-            $new_file = 'sliders/' . $filename;
+            // Handle image upload only if a new image is provided
+            $filename = $this->image->getClientOriginalName();
+            $this->image->storeAs('', $filename, 'public_slider');
+            $new_file = 'slider-images/' . $filename;
         }
 
         // Prepare data for updating/creating
