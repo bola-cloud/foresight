@@ -41,6 +41,7 @@ class SlideAddComponent extends Component
 
     public function store()
     {
+        dd($request->all());
         $rules = [
             'title' => 'required|string|max:255',
         ];
