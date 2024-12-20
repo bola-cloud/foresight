@@ -41,7 +41,8 @@
                 </div>
             </div>
         @endif
-    
+
+        <!-- Product Table -->
         <table class="table table-striped table-hover">
             <thead class="thead-dark">
                 <tr>
@@ -61,7 +62,8 @@
                         </td>
                         <td>{{ $product->price }}</td>
                         <td>
-                            <img src="{{ asset($product->image) }}" width="50" style="border-radius: 5px;">
+                            <img src="{{ asset($product->image) }}" width="50" style="border-radius: 5px; cursor: pointer;"
+                                 onclick="openImageModal('{{ asset($product->image) }}')">
                         </td>
                         <td>
                             <button wire:click="edit({{ $product->id }})" class="btn btn-info btn-sm">تعديل</button>
@@ -74,15 +76,56 @@
     </div>
 </div>
 
+<!-- Image Modal -->
+<div id="imageModal" class="modal" tabindex="-1" role="dialog" style="display: none;">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">عرض الصورة</h5>
+                <button type="button" class="close" onclick="closeImageModal()">
+                    <span>&times;</span>
+                </button>
+            </div>
+            <div class="modal-body text-center">
+                <img id="modalImage" src="" alt="Product Image" style="max-width: 100%; max-height: 80vh;">
+            </div>
+        </div>
+    </div>
+</div>
+
 @push('style')
     <style>
         .table td {
             vertical-align: middle;
         }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1050;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
     </style>
 @endpush
 
 <script>
+    function openImageModal(imageUrl) {
+        const modal = document.getElementById('imageModal');
+        const modalImage = document.getElementById('modalImage');
+        modalImage.src = imageUrl;
+        modal.style.display = 'block';
+    }
+
+    function closeImageModal() {
+        const modal = document.getElementById('imageModal');
+        modal.style.display = 'none';
+    }
+
     function confirmDelete(id) {
         if (confirm('هل أنت متأكد أنك تريد حذف هذا المنتج؟')) {
             Livewire.emit('deleteProduct', id); // Trigger Livewire event to delete
