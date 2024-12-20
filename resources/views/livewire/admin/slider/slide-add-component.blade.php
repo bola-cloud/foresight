@@ -54,8 +54,8 @@
                     <tr>
                         <td>{{ $slider->title }}</td>
                         <td>
-                            <img src="{{ asset('storage/' . $slider->image) }}" width="50" style="border-radius: 5px; cursor: pointer;"
-                                 onclick="openImageModal('{{ asset('storage/' . $slider->image) }}')">
+                            <img src="{{ asset($slider->image) }}" width="50" style="border-radius: 5px; cursor: pointer;"
+                                 onclick="openImageModal('{{ asset($slider->image) }}')">
                         </td>
                         <td>
                             <button wire:click="edit({{ $slider->id }})" class="btn btn-info btn-sm">تعديل</button>
