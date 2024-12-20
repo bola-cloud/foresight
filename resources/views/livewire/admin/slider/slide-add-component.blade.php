@@ -41,8 +41,8 @@
       @endif
 
       <!-- Sliders Table -->
-      <table class="table">
-          <thead>
+      <table class="table table-striped table-hover">
+        <thead class="thead-dark">
               <tr>
                   <th>العنوان</th>
                   <th>الصورة</th>
@@ -75,3 +75,10 @@
       }
   }
 </script>
+@push('style')
+    <style>
+        .table td {
+            vertical-align: middle;
+        }
+    </style>
+@endpush
