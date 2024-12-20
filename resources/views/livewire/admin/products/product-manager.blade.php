@@ -42,8 +42,8 @@
             </div>
         @endif
     
-        <table class="table">
-            <thead>
+        <table class="table table-striped table-hover">
+            <thead class="thead-dark">
                 <tr>
                     <th>العنوان</th>
                     <th>الوصف</th>
@@ -56,14 +56,16 @@
                 @foreach($products as $product)
                     <tr>
                         <td>{{ $product->title }}</td>
-                        <td>{{ $product->description }}</td>
+                        <td style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 250px;">
+                            {{ \Illuminate\Support\Str::limit($product->description, 50) }}
+                        </td>
                         <td>{{ $product->price }}</td>
-                        <td><img src="{{ asset($product->image) }}" width="50"></td>
                         <td>
-                            <button wire:click="edit({{ $product->id }})" class="btn btn-info">تعديل</button>
-                            <button 
-                                onclick="confirmDelete({{ $product->id }})" 
-                                class="btn btn-danger">حذف</button>
+                            <img src="{{ asset($product->image) }}" width="50" style="border-radius: 5px;">
+                        </td>
+                        <td>
+                            <button wire:click="edit({{ $product->id }})" class="btn btn-info btn-sm">تعديل</button>
+                            <button onclick="confirmDelete({{ $product->id }})" class="btn btn-danger btn-sm">حذف</button>
                         </td>
                     </tr>
                 @endforeach
@@ -73,7 +75,11 @@
 </div>
 
 @push('style')
-    {{-- <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet"> --}}
+    <style>
+        .table td {
+            vertical-align: middle;
+        }
+    </style>
 @endpush
 
 <script>
