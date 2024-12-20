@@ -41,7 +41,7 @@ class SlideAddComponent extends Component
 
     public function store()
     {
-        dd($this->image);
+        // dd($this->image);
         $rules = [
             'title' => 'required|string|max:255',
         ];
