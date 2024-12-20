@@ -9,19 +9,17 @@ class SliderController extends Controller
 {
     public function slider()
     {
-        $base_url = 'https://menamaherbigben.com/storage/photos/';
-        $sliders = Slider::all(['title', 'image']); // Fetch all records without filtering by year_type
-    
-        $data = $sliders->map(function ($slider) use ($base_url) {
+        $sliders = Slider::all()->map(function ($slider) {
             return [
+                'id' => $slider->id,
                 'title' => $slider->title,
-                'image' => $base_url . $slider->image,
+                'image_url' => url($slider->image), // Generates the full URL
             ];
         });
-    
-        return response(
-            $data,
-            200
-        );
+
+        return response()->json([
+            'success' => true,
+            'data' => $sliders,
+        ]);
     }    
 }
