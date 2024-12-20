@@ -53,7 +53,7 @@
               @foreach($sliders as $slider)
                   <tr>
                       <td>{{ $slider->title }}</td>
-                      <td><img src="{{ asset('storage/' . $slider->image) }}" width="50"></td>
+                      <td><img src="{{ asset($slider->image) }}" width="50"></td>
                       <td>
                           <button wire:click="edit({{ $slider->id }})" class="btn btn-info">تعديل</button>
                           <button 
