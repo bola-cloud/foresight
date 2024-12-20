@@ -333,8 +333,8 @@ data-open="click" data-menu="vertical-content-menu" data-col="2-columns">
                   <li class="{{ Route::currentRouteName() == "add_slider" ? 'active':'' }}"><a class="menu-item" href="{{ route("add_slider") }}" data-i18n="nav.dash.ecommerce">اضافة سلايدر</a>
                   </li>
 
-                  <li  class="{{ Route::currentRouteName() == "show_slider" ? 'active':'' }}"><a class="menu-item" href="{{ route("show_slider") }}" data-i18n="nav.dash.ecommerce">عرض سلايدر</a>
-                  </li>
+                  {{-- <li  class="{{ Route::currentRouteName() == "show_slider" ? 'active':'' }}"><a class="menu-item" href="{{ route("show_slider") }}" data-i18n="nav.dash.ecommerce">عرض سلايدر</a>
+                  </li> --}}
 
 
                 </ul>
