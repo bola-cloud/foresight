@@ -54,7 +54,7 @@
                     <tr>
                         <td>{{ $slider->title }}</td>
                         <td>
-                            <img src="{{ asset($slider->image) }}" width="50" style="border-radius: 5px; cursor: pointer;"
+                            <img src="{{ asset($slider->image) }}" class="image-size" style="border-radius: 5px; cursor: pointer;"
                                  onclick="openImageModal('{{ asset($slider->image) }}')">
                         </td>
                         <td>
