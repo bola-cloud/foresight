@@ -62,7 +62,7 @@
                         </td>
                         <td>{{ $product->price }}</td>
                         <td>
-                            <img src="{{ asset($product->image) }}" width="50" style="border-radius: 5px; cursor: pointer;"
+                            <img src="{{ asset($product->image) }}" class="image-size" style="border-radius: 5px; cursor: pointer;"
                                  onclick="openImageModal('{{ asset($product->image) }}')">
                         </td>
                         <td>
