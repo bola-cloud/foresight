@@ -321,7 +321,7 @@ data-open="click" data-menu="vertical-content-menu" data-col="2-columns">
               </ul>
             </li> --}}
 
-              <li class=" navigation-header">
+              {{-- <li class=" navigation-header">
                 <span data-i18n="nav.category.layouts">سلايدر الاعلانات</span><i class="la la-ellipsis-h ft-minus" data-toggle="tooltip"
                 data-placement="right" data-original-title="Layouts"></i>
               </li>
@@ -330,15 +330,14 @@ data-open="click" data-menu="vertical-content-menu" data-col="2-columns">
                   <?php
                           $url="http://127.0.0.1:8000";
                   ?>
-                  <li class="{{ Route::currentRouteName() == "add_slider" ? 'active':'' }}"><a class="menu-item" href="{{ route("add_slider") }}" data-i18n="nav.dash.ecommerce">اضافة سلايدر</a>
-                  </li>
 
-                  {{-- <li  class="{{ Route::currentRouteName() == "show_slider" ? 'active':'' }}"><a class="menu-item" href="{{ route("show_slider") }}" data-i18n="nav.dash.ecommerce">عرض سلايدر</a>
-                  </li> --}}
+
+                  <li  class="{{ Route::currentRouteName() == "show_slider" ? 'active':'' }}"><a class="menu-item" href="{{ route("show_slider") }}" data-i18n="nav.dash.ecommerce">عرض سلايدر</a>
+                  </li>
 
 
                 </ul>
-              </li>
+              </li> --}}
 
 
               {{-- <li class=" navigation-header">
@@ -362,8 +361,10 @@ data-open="click" data-menu="vertical-content-menu" data-col="2-columns">
                 </ul>
               </li>     --}}
               <li class=" navigation-header">
-                <span data-i18n="nav.category.layouts"> ادارة المنتجات</span><i class="la la-ellipsis-h ft-minus" data-toggle="tooltip"
+                <span data-i18n="nav.category.layouts"> ادارة المنتجات و الاعلانات</span><i class="la la-ellipsis-h ft-minus" data-toggle="tooltip"
                 data-placement="right" data-original-title="Layouts"></i>
+              </li>
+              <li class="{{ Route::currentRouteName() == "add_slider" ? 'active':'' }}"><a class="menu-item" href="{{ route("add_slider") }}" data-i18n="nav.dash.ecommerce">اضافة سلايدر</a>
               </li>
               <li class=" nav-item {{ Route::currentRouteName() == "product_manager" ? 'active':'' }}">
                 <a href="{{ route("product_manager") }}"><i class="la la-align-right"></i><span class="menu-title" data-i18n="nav.dash.main">المنتجات</span></a>
