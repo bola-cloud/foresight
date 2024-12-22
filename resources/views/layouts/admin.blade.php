@@ -151,31 +151,31 @@ data-open="click" data-menu="vertical-content-menu" data-col="2-columns">
       </div>
       <div class="main-menu menu-static menu-light menu-accordion menu-shadow" data-scroll-to-active="true">
         <div class="main-menu-content">
+          <li class=" navigation-header"> 
+            <span data-i18n="nav.category.layouts">ادارة الكورسات و الفيديوهات</span><i class="la la-ellipsis-h ft-minus" data-toggle="tooltip"
+            data-placement="right" data-original-title="Layouts"></i>
+          </li>
           <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
-            <li class=" nav-item"><a href="index.html"><i class="la la-align-right"></i><span class="menu-title" data-i18n="nav.dash.main">الوحدات</span></a>
+            <li class=" nav-item"><a href="index.html"><i class="la la-align-right"></i><span class="menu-title" data-i18n="nav.dash.main">الكورسات</span></a>
               <ul class="menu-content">
-                <li class="{{ Route::currentRouteName() == "show_unit" ? 'active':'' }}"><a class="menu-item" href="{{ route("show_unit") }}" data-i18n="nav.dash.ecommerce">عرض الوحدات</a></li>
+                <li class="{{ Route::currentRouteName() == "show_unit" ? 'active':'' }}"><a class="menu-item" href="{{ route("show_unit") }}" data-i18n="nav.dash.ecommerce">عرض الكورسات</a></li>
                 </li>
-                <li class="{{ Route::currentRouteName() == "add_unit" ? 'active':'' }}"><a class="menu-item" href="{{ route("add_unit") }}" data-i18n="nav.dash.ecommerce">اضافة الوحدات</a>
+                <li class="{{ Route::currentRouteName() == "add_unit" ? 'active':'' }}"><a class="menu-item" href="{{ route("add_unit") }}" data-i18n="nav.dash.ecommerce">اضافة الكورسات</a>
                 </li>
 
               </ul>
             </li>
 
-            <li class=" nav-item"><a href="index.html"><i class="fas fa-book"></i><span class="menu-title" data-i18n="nav.dash.main">المحضرات</span></a>
+            <li class=" nav-item"><a href="index.html"><i class="fas fa-book"></i><span class="menu-title" data-i18n="nav.dash.main">ادارة الاقسام</span></a>
               <ul class="menu-content">
-                <li class="{{ Route::currentRouteName() == "lecture_add" ? 'active':'' }}"><a class="menu-item" href="{{ route("lecture_add") }}" data-i18n="nav.dash.ecommerce">اضافة محاضرة</a>
+                <li class="{{ Route::currentRouteName() == "lecture_add" ? 'active':'' }}"><a class="menu-item" href="{{ route("lecture_add") }}" data-i18n="nav.dash.ecommerce">اضافة قسم</a>
                 </li>
-                <li class="{{ Route::currentRouteName() == "lecture_index" ? 'active':'' }}"><a class="menu-item" href="{{ route("lecture_index") }}" data-i18n="nav.dash.ecommerce">عرض المحاضرات</a>
+                <li class="{{ Route::currentRouteName() == "lecture_index" ? 'active':'' }}"><a class="menu-item" href="{{ route("lecture_index") }}" data-i18n="nav.dash.ecommerce">عرض الاقسام</a>
                 </li>
 
               </ul>
             </li>
 
-            <li class=" navigation-header"> 
-                <span data-i18n="nav.category.layouts">الفيديوهات</span><i class="la la-ellipsis-h ft-minus" data-toggle="tooltip"
-                data-placement="right" data-original-title="Layouts"></i>
-            </li>
             <li class=" nav-item"><a href=""><i class="la la-file-video-o"></i><span class="menu-title" data-i18n="nav.dash.main">الفيديوهات</span></a>
               <ul class="menu-content">
                 <li class="{{ Route::currentRouteName() == "add_video" ? 'active':'' }}"><a class="menu-item" href="{{ route("add_video") }}" data-i18n="nav.dash.ecommerce">اضافة فيديو</a>
