@@ -22,24 +22,24 @@
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-header text-center">
-                        <h5>إضافة محاضرة جديدة</h5>
+                        <h5>إضافة قسم جديد</h5>
                     </div>
                     <div class="card-body">
                         <form wire:submit.prevent="store" enctype="multipart/form-data">
                             <div class="mb-3">
-                                <label for="exampleFormControlInput1" class="form-label">عنوان المحاضرة</label>
+                                <label for="exampleFormControlInput1" class="form-label">عنوان القسم</label>
                                 <input type="text" class="form-control" wire:model="name" id="exampleFormControlInput1" placeholder="أدخل عنوان المحاضرة">
                                 @error('name')
                                     <div class="alert alert-danger">{{ $message }}</div>
                                 @enderror
                             </div>
-                            <div class="mb-3">
-                                <label for="exampleFormControlInput1" class="form-label">تكلفة المحاضرة</label>
+                            {{-- <div class="mb-3">
+                                <label for="exampleFormControlInput1" class="form-label">تكلفة القسم</label>
                                 <input type="number" class="form-control" wire:model="cost" id="exampleFormControlInput2" placeholder="أدخل تكلفة المحاضرة">
                                 @error('cost')
                                     <div class="alert alert-danger">{{ $message }}</div>
                                 @enderror
-                            </div>
+                            </div> --}}
                             <div class="mb-3">
                                 <label for="exampleFormControlTextarea1" class="form-label">الوصف</label>
                                 <textarea class="form-control" wire:model="description" id="exampleFormControlTextarea1" rows="3"></textarea>
@@ -49,7 +49,7 @@
                             </div>
                             <div class="mb-3">
                                 <select class="form-select" aria-label="Default select example" wire:model="unit_id">
-                                    <option selected>اختر الوحدة</option>
+                                    <option selected>اختر الكورس</option>
                                     @foreach ($units as $unit)
                                         <option value="{{ $unit->id }}">{{ $unit->name }}</option>
                                     @endforeach

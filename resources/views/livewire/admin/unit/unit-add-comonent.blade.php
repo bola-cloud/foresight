@@ -9,7 +9,7 @@
         <div class="col-md-12">
           <div class="card">
             <div class="card-header">
-              <h4 class="card-title" id="basic-layout-form">إضافة وحدة</h4>
+              <h4 class="card-title" id="basic-layout-form">إضافة كورس</h4>
               <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
               <div class="heading-elements" style="top: 4px">
                 <ul class="list-inline mb-0">
@@ -24,7 +24,7 @@
               <div class="card-body">
                 <form class="form" wire:submit.prevent="create_unit">
                   <div class="form-body">
-                    <h4 class="form-section"><i class="ft-user"></i> معلومات الوحدة</h4>
+                    <h4 class="form-section"><i class="ft-user"></i> معلومات الكورس</h4>
                     @error('name_unit') <span class="error">{{ $message }}</span> @enderror
                     @error('year_unit') <span class="error">{{ $message }}</span> @enderror
 
@@ -36,18 +36,18 @@
                     <div class="row">
                       <div class="col-md-6">
                         <div class="form-group">
-                          <label for="projectinput1">اسم الوحدة</label>
-                          <input type="text" id="projectinput1" class="form-control" placeholder="اسم الوحدة" wire:model="name_unit">
+                          <label for="projectinput1">اسم الكورس</label>
+                          <input type="text" id="projectinput1" class="form-control" placeholder="اسم الكورس" wire:model="name_unit">
                         </div>
                       </div>
                       <div class="col-md-6">
                         <div class="form-group">
-                          <label for="projectinput1">تكلفة الوحدة</label>
-                          <input type="number" id="projectinput1" class="form-control" placeholder="تكلفة الوحدة" wire:model="cost">
+                          <label for="projectinput1">تكلفة الكورس</label>
+                          <input type="number" id="projectinput1" class="form-control" placeholder="تكلفة الكورس" wire:model="cost">
                         </div>
                       </div>
                         <div class="col-md-12">
-                          <label class="col-md-3 label-control" for="projectinput1">صورة الوحدة</label>
+                          <label class="col-md-3 label-control" for="projectinput1">صورة الكورس</label>
                           <div class="col-md-5">
                             <input type="file" class="form-control" wire:model="image_unit" accept="image/*">
                           </div>

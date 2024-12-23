@@ -10,14 +10,14 @@
                 <input 
                     type="text" 
                     class="form-control" 
-                    placeholder="ابحث عن الوحدة" 
+                    placeholder="ابحث عن الكورس" 
                     wire:model="search" 
                 />
             </div>
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4 class="card-title">الوحدات</h4>
+                        <h4 class="card-title">الكورسات</h4>
                         <div class="heading-elements" style="top: 4px">
                             <ul class="list-inline mb-0">
                                 <li><a data-action="collapse"><i class="ft-minus"></i></a></li>
@@ -32,7 +32,7 @@
                             <table class="table">
                                 <thead class="table table-bordered mb-0">
                                     <tr>
-                                        <th>اسم الوحدة</th>
+                                        <th>اسم الكورس</th>
                                         <th>التكلفة</th>
                                         <th>الصورة</th>
                                         <th>الإجراءات</th>

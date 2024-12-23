@@ -22,24 +22,24 @@
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-header text-center">
-                        <h5>تعديل المحاضرة</h5>
+                        <h5>تعديل القسم</h5>
                     </div>
                     <div class="card-body">
                         <form wire:submit.prevent="edit({{ $lecture->id }})" enctype="multipart/form-data">
                             <div class="mb-3">
-                                <label for="lectureName" class="form-label">عنوان المحاضرة</label>
+                                <label for="lectureName" class="form-label">عنوان القسم</label>
                                 <input type="text" class="form-control" wire:model="name" id="lectureName" placeholder="أدخل عنوان المحاضرة">
                                 @error('name')
                                     <div class="alert alert-danger">{{ $message }}</div>
                                 @enderror
                             </div>
-                            <div class="mb-3">
+                            {{-- <div class="mb-3">
                                 <label for="lectureCost" class="form-label">تكلفة المحاضرة</label>
                                 <input type="number" class="form-control" wire:model="cost" id="lectureCost" placeholder="أدخل تكلفة المحاضرة">
                                 @error('cost')
                                     <div class="alert alert-danger">{{ $message }}</div>
                                 @enderror
-                            </div>
+                            </div> --}}
                             <div class="mb-3">
                                 <label for="lectureDescription" class="form-label">الوصف</label>
                                 <textarea class="form-control" wire:model="description" id="lectureDescription" rows="3"></textarea>
@@ -48,9 +48,9 @@
                                 @enderror
                             </div>
                             <div class="mb-3">
-                                <label for="lectureUnit" class="form-label">الوحدة</label>
+                                <label for="lectureUnit" class="form-label">الكورس</label>
                                 <select class="form-select" wire:model="unit_id" id="lectureUnit">
-                                    <option selected>اختر الوحدة</option>
+                                    <option selected>اختر الكورس</option>
                                     @foreach ($units as $unit)
                                         <option value="{{ $unit->id }}">{{ $unit->name }}</option>
                                     @endforeach
@@ -75,7 +75,7 @@
                                 @enderror
                             </div>
                             <div class="mb-3">
-                                <label for="lectureImage" class="form-label">صورة المحاضرة</label>
+                                <label for="lectureImage" class="form-label">صورة القسم</label>
                                 <input type="file" wire:model="image" accept="image/*" id="lectureImage">
                                 @error('image')
                                     <div class="alert alert-danger">{{ $message }}</div>

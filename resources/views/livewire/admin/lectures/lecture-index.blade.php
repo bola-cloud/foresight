@@ -1,13 +1,13 @@
 <div>
     <div class="container-fluid">
         <div class="row mt-3 mb-5 d-flex justify-content-center">
-            <h3 class="d-flex justify-content-center">كل المحاضرات</h3>
+            <h3 class="d-flex justify-content-center">كل الاقسام</h3>
             <div class="mb-3 col-md-4 mt-3">
                 <input type="text" class="form-control" placeholder="بحث باسم المحاضرة" wire:model="search">
             </div>
             <div class="mb-3 col-md-4 mt-3">
                 <select class="form-select" aria-label="Default select example" wire:model="unit_id">
-                    <option selected>اختر الوحدة</option>
+                    <option selected>اختر الكورس</option>
                     @foreach ($units as $unit)
                         <option value="{{ $unit->id }}">{{ $unit->name }}</option>
                     @endforeach
@@ -19,12 +19,12 @@
                 <table class="table align-middle mb-0 bg-white">
                     <thead class="bg-light">
                         <tr>
-                            <th>صورة المحاضرة</th>
-                            <th>اسم المحاضرة</th>
-                            <th>تكلفة المحاضرة</th>
+                            <th>صورة القسم</th>
+                            <th>اسم القسم</th>
+                            {{-- <th>تكلفة القسم</th> --}}
                             <th>الحالة</th>
                             <th>الوصف</th>
-                            <th>اسم الوحدة</th>
+                            <th>اسم الكورس</th>
                             <th>الإجراءات</th>
                         </tr>
                     </thead>
@@ -35,7 +35,7 @@
                                 <img src="{{ asset($lecture->image) }}" alt="" style="width: 75px; height: 75px" class="rounded-circle">
                             </td>
                             <td>{{ $lecture->name }}</td>
-                            <td>{{ $lecture->cost }}</td>
+                            {{-- <td>{{ $lecture->cost }}</td> --}}
                             <td>
                                 @if($lecture->status === "active")
                                     <span class="badge badge-success rounded-pill d-inline">نشطة</span>
@@ -59,7 +59,7 @@
                             <div class="modal-dialog">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel">حذف المحاضرة</h5>
+                                        <h5 class="modal-title" id="exampleModalLabel">حذف القسم</h5>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">
