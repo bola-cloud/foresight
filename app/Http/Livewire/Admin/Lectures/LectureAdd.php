@@ -16,49 +16,45 @@ class LectureAdd extends Component
 
     public function store()
     {
-        // dd($this->all());
-        // Validate the input data
         $validated = $this->validate([
             'name' => 'required|min:3',
             'cost' => 'required|numeric',
             'status' => 'required',
-            'image' => 'nullable|max:1024', // Ensure image is an image and max size 1024KB
+            'image' => 'nullable|max:1024',
             'unit_id' => 'required|exists:units,id',
             'description' => 'nullable',
         ]);
-
+    
         DB::beginTransaction();
         try {
-            // Handle file upload if an image is provided
             $new_file = null;
             if ($this->image) {
                 $filename = $this->image->getClientOriginalName();
                 $this->image->storeAs('', $filename, 'public_lecture');
                 $new_file = 'lecture-images/' . $filename;
             }
-
-            // Create a new Lecture instance and fill it with validated data
+    
             $lecture = new Lecture();
             $lecture->fill([
                 'name' => $this->name,
                 'cost' => 0,
-                'status' => $this->status, 
+                'status' => $this->status,
                 'image' => $new_file,
                 'unit_id' => $this->unit_id,
                 'description' => $this->description,
             ]);
             $lecture->save();
-
-            DB::commit(); // Commit the transaction if everything is successful
-
+    
+            DB::commit();
             session()->flash('success', 'تم اضافة القسم بنجاح');
-            return redirect()->route('lecture_index'); // Redirect to a success route
+            return redirect()->route('lecture_index');
         } catch (\Throwable $e) {
             DB::rollBack();
-            $this->errorMessage = $e->getMessage(); // Get the error message
+            $this->errorMessage = $e->getMessage();
+            Log::error('Error in LectureAdd@store: ' . $e->getMessage());
         }
-        // $this->image = null;
     }
+    
 
     public function render()
     {
