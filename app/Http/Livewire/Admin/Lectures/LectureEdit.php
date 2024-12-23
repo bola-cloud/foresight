@@ -52,7 +52,7 @@ class LectureEdit extends Component
             'unit_id'=>$this->unit_id,
             'description'=>$this->description,
         ]);
-        session()->flash('warning', 'Lecture updated successfully');
+        session()->flash('warning', 'تم تعديل القسم بنجاح');
         return redirect()->route('lecture_index'); // Redirect to a success route
     }
     public function render()

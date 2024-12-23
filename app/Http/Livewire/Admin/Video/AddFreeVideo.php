@@ -7,7 +7,7 @@ use App\Models\FreeVideo;
 
 class AddFreeVideo extends Component
 {
-    public $name,$status, $description, $link,$year_type;
+    public $name,$status, $description, $link;
 
     public function store()
     {
@@ -24,7 +24,6 @@ class AddFreeVideo extends Component
         $new_video->description = $this->description;
         $new_video->link = $this->link;
         $new_video->status = (int) $this->status; // Explicitly set as integer 1 or 0
-        $new_video->year_type = $this->year_type;
         
         $new_video->save();
 

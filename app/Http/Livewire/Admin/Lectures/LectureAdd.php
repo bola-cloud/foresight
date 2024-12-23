@@ -41,7 +41,7 @@ class LectureAdd extends Component
             $lecture = new Lecture();
             $lecture->fill([
                 'name' => $this->name,
-                'cost' => $this->cost,
+                'cost' => 0,
                 'status' => $this->status, 
                 'image' => $new_file,
                 'unit_id' => $this->unit_id,
@@ -51,7 +51,7 @@ class LectureAdd extends Component
 
             DB::commit(); // Commit the transaction if everything is successful
 
-            session()->flash('success', 'Lecture added successfully');
+            session()->flash('success', 'تم اضافة القسم بنجاح');
             return redirect()->route('lecture_index'); // Redirect to a success route
         } catch (\Throwable $e) {
             DB::rollBack();

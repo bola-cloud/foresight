@@ -30,7 +30,7 @@
                             </div>
                             <div class="mt-3">
                                 <select class="form-select" aria-label="Default select example" wire:model="selectedUnit">
-                                    <option selected>اختر الوحدة</option>
+                                    <option selected>اختر الكورس</option>
                                     @foreach ($units as $unit)
                                         <option value="{{ $unit->id }}">{{ $unit->name }}</option>
                                     @endforeach
@@ -38,7 +38,7 @@
                             </div>
                             <div class="mt-3">
                                 <select class="form-select" aria-label="Default select example" wire:model="selectedLecture">
-                                    <option selected>اختر المحاضرة</option>
+                                    <option selected>اختر القسم</option>
                                     @foreach ($lectures as $lecture)
                                         <option value="{{ $lecture->id }}">{{ $lecture->name }}</option>
                                     @endforeach

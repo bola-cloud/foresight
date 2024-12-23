@@ -7,7 +7,7 @@ use App\Models\FreeVideo;
 class EditFreeVideo extends Component
 {
     public $videoId;
-    public $name, $status, $description, $link, $year_type;
+    public $name, $status, $description, $link;
     
     protected $rules = [
         'link' => 'required',
@@ -23,7 +23,6 @@ class EditFreeVideo extends Component
         $this->description = $video->description;
         $this->link = $video->link;
         $this->status = $video->status;
-        $this->year_type = $video->year_type;
     }
 
     public function update()
@@ -35,7 +34,6 @@ class EditFreeVideo extends Component
         $video->description = $this->description;
         $video->link = $this->link;
         $video->status = (int) $this->status;
-        $video->year_type = $this->year_type;
         $video->save();
 
         return redirect()->route('show_free_video');

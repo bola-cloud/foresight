@@ -35,15 +35,6 @@
                                     <div class="alert alert-danger">{{ $message }}</div>
                                 @enderror
                             </div>
-                            <div class="form-group">
-                                <label for="projectinput5">السنة الدراسية</label>
-                                <select id="projectinput5" name="interested" class="form-control" wire:model="year_type">
-                                    <option value="none" selected="">اختر</option>
-                                    <option value="ONE">الأولى</option>
-                                    <option value="TWO">الثانية</option>
-                                    <option value="THREE">الثالثة</option>
-                                </select>
-                            </div>
                             <div class="mb-3">
                                 <label class="form-label">الحالة</label>
                                 <div>
