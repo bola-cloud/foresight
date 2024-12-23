@@ -27,7 +27,7 @@ class AddFreeVideo extends Component
         
         $new_video->save();
 
-        return redirect()->route('lecture_index');
+        return redirect()->route('show_free_video');
     }
 
     public function render()
