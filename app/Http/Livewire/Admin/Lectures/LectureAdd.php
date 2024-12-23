@@ -16,7 +16,7 @@ class LectureAdd extends Component
 
     public function store()
     {
-        dd($this->all());
+        // dd($this->all());
         // Validate the input data
         $validated = $this->validate([
             'name' => 'required|min:3',
