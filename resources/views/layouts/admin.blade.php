@@ -180,16 +180,16 @@ data-open="click" data-menu="vertical-content-menu" data-col="2-columns">
               <ul class="menu-content">
                 <li class="{{ Route::currentRouteName() == "add_video" ? 'active':'' }}"><a class="menu-item" href="{{ route("add_video") }}" data-i18n="nav.dash.ecommerce">اضافة فيديو</a>
                 </li>
+                <?php
+                  $url="http://127.0.0.1:8000";
+                ?>
+                <li class="{{ Route::currentRouteName() == "show_lecture_videos" ? 'active':'' }}"><a class="menu-item" href="{{ route("show_lecture_videos") }}" data-i18n="nav.dash.ecommerce"> عرض فيديوهات الاقسام </a>
+                </li>
                 <li class="{{ Route::currentRouteName() == "add_free_video" ? 'active':'' }}"><a class="menu-item" href="{{ route("add_free_video") }}" data-i18n="nav.dash.ecommerce">اضافة فيديو مجاني</a>
                 </li>
                 <li class="{{ Route::currentRouteName() == "show_free_video" ? 'active':'' }}"><a class="menu-item" href="{{ route("show_free_video") }}" data-i18n="nav.dash.ecommerce">عرض الفيديوهات المجانية</a>
                 </li>
-                <?php
-                        $url="http://127.0.0.1:8000";
 
-                ?>
-                <li class="{{ Route::currentRouteName() == "show_lecture_videos" ? 'active':'' }}"><a class="menu-item" href="{{ route("show_lecture_videos") }}" data-i18n="nav.dash.ecommerce"> عرض فيديوهات المحاضرات </a>
-                </li>
                 {{-- <li class="{{ url()->current() == "$url/show_video/ONE" ? 'active':'' }}"><a class="menu-item" href="{{ route("show_video",['year_type'=>"ONE"]) }}" data-i18n="nav.dash.ecommerce">First grade secondary</a>
                 </li>
 
@@ -211,8 +211,8 @@ data-open="click" data-menu="vertical-content-menu" data-col="2-columns">
                 </li>
                 <li class="{{ Route::currentRouteName() == "subscript_index" ? 'active':'' }}"><a class="menu-item" href="{{ route("subscript_index") }}" data-i18n="nav.dash.ecommerce"> عرض الاشتراكات</a>
                 </li>
-                <li class="{{ Route::currentRouteName() == "student_wallet" ? 'active':'' }}"><a class="menu-item" href="{{ route("student_wallet") }}" data-i18n="nav.dash.ecommerce"> محفظة الطالب</a>
-                </li>
+                {{-- <li class="{{ Route::currentRouteName() == "student_wallet" ? 'active':'' }}"><a class="menu-item" href="{{ route("student_wallet") }}" data-i18n="nav.dash.ecommerce"> محفظة الطالب</a>
+                </li> --}}
                 <li class="{{ Route::currentRouteName() == "subscript_delete" ? 'active':'' }}"><a class="menu-item" href="{{ route("subscript_delete") }}" data-i18n="nav.dash.ecommerce"> حذف اشتراك</a>
                 </li>
               </ul>

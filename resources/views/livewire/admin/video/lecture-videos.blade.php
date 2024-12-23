@@ -24,9 +24,9 @@
                         </select>
                     </div>
                     <div class="col-md-5">
-                        <label for="exampleFormControlInput1" class="form-label">التصفية حسب المحاضرات</label>
+                        <label for="exampleFormControlInput1" class="form-label">التصفية حسب الاقسام</label>
                         <select class="form-select" aria-label="Default select example" id="lecture_id" wire:model="lecture_id">
-                            <option selected>اختر المحاضرة</option>
+                            <option selected>اختر القسم</option>
                             @foreach ($lectures as $lecture)
                                 <option value="{{ $lecture['id'] }}"> {{ $lecture['name'] }} </option>
                             @endforeach
@@ -58,7 +58,7 @@
                             @endforeach
                         </div>
                     @else
-                        <p class="text-center mt-4">لا توجد فيديوهات متاحة للمحاضرة المختارة.</p>
+                        <p class="text-center mt-4">لا توجد فيديوهات متاحة للقسم المختار.</p>
                     @endif
                 </div>
             </div>

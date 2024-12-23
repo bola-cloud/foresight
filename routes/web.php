@@ -150,7 +150,7 @@ Route::middleware(['auth:sanctum','verified','authadmin'])->group(function(){
   Route::get('editvideo/{id_video}',VideoEditController::class)->name("edit_video");
   Route::get('show_videos/{year_type}',ShowVideoComponent::class)->name("show_video");
   Route::get("show_video_data/{ide}",ShowVideoDataComponent::class)->name("show_data_video");
-  Route::get("lecture/videos",LectureVideos::class)->name("show_lecture_videos");
+  Route::get("section/videos",LectureVideos::class)->name("show_lecture_videos");
   Route::get('/videos/edit/{id}', VideoEditController::class)->name('video_edit');
 
     //kamel

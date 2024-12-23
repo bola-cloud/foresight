@@ -46,44 +46,17 @@
                                 </div>
                             </div>
                             <div class="col-md-4">
-                                <label for="exampleFormControlInput1" class="form-label">نوع الاشتراك</label>
-                                <select class="form-select" aria-label="Default select example" id="subscription_type" wire:model="subscription_type">
-                                    <option value="0" selected>نوع الاشتراك</option>
-                                    <option value="month">شهري</option>
-                                    <option value="lecture">محاضرة</option>
+                                <label for="exampleFormControlInput1" class="form-label">الشهر</label>
+                                <select class="form-select" aria-label="Default select example" id="month_id" wire:model="month_id">
+                                    <option value="0" selected>اختر الشهر</option>
+                                    @foreach ($units as $unit)
+                                        <option value="{{$unit->id}}">{{$unit->name}} </option>  
+                                    @endforeach
                                 </select>  
-                                @error('subscription_type')
+                                @error('month_id')
                                     <div class="alert alert-danger">{{ $message }}</div>
                                 @enderror
                             </div>
-                            @if($subscription_type == "lecture")
-                                <div class="col-md-4" id="lectures">
-                                    <label for="exampleFormControlInput1" class="form-label">المحاضرة</label>
-                                    <select class="form-select" aria-label="Default select example" id="lecture_id" wire:model="lecture_id">
-                                        <option value="0" selected>اختر المحاضرة</option>
-                                        @foreach ($lectures as $lecture)
-                                            <option value="{{$lecture->id}}">{{$lecture->name}} </option>  
-                                        @endforeach
-                                    </select>  
-                                    @error('lecture_id')
-                                        <div class="alert alert-danger">{{ $message }}</div>
-                                    @enderror
-                                </div>
-                            @endif
-                            @if($subscription_type == "month")
-                                <div class="col-md-4" id="month">
-                                    <label for="exampleFormControlInput1" class="form-label">الشهر</label>
-                                    <select class="form-select" aria-label="Default select example" id="month_id" wire:model="month_id">
-                                        <option value="0" selected>اختر الشهر</option>
-                                        @foreach ($units as $unit)
-                                            <option value="{{$unit->id}}">{{$unit->name}} </option>  
-                                        @endforeach
-                                    </select>  
-                                    @error('month_id')
-                                        <div class="alert alert-danger">{{ $message }}</div>
-                                    @enderror
-                                </div>
-                            @endif
                         </form> 
                         <button class="btn btn-primary" form="addSubscript">إضافة</button>
                     </div>
