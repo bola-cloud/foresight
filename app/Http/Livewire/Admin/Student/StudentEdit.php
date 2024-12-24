@@ -78,7 +78,6 @@ class StudentEdit extends Component
 
         return view('livewire.admin.student.student-edit', [
             'enumOptions' => $enumOptions,
-            'year_type' => $year_type
         ])->layout('layouts.admin');
     }
 
