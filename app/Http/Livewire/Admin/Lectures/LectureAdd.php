@@ -51,6 +51,7 @@ class LectureAdd extends Component
         } catch (\Throwable $e) {
             DB::rollBack();
             $this->errorMessage = $e->getMessage();
+            dd($e->getTraceAsString()); // Add this to see the full trace.
             Log::error('Error in LectureAdd@store: ' . $e->getMessage());
         }
     }
