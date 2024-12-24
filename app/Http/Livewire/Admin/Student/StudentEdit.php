@@ -75,7 +75,6 @@ class StudentEdit extends Component
     public function render()
     {
         $enumOptions = $this->getEnumValues('users', 'case_reverse');
-        $year_type = $this->getEnumValues('users', 'year_type');
 
         return view('livewire.admin.student.student-edit', [
             'enumOptions' => $enumOptions,
