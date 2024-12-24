@@ -8,7 +8,7 @@
                     @foreach($freeVideos as $freeVideo)
                         <div class="col-md-6">
                             <h4 class="d-flex justify-content-center mb-3">
-                                العنوان: {{ $freeVideo->name }} ------  الصف: {{ $freeVideo->year_type }}
+                                العنوان: {{ $freeVideo->name }}
                             </h4>
                             <br>
                             @if ($freeVideo->status == 1)
