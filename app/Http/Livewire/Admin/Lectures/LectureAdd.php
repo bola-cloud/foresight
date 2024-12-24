@@ -31,8 +31,8 @@ class LectureAdd extends Component
             $filename = $this->image->getClientOriginalName();
             $this->image->storeAs('', $filename, 'public_lecture');
             $new_file = 'lecture-images/' . $filename;
+            dd($this->all());
         }
-        dd($this->all());
 
         $lecture = new Lecture();
         $lecture->fill([
