@@ -365,7 +365,7 @@ data-open="click" data-menu="vertical-content-menu" data-col="2-columns">
                 data-placement="right" data-original-title="Layouts"></i>
               </li>
               <li class="{{ Route::currentRouteName() == "add_slider" ? 'active':'' }}">
-                <a class="menu-item" href="{{ route("add_slider") }}" data-i18n="nav.dash.ecommerce"></i><span class="menu-title" data-i18n="nav.dash.main"> ادارة الاعلانات  </a>
+                <a class="menu-item" href="{{ route("add_slider") }}" data-i18n="nav.dash.ecommerce"><i class="la la-align-right"></i><span class="menu-title" data-i18n="nav.dash.main">ادارة الاعلانات</span></a>
               </li>
               <li class=" nav-item {{ Route::currentRouteName() == "product_manager" ? 'active':'' }}">
                 <a href="{{ route("product_manager") }}"><i class="la la-align-right"></i><span class="menu-title" data-i18n="nav.dash.main">المنتجات</span></a>
