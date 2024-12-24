@@ -27,6 +27,7 @@ class AddQuestionChoice extends Component
 
      $this->id_exam;
      $this->type=$this->type;
+
     }
     protected $rules = [
         'question' => 'required',
@@ -57,7 +58,7 @@ class AddQuestionChoice extends Component
         $question->d=$this->d;
         $question->image=$new_file;
 
-        $question->mark_question=$this->mark_question;
+        $question->mark_question=1;
 
         $question->save();
 

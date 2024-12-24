@@ -141,13 +141,13 @@
                       </div>
                     </div>
 
-                    <div class="col-md-12">
+                    {{-- <div class="col-md-12">
                       <div class="form-group">
                         <label for="projectinput1">درجة السؤال</label>
                         <input type="number" id="projectinput1" class="form-control" placeholder="درجة السؤال"
                         name="fname" wire:model="mark_question">
                       </div>
-                    </div>
+                    </div> --}}
                     <div class="col-md-12">
                       <div class="form-group">
                         <label for="projectinput1">الإجابة الصحيحة</label>
