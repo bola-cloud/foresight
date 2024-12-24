@@ -31,11 +31,11 @@
                                 <input type="text" class="form-control" wire:model="mobile_phone" id="mobile_phone" placeholder="Enter student mobile">
                                 @error('mobile_phone') <div class="alert alert-danger">{{ $message }}</div> @enderror
                             </div>
-                            <div class="mb-3">
+                            {{-- <div class="mb-3">
                                 <label for="mobile_father" class="form-label">Father's Mobile</label>
                                 <input type="text" class="form-control" wire:model="mobile_father" id="mobile_father" placeholder="Enter father's mobile">
                                 @error('mobile_father') <div class="alert alert-danger">{{ $message }}</div> @enderror
-                            </div>
+                            </div> --}}
                             <div class="mb-3">
                                 <label for="case" class="form-label">Case</label>
                                 <select class="form-select" id="case" wire:model="case">
@@ -44,7 +44,7 @@
                                 </select>
                                 @error('case') <div class="alert alert-danger">{{ $message }}</div> @enderror
                             </div>
-                            <div class="mb-3">
+                            {{-- <div class="mb-3">
                                 <label for="year" class="form-label">Year Type</label>
                                 <select class="form-select" id="year" wire:model="year">
                                     <option value="">Select year</option>
@@ -53,7 +53,7 @@
                                     @endforeach
                                 </select>
                                 @error('year') <div class="alert alert-danger">{{ $message }}</div> @enderror
-                            </div>
+                            </div> --}}
                             <div class="mb-3">
                                 <label for="code" class="form-label">Student Code</label>
                                 <div class="d-flex">
