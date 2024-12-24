@@ -25,7 +25,7 @@
                         <h5>إضافة قسم جديد</h5>
                     </div>
                     <div class="card-body">
-                        <form wire:submit.prevent="store" enctype="multipart/form-data">
+                        <form wire:submit.prevent="store" enctype="multipart/form-data" id="store">
                             <div class="mb-3">
                                 <label for="exampleFormControlInput1" class="form-label">عنوان القسم</label>
                                 <input type="text" class="form-control" wire:model="name" id="exampleFormControlInput1" placeholder="أدخل عنوان المحاضرة">
@@ -85,8 +85,8 @@
                                 @endif
                             </div>
                             <br>
-                            <button type="submit" class="btn btn-sm btn-block btn-success">إضافة</button>
                         </form>
+                        <button type="submit" class="btn btn-sm btn-block btn-success" form="store">إضافة</button>
                     </div>
                 </div>
             </div>
