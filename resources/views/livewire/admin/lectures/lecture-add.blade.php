@@ -74,7 +74,7 @@
                                 </div>
                             </div>
                             <div>
-                                <input type="file" wire:model="image" accept="image/*" id="avatar">
+                                <input type="file" wire:model="image" accept="image/*">
                                 @error('image')
                                     <div class="alert alert-danger">{{ $message }}</div>
                                 @enderror

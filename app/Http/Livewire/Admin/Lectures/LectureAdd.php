@@ -25,13 +25,12 @@ class LectureAdd extends Component
             'unit_id' => 'required|exists:units,id',
             'description' => 'nullable',
         ]);
-    
+        dd($this->all());
         $new_file = null;
         if ($this->image) {
             $filename = $this->image->getClientOriginalName();
             $this->image->storeAs('', $filename, 'public_lecture');
             $new_file = 'lecture-images/' . $filename;
-            dd($this->all());
         }
 
         $lecture = new Lecture();
