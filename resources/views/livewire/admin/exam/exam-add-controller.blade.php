@@ -46,7 +46,7 @@
                       <div class="col-md-12">
                           <div class="form-group">
                             <label for="projectinput1">مدة الاختبار (بالدقائق)</label>
-                            <input type="text" id="units" class="form-control" placeholder="مدة الاختبار"
+                            <input type="number" id="units" class="form-control" placeholder="مدة الاختبار"
                             name="fname" wire:model="time">
                           </div>
                         </div>

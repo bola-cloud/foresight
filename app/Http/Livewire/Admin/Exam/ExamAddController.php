@@ -48,7 +48,7 @@ class ExamAddController extends Component
             $password->save();
 
 
-        session()->flash("message","you add exam");
+        session()->flash("successs","you add exam");
         return redirect()->route("show_exam");
 
     }
