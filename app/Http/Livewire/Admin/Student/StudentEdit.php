@@ -44,8 +44,6 @@ class StudentEdit extends Component
     {
         $validatedData = $this->validate([
             'name' => 'required|string|max:255',
-            'year' => 'required|string|in:ONE,TWO,THREE',
-            'mobile_father' => 'required|string|max:15',
             'code' => 'required|string|max:50',
             'mobile_phone' => 'required|string|size:11|unique:users,mobile_phone,' . $this->studentId,
         ]);
@@ -55,11 +53,8 @@ class StudentEdit extends Component
 
             $student = User::findOrFail($this->studentId);
             $student->name = $this->name;
-            $student->year_type = $this->year;
-            $student->mobile_father = $this->mobile_father;
             $student->student_code = $this->code;
             $student->mobile_phone = $this->mobile_phone;
-            $student->case_reverse = $this->case;
             $student->save();
 
             DB::commit();
@@ -74,11 +69,8 @@ class StudentEdit extends Component
 
     public function render()
     {
-        $enumOptions = $this->getEnumValues('users', 'case_reverse');
 
-        return view('livewire.admin.student.student-edit', [
-            'enumOptions' => $enumOptions,
-        ])->layout('layouts.admin');
+        return view('livewire.admin.student.student-edit')->layout('layouts.admin');
     }
 
     private function getEnumValues($table, $column)
