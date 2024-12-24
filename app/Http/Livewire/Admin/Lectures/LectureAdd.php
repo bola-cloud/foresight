@@ -18,9 +18,9 @@ class LectureAdd extends Component
     {
         $validated = $this->validate([
             'name' => 'required|min:3',
-            'cost' => 'required|numeric',
             'status' => 'required',
             'image' => 'nullable|max:1024',
+            'unit_id' => 'required|exists:units,id',
             'description' => 'nullable',
         ]);
     
