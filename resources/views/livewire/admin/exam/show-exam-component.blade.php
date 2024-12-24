@@ -39,7 +39,7 @@
                                   <tr>
                                       <td>{{ $exam->name_exam }}</td>
                                       <td>
-                                          <a class="btn btn-danger manual" href="{{ route('question_choice_type', ['id_exam' => $exam->id]) }}">إضافة أسئلة</a>
+                                          <a class="btn btn-danger manual" href="{{ route("add_question",['type'=>"normal","id_exam"=>$id_exam] ) }}">إضافة أسئلة</a>
                                           <a class="btn btn-danger manual" href="{{ route('show_question', ['id_exam' => $exam->id]) }}">عرض الأسئلة</a>
                                       </td>
                                       {{-- <td>
