@@ -12,7 +12,7 @@ class GetUnitComponent extends Controller
 {
       public function getcategory()
       {
-            $units = Unit::all();
+            $units = Unit::with('exams')->get();
 
             return response()->json($units, 200);
 

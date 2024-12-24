@@ -14,7 +14,7 @@ class CategoryUnitComponent extends Controller
 
         if(Auth::check()){
 
-            $units=Unit::all();
+            $units=Unit::with('exams')->get();
             $response=[
                 'message'=>"units are get",
                 'Result'=>$units,
