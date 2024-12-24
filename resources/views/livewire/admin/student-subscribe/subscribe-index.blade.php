@@ -54,7 +54,7 @@
                                 @endforeach
                             </ul>
                             <br> 
-                            <h6>الوحدات:</h6>
+                            <h6>الكورسات:</h6>
                             <ul class="list-group">
                                 @foreach($units as $unit)
                                     <li class="list-group-item">{{ $unit->name }}</li>

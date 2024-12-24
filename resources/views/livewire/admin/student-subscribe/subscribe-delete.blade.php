@@ -68,12 +68,12 @@
                             </div>
                             <div class="row d-flex justify-content-center mt-5">
                                 <div class="col-md-12">
-                                    <h5>اشتراكات الوحدات</h5>
+                                    <h5>اشتراكات الكورسات</h5>
                                     <table class="table">
                                         <thead>
                                             <tr>
-                                                <th>اسم الوحدة</th>
-                                                <th>سعر الوحدة</th>
+                                                <th>اسم الكورس</th>
+                                                <th>سعر الكورس</th>
                                                 <th>الإجراء</th>
                                             </tr>
                                         </thead>
