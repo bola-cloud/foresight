@@ -17,8 +17,8 @@ class StudentEdit extends Component
         $student = User::findOrFail($id);
         $this->studentId = $student->id;
         $this->name = $student->name;
-        $this->year = $student->year_type;
-        $this->mobile_father = $student->mobile_father;
+        // $this->year = $student->year_type;
+        // $this->mobile_father = $student->mobile_father;
         $this->code = $student->student_code;
         $this->mobile_phone = $student->mobile_phone;
         $this->case = $student->case_reverse;

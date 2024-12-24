@@ -54,10 +54,6 @@
                                 @endforeach
                             </ul>
                             <br> 
-                            <h6>الرصيد:</h6>
-                            <ul class="list-group">
-                                <li class="list-group-item">{{ $selectedStudent->wallet }}</li>
-                            </ul>
                         </div>
                     </div>
                 @endif

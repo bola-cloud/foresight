@@ -39,12 +39,12 @@
                                 <tr>
                                     <th>رقم المعاملة</th>
                                     <th>الكود</th>
-                                    <th>الطريقة</th>
+                                    {{-- <th>الطريقة</th> --}}
                                     <th>النوع</th>
                                     <th>المبلغ</th>
                                     <th>المستخدم</th>
-                                    <th>المحاضرة</th>
-                                    <th>الوحدة</th>
+                                    {{-- <th>المحاضرة</th> --}}
+                                    <th>الكورس</th>
                                     <th>تاريخ الإنشاء</th>
                                 </tr>
                             </thead>
@@ -53,11 +53,11 @@
                                 <tr class="{{ $transaction->type === 'deposite' ? 'table-success' : 'table-danger' }}">
                                     <td>{{ $transaction->id }}</td>
                                     <td>{{ $transaction->code }}</td>
-                                    <td>{{ $transaction->method }}</td>
+                                    {{-- <td>{{ $transaction->method }}</td> --}}
                                     <td>{{ $transaction->type }}</td>
                                     <td>{{ $transaction->amount }}</td>
                                     <td>{{ $transaction->user->name ?? 'غير متوفر' }}</td>
-                                    <td>{{ optional($transaction->lecture)->name ?? 'غير متوفر' }}</td>
+                                    {{-- <td>{{ optional($transaction->lecture)->name ?? 'غير متوفر' }}</td> --}}
                                     <td>{{ optional($transaction->unit)->name ?? 'غير متوفر' }}</td>
                                     <td>{{ $transaction->created_at }}</td>
                                 </tr>

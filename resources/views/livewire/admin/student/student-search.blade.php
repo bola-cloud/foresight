@@ -13,8 +13,8 @@
                         <th scope="col">اسم الطالب</th>
                         <th scope="col">كود الطالب</th>
                         <th scope="col">رقم هاتف الطالب</th>
-                        <th scope="col">رقم هاتف ولي الأمر</th>
-                        <th scope="col">رصيد الطالب</th>
+                        {{-- <th scope="col">رقم هاتف ولي الأمر</th> --}}
+                        {{-- <th scope="col">رصيد الطالب</th> --}}
                         <th scope="col">الإجراء</th>
                     </tr>
                 </thead>
@@ -24,8 +24,8 @@
                             <td>{{ $user->name }}</td>
                             <td>{{ $user->student_code }}</td>
                             <td>{{ $user->mobile_phone }}</td>
-                            <td>{{ $user->mobile_father }}</td>
-                            <td>{{ $user->wallet }}</td>
+                            {{-- <td>{{ $user->mobile_father }}</td> --}}
+                            {{-- <td>{{ $user->wallet }}</td> --}}
                             <td>
                                 <a class="btn btn-sm btn-primary" href="{{route('student_edit', $user->id)}}">تعديل</a>
                                 <button class="btn btn-sm btn-danger" wire:click="delete({{ $user->id }})">حذف</button>
