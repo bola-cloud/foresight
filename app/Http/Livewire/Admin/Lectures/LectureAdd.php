@@ -16,6 +16,7 @@ class LectureAdd extends Component
 
     public function store()
     {
+        // dd($this->all());
         $validated = $this->validate([
             'name' => 'required|min:3',
             'cost' => 'required|numeric',
@@ -33,7 +34,8 @@ class LectureAdd extends Component
                 $this->image->storeAs('', $filename, 'public_lecture');
                 $new_file = 'lecture-images/' . $filename;
             }
-    
+            dd($this->all());
+
             $lecture = new Lecture();
             $lecture->fill([
                 'name' => $this->name,
