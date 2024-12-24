@@ -43,31 +43,6 @@
                             @if($selectedStudent)
                             <div class="row d-flex justify-content-center mt-5">
                                 <div class="col-md-12">
-                                    <h5>اشتراكات المحاضرات</h5>
-                                    <table class="table">
-                                        <thead>
-                                            <tr>
-                                                <th>اسم المحاضرة</th>
-                                                <th>سعر المحاضرة</th>
-                                                <th>الإجراء</th>
-                                            </tr>
-                                        </thead>
-                                        @foreach ($selectedStudent->lectures as $lecture)
-                                        <tbody>
-                                            <tr>
-                                                <td>{{ $lecture->name }}</td>
-                                                <td>{{ $lecture->cost }}</td>
-                                                <td class="text-left">
-                                                    <button type="button" class="btn btn-danger" wire:click="deleteLectureSub({{ $lecture->id }})">حذف</button>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                        @endforeach
-                                    </table>
-                                </div>
-                            </div>
-                            <div class="row d-flex justify-content-center mt-5">
-                                <div class="col-md-12">
                                     <h5>اشتراكات الكورسات</h5>
                                     <table class="table">
                                         <thead>

@@ -47,13 +47,6 @@
                             <h5>{{ $selectedStudent->name }} -- {{ $selectedStudent->mobile_phone }}</h5>
                         </div>
                         <div class="card-body">
-                            <h6>المحاضرات:</h6>
-                            <ul class="list-group">
-                                @foreach($lectures as $lecture)
-                                    <li class="list-group-item">{{ $lecture->name }} {{ $lecture->unit->name }}</li>
-                                @endforeach
-                            </ul>
-                            <br> 
                             <h6>الكورسات:</h6>
                             <ul class="list-group">
                                 @foreach($units as $unit)
