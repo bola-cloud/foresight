@@ -105,7 +105,7 @@
                       </div>
                       @if($image)
                           <div class="row col-md-4">
-                              <img src="{{$image->temporaryUrl()}}" width="120px" height="90px">
+                              <img src="{{$image->temporaryUrl()}}" width="100px" height="130px">
                           </div>
                       @endif
                     </div>
