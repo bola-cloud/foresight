@@ -6,9 +6,11 @@ use Livewire\Component;
 use App\Models\QuestionChoice;
 use App\Models\TrueAnswer;
 use App\Models\Block;
+use Livewire\WithFileUploads;
 
 class AddQuestionChoice extends Component
 {
+    use WithFileUploads;
     public $question;
     public $id_exam;
     public $a;
