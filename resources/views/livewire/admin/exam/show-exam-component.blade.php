@@ -29,7 +29,7 @@
                               <tr>
                                   <th>اسم الامتحان</th>
                                   <th>الإجراءات</th>
-                                  <th>كلمات المرور</th>
+                                  {{-- <th>كلمات المرور</th> --}}
                                   <th>الحالة</th>
                                   <th>إدارة</th>
                               </tr>
@@ -42,9 +42,9 @@
                                           <a class="btn btn-danger manual" href="{{ route('question_choice_type', ['id_exam' => $exam->id]) }}">إضافة أسئلة</a>
                                           <a class="btn btn-danger manual" href="{{ route('show_question', ['id_exam' => $exam->id]) }}">عرض الأسئلة</a>
                                       </td>
-                                      <td>
+                                      {{-- <td>
                                           <a class="btn btn-primary" href="{{ route('password_exam', ['id_exam' => $exam->id]) }}">كلمات المرور</a>
-                                      </td>
+                                      </td> --}}
                                       <td>
                                           <div class="row">
                                               <div class="col-md-8">
