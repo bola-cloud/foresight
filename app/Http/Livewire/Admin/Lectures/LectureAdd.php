@@ -26,36 +26,27 @@ class LectureAdd extends Component
             'description' => 'nullable',
         ]);
     
-        DB::beginTransaction();
-        try {
-            $new_file = null;
-            if ($this->image) {
-                $filename = $this->image->getClientOriginalName();
-                $this->image->storeAs('', $filename, 'public_lecture');
-                $new_file = 'lecture-images/' . $filename;
-            }
-            dd($this->all());
-
-            $lecture = new Lecture();
-            $lecture->fill([
-                'name' => $this->name,
-                'cost' => 0,
-                'status' => $this->status,
-                'image' => $new_file,
-                'unit_id' => $this->unit_id,
-                'description' => $this->description,
-            ]);
-            $lecture->save();
-    
-            DB::commit();
-            session()->flash('success', 'تم اضافة القسم بنجاح');
-            return redirect()->route('lecture_index');
-        } catch (\Throwable $e) {
-            DB::rollBack();
-            $this->errorMessage = $e->getMessage();
-            dd($e->getTraceAsString()); // Add this to see the full trace.
-            Log::error('Error in LectureAdd@store: ' . $e->getMessage());
+        $new_file = null;
+        if ($this->image) {
+            $filename = $this->image->getClientOriginalName();
+            $this->image->storeAs('', $filename, 'public_lecture');
+            $new_file = 'lecture-images/' . $filename;
         }
+        dd($this->all());
+
+        $lecture = new Lecture();
+        $lecture->fill([
+            'name' => $this->name,
+            'cost' => 0,
+            'status' => $this->status,
+            'image' => $new_file,
+            'unit_id' => $this->unit_id,
+            'description' => $this->description,
+        ]);
+        $lecture->save();
+
+        session()->flash('success', 'تم اضافة القسم بنجاح');
+        return redirect()->route('lecture_index');
     }
     
 
