@@ -19,6 +19,7 @@ class QuestionChoice extends Model
         'c',
         'd',
         'mark_question',
+        'image',
     ];
 
 

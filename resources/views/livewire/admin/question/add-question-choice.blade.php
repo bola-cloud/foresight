@@ -97,8 +97,19 @@
                       </div><!--end main products area-->
                   </div>
 
-
-                  <div class="col-md-6">
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <label for="projectinput1">صورة السوال (اختياري)</label>
+                        <input type="file" id="image" class="form-control" placeholder="ادخل صورة السوال "
+                        name="fname" wire:model="image" accept="image/*">
+                      </div>
+                      @if($image)
+                          <div class="row col-md-4">
+                              <img src="{{$image->temporaryUrl()}}" width="120px" height="90px">
+                          </div>
+                      @endif
+                    </div>
+                    <div class="col-md-6">
                       <div class="form-group">
                         <label for="projectinput1">الخيار أ</label>
                         <input type="text" id="projectinput1" class="form-control" placeholder="الخيار أ"

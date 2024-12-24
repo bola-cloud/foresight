@@ -18,6 +18,7 @@ class AddQuestionChoice extends Component
     public $mark_question=1;
     public $true_ans;
     public $type;
+    public $image;
     public $block_id;
 
     public function mount($id_exam){
@@ -33,10 +34,18 @@ class AddQuestionChoice extends Component
         'd' => 'required',
         'type'=>'required',
         'true_ans' => 'required',
-
+        'image' => 'nullable|max:2048'
     ];
     public function create_question(){
         $this->validate();
+
+        $new_file = null;
+        if ($this->image) {
+            $filename = $this->image->getClientOriginalName();
+            $this->image->storeAs('', $filename, 'questions');
+            $new_file = 'question-images/' . $filename;
+        }
+
         $question =new QuestionChoice;
         $question->exam_id =$this->id_exam;
         $question->question=$this->question;
@@ -44,6 +53,7 @@ class AddQuestionChoice extends Component
         $question->b=$this->b;
         $question->c=$this->c;
         $question->d=$this->d;
+        $question->image=$new_file;
 
         $question->mark_question=$this->mark_question;
 

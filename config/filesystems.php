@@ -62,6 +62,13 @@ return [
             'visibility' => 'public',
         ],
 
+        'questions' => [
+            'driver' => 'local',
+            'root' => public_path('units-images'),
+            'url' => env('APP_URL').'/question-images',
+            'visibility' => 'public',
+        ],
+
         'public_lecture' => [
             'driver' => 'local',
             'root' => public_path('lecture-images'),
