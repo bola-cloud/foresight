@@ -16,7 +16,7 @@ class ExamController extends Controller
     {
         // Fetch the user
         $user = User::with('units')->find($id_student);
-        dd($user);
+        // dd($user);
     
         if (!$user) {
             return response(['message' => 'User not found'], 404);
