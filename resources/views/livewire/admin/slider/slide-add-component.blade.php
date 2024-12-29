@@ -29,7 +29,7 @@
                                     @if ($image instanceof \Livewire\TemporaryUploadedFile)
                                         <img src="{{ $image->temporaryUrl() }}" width="120px" style="border-radius: 5px;">
                                     @elseif($image)
-                                        <img src="{{ asset('storage/' . $image) }}" width="120px" style="border-radius: 5px;">
+                                        <img src="{{ asset($image) }}" width="120px" style="border-radius: 5px;">
                                     @endif
                                 </div>
                                 <button type="submit" class="btn btn-primary">حفظ</button>

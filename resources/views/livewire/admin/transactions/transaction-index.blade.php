@@ -40,7 +40,7 @@
                                     <th>رقم المعاملة</th>
                                     <th>الكود</th>
                                     {{-- <th>الطريقة</th> --}}
-                                    <th>النوع</th>
+                                    {{-- <th>النوع</th> --}}
                                     <th>المبلغ</th>
                                     <th>المستخدم</th>
                                     {{-- <th>المحاضرة</th> --}}
@@ -54,7 +54,7 @@
                                     <td>{{ $transaction->id }}</td>
                                     <td>{{ $transaction->code }}</td>
                                     {{-- <td>{{ $transaction->method }}</td> --}}
-                                    <td>{{ $transaction->type }}</td>
+                                    {{-- <td>{{ $transaction->type }}</td> --}}
                                     <td>{{ $transaction->amount }}</td>
                                     <td>{{ $transaction->user->name ?? 'غير متوفر' }}</td>
                                     {{-- <td>{{ optional($transaction->lecture)->name ?? 'غير متوفر' }}</td> --}}
