@@ -14,20 +14,29 @@ class ExamController extends Controller
 {
     public function returnexams($id_student)
     {
-        // Fetch the user
+        // Fetch the user with related units
         $user = User::with('units')->find($id_student);
-        // dd($user);
     
         if (!$user) {
             return response(['message' => 'User not found'], 404);
         }
     
-        // Fetch exams belonging to the units the user is related to
+        // Debug the user's related units
+        $user_units = $user->units->pluck('id');
+        if ($user_units->isEmpty()) {
+            return response(['message' => 'The user is not related to any units'], 404);
+        }
+    
+        // Debug the exams related to these units
         $exams = Exam::where('show_exam', 1)
             ->whereHas('units', function ($query) use ($user) {
                 $query->whereIn('units.id', $user->units->pluck('id'));
             })
             ->get();
+    
+        if ($exams->isEmpty()) {
+            return response(['message' => 'No exams are associated with the user\'s units'], 404);
+        }
     
         // Fetch exams the user has already completed
         $exams_done = ChoiceResult::where("user_id", $id_student)->pluck('exam_id')->toArray();
@@ -37,8 +46,12 @@ class ExamController extends Controller
             return !in_array($exam->id, $exams_done);
         });
     
+        if ($available_exams->isEmpty()) {
+            return response(['message' => 'No available exams for the user'], 404);
+        }
+    
         return response($available_exams->values(), 200);
-    }
+    }    
     
      
     // public function returnexams($id_student)
