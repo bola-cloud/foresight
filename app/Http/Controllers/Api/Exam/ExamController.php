@@ -12,29 +12,32 @@ use Auth;
 class ExamController extends Controller
 {
     public function returnexams($id_student)
-    {    
-        // Retrieve the units the student is associated with
-        $userUnits = Unit::whereHas('students', function ($query) use ($id_student) {
-            $query->where('user_id', $id_student);
-        })->pluck('id');
+    {
+        // Fetch the user
+        $user = User::find($id_student);
     
-        // Retrieve the exams associated with those units
+        if (!$user) {
+            return response(['message' => 'User not found'], 404);
+        }
+    
+        // Fetch exams belonging to the units the user is related to
         $exams = Exam::where('show_exam', 1)
-                    //  ->whereHas('units', function ($query) use ($userUnits) {
-                    //      $query->whereIn('units.id', $userUnits);
-                    //  })
-                     ->get();
+            ->whereHas('units', function ($query) use ($user) {
+                $query->whereIn('units.id', $user->units->pluck('id'));
+            })
+            ->get();
     
-        // Retrieve the exams the student has already completed
-        $exams_done = ChoiceResult::where('user_id', $id_student)->pluck('exam_id')->toArray();
+        // Fetch exams the user has already completed
+        $exams_done = ChoiceResult::where("user_id", $id_student)->pluck('exam_id')->toArray();
     
-        // Filter exams that are not in the exams_done list
+        // Filter exams that the user has not completed
         $available_exams = $exams->filter(function ($exam) use ($exams_done) {
             return !in_array($exam->id, $exams_done);
         });
     
         return response($available_exams->values(), 200);
     }
+    
      
     // public function returnexams($id_student)
     // {
