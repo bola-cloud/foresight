@@ -12,9 +12,9 @@ class ExamController extends Controller
     public function returnexams($id_student)
     {
         // Check authentication
-        if (!Auth::check() || Auth::id() != $id_student) {
-            return response(['message' => 'Unauthorized'], 403);
-        }
+        // if (!Auth::check() || Auth::id() != $id_student) {
+        //     return response(['message' => 'Unauthorized'], 403);
+        // }
     
         // Retrieve the units the student is associated with
         $userUnits = Unit::whereHas('students', function ($query) use ($id_student) {
