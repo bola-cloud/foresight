@@ -21,14 +21,14 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header text-center p-2">
-                        <h5>إنشاء اشتراك جديد للطالب</h5>
+                        <h5>إنشاء اشتراك جديد للمهندس</h5>
                     </div>
                     <div class="card-body">
                         <form wire:submit.prevent="subscript" enctype="multipart/form-data" id="addSubscript" class="row">
                             @csrf
                             <div class="col-md-4 mb-3">
                                 <div class="">
-                                    <label for="exampleFormControlInput1" class="form-label">اختيار الطالب</label>
+                                    <label for="exampleFormControlInput1" class="form-label">اختيار المهندس</label>
                                     @if(!$selectedStudent)
                                         <input type="text" class="form-control" wire:model.debounce.500ms="searchTerm" placeholder="ابحث برقم الكود...">
                                     @endif

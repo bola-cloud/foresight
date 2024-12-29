@@ -211,7 +211,7 @@ data-open="click" data-menu="vertical-content-menu" data-col="2-columns">
                 </li>
                 <li class="{{ Route::currentRouteName() == "subscript_index" ? 'active':'' }}"><a class="menu-item" href="{{ route("subscript_index") }}" data-i18n="nav.dash.ecommerce"> عرض الاشتراكات</a>
                 </li>
-                {{-- <li class="{{ Route::currentRouteName() == "student_wallet" ? 'active':'' }}"><a class="menu-item" href="{{ route("student_wallet") }}" data-i18n="nav.dash.ecommerce"> محفظة الطالب</a>
+                {{-- <li class="{{ Route::currentRouteName() == "student_wallet" ? 'active':'' }}"><a class="menu-item" href="{{ route("student_wallet") }}" data-i18n="nav.dash.ecommerce"> محفظة المهندس</a>
                 </li> --}}
                 <li class="{{ Route::currentRouteName() == "subscript_delete" ? 'active':'' }}"><a class="menu-item" href="{{ route("subscript_delete") }}" data-i18n="nav.dash.ecommerce"> حذف اشتراك</a>
                 </li>
@@ -262,9 +262,9 @@ data-open="click" data-menu="vertical-content-menu" data-col="2-columns">
                 <?php
                         $url="http://127.0.0.1:8000";
                 ?>
-                <li class="{{ Route::currentRouteName() == "add_student" ? 'active':'' }}"><a class="menu-item" href="{{ route("add_student") }}" data-i18n="nav.dash.ecommerce">اضافة طالب</a>
+                <li class="{{ Route::currentRouteName() == "add_student" ? 'active':'' }}"><a class="menu-item" href="{{ route("add_student") }}" data-i18n="nav.dash.ecommerce">اضافة مهندس</a>
                 </li>
-                <li class="{{ Route::currentRouteName() == "student_search" ? 'active':'' }}"><a class="menu-item" href="{{ route("student_search") }}" data-i18n="nav.dash.ecommerce">بحث عن طالب</a>
+                <li class="{{ Route::currentRouteName() == "student_search" ? 'active':'' }}"><a class="menu-item" href="{{ route("student_search") }}" data-i18n="nav.dash.ecommerce">بحث عن مهندس</a>
                 </li>
                 {{-- <li class="{{ url()->current() == "$url/show_student/ONE" ? 'active':'' }}"><a class="menu-item" href="{{ route("show_student",['year_type'=>"ONE"]) }}" data-i18n="nav.dash.ecommerce">First grade secondary</a>
                 </li>

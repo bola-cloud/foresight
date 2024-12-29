@@ -10,11 +10,11 @@
             <table class="table table-striped">
                 <thead>
                     <tr>
-                        <th scope="col">اسم الطالب</th>
-                        <th scope="col">كود الطالب</th>
-                        <th scope="col">رقم هاتف الطالب</th>
+                        <th scope="col">اسم المهندس</th>
+                        <th scope="col">كود المهندس</th>
+                        <th scope="col">رقم هاتف المهندس</th>
                         {{-- <th scope="col">رقم هاتف ولي الأمر</th> --}}
-                        {{-- <th scope="col">رصيد الطالب</th> --}}
+                        {{-- <th scope="col">رصيد المهندس</th> --}}
                         <th scope="col">الإجراء</th>
                     </tr>
                 </thead>

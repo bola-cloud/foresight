@@ -16,14 +16,14 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header text-center p-2">
-                        <h5>حذف اشتراك الطالب</h5>
+                        <h5>حذف اشتراك المهندس</h5>
                     </div>
                     <div class="card-body">
                         <div class="row">
                             @csrf
                             <div class="row col-md-4 mb-3">
                                 <div class="">
-                                    <label for="exampleFormControlInput1" class="form-label">اختيار الطالب</label>
+                                    <label for="exampleFormControlInput1" class="form-label">اختيار المهندس</label>
                                     @if(!$selectedStudent)
                                         <input type="text" class="form-control" wire:model.debounce.500ms="searchTerm" placeholder="ابحث برقم الكود...">
                                     @endif
