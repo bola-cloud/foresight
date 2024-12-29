@@ -49,6 +49,7 @@ Route::get('sliders',[SliderController::class,'slider']);
 
 Route::get('student/{id_user}',[ResultFinalComponent::class,'getResult']);
 
+Route::get('user/check/{id}',[AuthController::class,'check']);
 
 Route::get('/products', [ProductController::class, 'index']);
 

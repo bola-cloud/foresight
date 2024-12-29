@@ -98,6 +98,19 @@ class AuthController extends Controller
         );
     }
 
+    public function check($id)
+    {
+        // Find the user by ID
+        $user = User::find($id);
+    
+        if ($user) {
+            // Return the user if found
+            return response()->json($user);
+        } else {
+            // Return a response if the user is not found
+            return response()->json(['message' => 'المستخدم غير موجود'], 404);
+        }
+    }    
 
     public function logout(Request $req){
 
