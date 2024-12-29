@@ -34,6 +34,13 @@
                                     <input type="file" wire:model="image" class="form-control" accept="image/*">
                                     @error('image') <span class="text-danger">{{ $message }}</span> @enderror
                                 </div>
+                                <div class="form-group text-center">
+                                    @if ($image instanceof \Livewire\TemporaryUploadedFile)
+                                        <img src="{{ $image->temporaryUrl() }}" width="120px" style="border-radius: 5px;">
+                                    @elseif($image)
+                                        <img src="{{ asset($image) }}" width="120px" style="border-radius: 5px;">
+                                    @endif
+                                </div>
                                 <button type="submit" class="btn btn-primary">حفظ</button>
                             </form>
                         </div>
