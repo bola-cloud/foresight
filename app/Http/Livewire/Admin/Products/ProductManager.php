@@ -97,6 +97,6 @@ class ProductManager extends Component
     public function delete($id)
     {
         Product::find($id)->delete();
-        session()->flash('message', 'Product deleted successfully.');
+        session()->flash('message', 'تم حذف الاعلان بنجاح.');
     }
 }

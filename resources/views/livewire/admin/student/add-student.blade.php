@@ -32,14 +32,6 @@
                                 @error('mobile_phone') <div class="alert alert-danger">{{ $message }}</div> @enderror
                             </div>
                             <div class="mb-3">
-                                <label for="case" class="form-label">الحالة</label>
-                                <select class="form-select" id="case" wire:model="case">
-                                    <option value="0">غير مدفوع</option>
-                                    <option value="1">مدفوع</option>
-                                </select>
-                                @error('case') <div class="alert alert-danger">{{ $message }}</div> @enderror
-                            </div>
-                            <div class="mb-3">
                                 <label for="code" class="form-label">كود الطالب</label>
                                 <div class="d-flex">
                                     <input type="text" class="form-control" wire:model="code" id="code" placeholder="كود الطالب">

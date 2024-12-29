@@ -73,7 +73,7 @@ class SlideAddComponent extends Component
 
         Slider::updateOrCreate(['id' => $this->sliderId], $data);
 
-        session()->flash('message', $this->sliderId ? 'Slider updated successfully.' : 'Slider created successfully.');
+        session()->flash('message', $this->sliderId ? 'تم تعديل الاعلان بنجاح.' : 'تم اضافة الاعلان بنجاح.');
         $this->closeModal();
     }
 
@@ -94,6 +94,6 @@ class SlideAddComponent extends Component
         }
         $slider->delete();
 
-        session()->flash('message', 'Slider deleted successfully.');
+        session()->flash('message', 'تم حذف الاعلان بنجاح.');
     }
 }
