@@ -9,10 +9,8 @@ use App\Models\ChoiceResult;
 use Auth;
 class ExamController extends Controller
 {
-    public function returnexams()
-    {
-        $id_student = Auth::id();
-    
+    public function returnexams($id_student)
+    {    
         // Retrieve the units the student is associated with
         $userUnits = Unit::whereHas('students', function ($query) use ($id_student) {
             $query->where('user_id', $id_student);
