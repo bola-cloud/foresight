@@ -15,7 +15,7 @@ class ExamController extends Controller
     public function returnexams($id_student)
     {
         // Fetch the user
-        $user = User::find($id_student);
+        $user = User::find($id_student)->with('units');
         dd($user);
     
         if (!$user) {
