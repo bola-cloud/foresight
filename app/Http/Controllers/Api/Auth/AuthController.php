@@ -105,7 +105,11 @@ class AuthController extends Controller
     
         if ($user) {
             // Return the user if found
-            return response()->json($user);
+            return response()->json([
+                'status' => true,
+                'message' => 'User found',
+                'data' => $user,
+            ]);
         } else {
             // Return a response if the user is not found
             return response()->json(['message' => 'المستخدم غير موجود'], 404);
