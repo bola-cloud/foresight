@@ -12,12 +12,7 @@ use Auth;
 class ExamController extends Controller
 {
     public function returnexams($id_student)
-    {
-        // Check authentication
-        // if (!Auth::check() || Auth::id() != $id_student) {
-        //     return response(['message' => 'Unauthorized'], 403);
-        // }
-    
+    {    
         // Retrieve the units the student is associated with
         $userUnits = Unit::whereHas('students', function ($query) use ($id_student) {
             $query->where('user_id', $id_student);
@@ -41,5 +36,18 @@ class ExamController extends Controller
         return response($available_exams->values(), 200);
     }
      
+    // public function returnexams($id_student)
+    // {
 
+    //     $exams = Exam::where('show_exam', 1)->get();
+
+    //     $exams_done = ChoiceResult::where("user_id", $id_student)->pluck('exam_id')->toArray();
+
+    //     // Filter exams that are not in the exams_done list
+    //     $available_exams = $exams->filter(function ($exam) use ($exams_done) {
+    //         return !in_array($exam->id, $exams_done);
+    //     });
+
+    //     return response($available_exams->values(), 200);
+    // }
 }
