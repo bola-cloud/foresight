@@ -242,7 +242,7 @@ data-open="click" data-menu="vertical-content-menu" data-col="2-columns">
                         $url="http://127.0.0.1:8000";
 
                 ?>
-                <li class="{{ url()->current() == "$url/show_exams" ? 'active':'' }}"><a class="menu-item" href="{{ route("show_exam") }}" data-i18n="nav.dash.ecommerce"> عرض الامتحانات</a>
+                <li class="{{ Route::currentRouteName() == "show_exam" ? 'active':'' }}"><a class="menu-item" href="{{ route("show_exam") }}" data-i18n="nav.dash.ecommerce"> عرض الامتحانات</a>
                 </li>
 
                 {{-- <li class="{{ url()->current() == "$url/show_exams/TWO" ? 'active':'' }}"><a class="menu-item" href="{{ route("show_exam",['year_type'=>"TWO"]) }}" data-i18n="nav.dash.ecommerce">Secound grade secondary</a>
