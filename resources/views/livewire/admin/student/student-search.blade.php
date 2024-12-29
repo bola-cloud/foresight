@@ -2,7 +2,7 @@
     <div class="row mb-4 mt-4">
         <div class="col-md-5">
             <label for="searchTerm" class="form-label">البحث</label>
-            <input type="text" class="form-control" id="searchTerm" wire:model.debounce.300ms="searchTerm" placeholder="ابحث عن الطلاب أو الأكواد..." />
+            <input type="text" class="form-control" id="searchTerm" wire:model.debounce.300ms="searchTerm" placeholder="ابحث عن المهندسين أو الأكواد..." />
         </div>
     </div>
     <div class="row">

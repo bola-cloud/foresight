@@ -205,7 +205,7 @@ data-open="click" data-menu="vertical-content-menu" data-col="2-columns">
               <span data-i18n="nav.category.layouts">الاشتراكات</span><i class="la la-ellipsis-h ft-minus" data-toggle="tooltip"
               data-placement="right" data-original-title="Layouts"></i>
             </li>
-            <li class=" nav-item"><a href="index.html"><i class="fas fa-credit-card"></i><span class="menu-title" data-i18n="nav.dash.main">اشتراكات الطلاب</span></a>
+            <li class=" nav-item"><a href="index.html"><i class="fas fa-credit-card"></i><span class="menu-title" data-i18n="nav.dash.main">اشتراكات المهندسين</span></a>
               <ul class="menu-content">
                 <li class="{{ Route::currentRouteName() == "subscript_add" ? 'active':'' }}"><a class="menu-item" href="{{ route("subscript_add") }}" data-i18n="nav.dash.ecommerce">اضافة اشتراك </a>
                 </li>
@@ -254,10 +254,10 @@ data-open="click" data-menu="vertical-content-menu" data-col="2-columns">
             </li>
 
             <li class=" navigation-header">
-              <span data-i18n="nav.category.layouts">الطلاب</span><i class="la la-ellipsis-h ft-minus" data-toggle="tooltip"
+              <span data-i18n="nav.category.layouts">المهندسين</span><i class="la la-ellipsis-h ft-minus" data-toggle="tooltip"
               data-placement="right" data-original-title="Layouts"></i>
             </li>
-            <li class=" nav-item"><a href="index.html"><i class="la la-male"></i><span class="menu-title" data-i18n="nav.dash.main">الطلاب</span></a>
+            <li class=" nav-item"><a href="index.html"><i class="la la-male"></i><span class="menu-title" data-i18n="nav.dash.main">المهندسين</span></a>
               <ul class="menu-content">
                 <?php
                         $url="http://127.0.0.1:8000";

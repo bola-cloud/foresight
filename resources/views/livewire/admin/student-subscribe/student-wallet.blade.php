@@ -14,7 +14,7 @@
         </div>
         <div class="row card">
             <div class="card-header text-center p-2">
-                <h5>اشتراكات الطلاب</h5>
+                <h5>اشتراكات المهندسين</h5>
             </div>
             <div class="card-body">
                 @if(!$selectedStudent)
