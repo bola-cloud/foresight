@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API\Exam;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Exam;
+use App\Models\Unit;
 use App\Models\ChoiceResult;
 use Auth;
 class ExamController extends Controller
