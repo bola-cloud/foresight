@@ -20,9 +20,9 @@ class ExamController extends Controller
     
         // Retrieve the exams associated with those units
         $exams = Exam::where('show_exam', 1)
-                     ->whereHas('units', function ($query) use ($userUnits) {
-                         $query->whereIn('units.id', $userUnits);
-                     })
+                    //  ->whereHas('units', function ($query) use ($userUnits) {
+                    //      $query->whereIn('units.id', $userUnits);
+                    //  })
                      ->get();
     
         // Retrieve the exams the student has already completed
