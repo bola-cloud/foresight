@@ -57,8 +57,12 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <div class="plyr__video-embed">
-                        <iframe id="videoFrame" src="" height="300" width="600" allowfullscreen></iframe>
+                    <div class="row">
+                        <div class="col-md-12 d-flex justify-content-center">
+                            <div class="plyr__video-embed">
+                                <iframe id="videoFrame" src="" height="450" width="700" allowfullscreen></iframe>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
