@@ -1,4 +1,4 @@
-<div class="card p-3">
+<div class="card p-5">
     <div class="row">
         <div class="col-md-12">
             <h4 class="card-title">إجابات الطالب</h4>
