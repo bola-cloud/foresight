@@ -43,14 +43,14 @@
                                     @foreach ($videos as $video)
                                         <tr>
                                             <td>{{ $video->name_video }}</td>
-                                            <td>{{ $video->lecture->unit->name ?? '' }}</td>
-                                            <td>{{ $video->lecture->name }}</td>
+                                            <td>{{ $video->lecture->unit->name ?? 'غير متوفر' }}</td>
+                                            <td>{{ $video->lecture->name ?? 'غير متوفر' }}</td>
                                             <td>
                                                 <button class="btn btn-success" wire:click="playVideo('{{ $video->embed_link }}')">تشغيل</button>
                                                 <a href="{{ route('video_edit', $video->id) }}" class="btn btn-warning">تعديل</a>
                                                 <button class="btn btn-danger" wire:click="confirmDelete({{ $video->id }})">حذف</button>
                                             </td>
-                                        </tr>
+                                        </tr>                                    
                                     @endforeach
                                 </tbody>
                             </table>
