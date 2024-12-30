@@ -5,27 +5,62 @@
                 @if($freeVideos->isEmpty())
                     <p class="text-center mt-4">لا توجد فيديوهات مجانية متوفرة.</p>
                 @else
-                    @foreach($freeVideos as $freeVideo)
-                        <div class="col-md-6">
-                            <h4 class="d-flex justify-content-center mb-3">
-                                العنوان: {{ $freeVideo->name }}
-                            </h4>
-                            <br>
-                            @if ($freeVideo->status == 1)
-                            <h5 class="d-flex justify-content-center text-success"> نشط </h5>
-                            @elseif($freeVideo->status == 0)
-                            <h5 class="d-flex justify-content-center text-danger"> غير نشط </h5>
-                            @endif
-                            <div class="video-container d-flex flex-row justify-content-center">
-                                <iframe width="560" height="315" src="{{ $freeVideo->embed_link }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                            </div>
-                            <div class="row d-flex flex-row justify-content-center mb-3">
-                                <a href="{{ route('edit_free_video', $freeVideo->id) }}" class="btn btn-warning m-3 col-md-6">تعديل</a>
-                                <button class="btn btn-danger m-3 col-md-6" wire:click="confirmDelete({{ $freeVideo->id }})">حذف</button>
-                            </div>
-                        </div>
-                    @endforeach
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>العنوان</th>
+                                    <th>الحالة</th>
+                                    <th>الإجراءات</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach($freeVideos as $freeVideo)
+                                    <tr>
+                                        <td>{{ $freeVideo->name }}</td>
+                                        <td>
+                                            @if ($freeVideo->status == 1)
+                                                <span class="text-success">نشط</span>
+                                            @elseif($freeVideo->status == 0)
+                                                <span class="text-danger">غير نشط</span>
+                                            @endif
+                                        </td>
+                                        <td>
+                                            <button 
+                                                class="btn btn-success"
+                                                data-toggle="modal"
+                                                data-target="#videoModal"
+                                                onclick="openVideoModal('{{ $freeVideo->embed_link }}')">
+                                                عرض الفيديو
+                                            </button>
+                                            <a href="{{ route('edit_free_video', $freeVideo->id) }}" class="btn btn-warning">تعديل</a>
+                                            <button class="btn btn-danger" wire:click="confirmDelete({{ $freeVideo->id }})">حذف</button>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
                 @endif
+            </div>
+        </div>
+    </div>
+
+    <!-- Video Modal -->
+    <div class="modal fade" id="videoModal" tabindex="-1" role="dialog" aria-labelledby="videoModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="videoModalLabel">تشغيل الفيديو</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="plyr__video-embed">
+                        <iframe id="videoFrame" src="" allowfullscreen></iframe>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -53,6 +88,18 @@
 
     @push('scripts')
         <script>
+            function openVideoModal(videoLink) {
+                const videoFrame = document.getElementById('videoFrame');
+                videoFrame.src = `${videoLink}?rel=0&controls=1&modestbranding=1`;
+            }
+
+            document.addEventListener('DOMContentLoaded', () => {
+                $('#videoModal').on('hidden.bs.modal', function () {
+                    const videoFrame = document.getElementById('videoFrame');
+                    videoFrame.src = ''; // Clear the iframe when the modal is closed
+                });
+            });
+
             document.addEventListener('livewire:load', () => {
                 window.addEventListener('show-delete-modal', event => {
                     $('#deleteModal').modal('show');
