@@ -3,17 +3,36 @@
 namespace App\Http\Livewire\Admin\Exam;
 
 use Livewire\Component;
+use Livewire\WithPagination;
 use App\Models\Exam;
+use App\Models\Unit;
 
 class ShowExamComponent extends Component
 {
-    public $select = [];
+    use WithPagination;
+
+    public $search = ''; // For search functionality
+    public $filterUnit = ''; // For filtering by unit
+    public $select = []; // For status change
+    protected $paginationTheme = 'bootstrap';
+
+    public function updatingSearch()
+    {
+        // Reset pagination when the search term changes
+        $this->resetPage();
+    }
+
+    public function updatingFilterUnit()
+    {
+        // Reset pagination when the filter changes
+        $this->resetPage();
+    }
 
     public function delete_exam($id)
     {
         $exam = Exam::find($id);
         $exam->delete();
-        return redirect()->back()->with('message', 'تم مسح الامتحان');
+        session()->flash('message', 'تم مسح الامتحان');
     }
 
     public function options($id)
@@ -26,16 +45,34 @@ class ShowExamComponent extends Component
         } else if ($this->select[$id] == '3') {
             session()->flash('messagee', '');
         }
+
         if ($exam->show_exam == 1) {
-            return redirect()->back()->with('message', 'تم إظهار الامتحان');
+            session()->flash('message', 'تم إظهار الامتحان');
         } else {
-            return redirect()->back()->with('message', 'تم إخفاء الامتحان');
+            session()->flash('message', 'تم إخفاء الامتحان');
         }
     }
 
     public function render()
     {
-        $exams = Exam::all(); // Fetch all exams without filtering
-        return view('livewire.admin.exam.show-exam-component', ['exams' => $exams])->layout('layouts.admin');
+        // Fetch all units for filtering
+        $units = Unit::all();
+
+        // Fetch exams with search and filter applied
+        $exams = Exam::query()
+            ->when($this->search, function ($query) {
+                $query->where('name_exam', 'like', '%' . $this->search . '%');
+            })
+            ->when($this->filterUnit, function ($query) {
+                $query->whereHas('units', function ($subQuery) {
+                    $subQuery->where('id', $this->filterUnit);
+                });
+            })
+            ->paginate(10);
+
+        return view('livewire.admin.exam.show-exam-component', [
+            'exams' => $exams,
+            'units' => $units,
+        ])->layout('layouts.admin');
     }
 }
