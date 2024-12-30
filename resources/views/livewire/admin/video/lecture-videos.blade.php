@@ -10,56 +10,81 @@
             }
         </style>
     @endpush
+
     <div class="container">
         <div class="row card">
             <div class="col-md-12">
                 <div class="row mt-4">
                     <div class="col-md-5">
-                        <label for="exampleFormControlInput1" class="form-label">التصفية حسب الوحدة</label>
+                        <label for="unid_id" class="form-label">التصفية حسب الوحدة</label>
                         <select class="form-select" aria-label="Default select example" id="unid_id" wire:model="unid_id">
                             <option selected>اختر الوحدة</option>
                             @foreach ($units as $unit)
-                                <option value="{{ $unit->id }}"> {{ $unit->name }} </option>
+                                <option value="{{ $unit->id }}">{{ $unit->name }}</option>
                             @endforeach
                         </select>
                     </div>
                     <div class="col-md-5">
-                        <label for="exampleFormControlInput1" class="form-label">التصفية حسب الاقسام</label>
+                        <label for="lecture_id" class="form-label">التصفية حسب الاقسام</label>
                         <select class="form-select" aria-label="Default select example" id="lecture_id" wire:model="lecture_id">
                             <option selected>اختر القسم</option>
                             @foreach ($lectures as $lecture)
-                                <option value="{{ $lecture['id'] }}"> {{ $lecture['name'] }} </option>
+                                <option value="{{ $lecture['id'] }}">{{ $lecture['name'] }}</option>
                             @endforeach
                         </select>
                     </div>
                 </div>
+
                 <div class="row mt-4 mb-5">
                     @if ($videos && count($videos) > 0)
-                        <h4 class="d-flex justify-content-center mt-2 mb-4">{{ $lecture['name'] }}</h4>
-                        <div class="row">
-                            @foreach ($videos as $video)
-                                <div class="col-md-6">
-                                    <div class="row">
-                                        <h5 class="d-flex justify-content-center">{{ $video->name_video }}</h5>
-                                    </div>
-                                    <div class="row">
-                                        <div class="plyr__video-embed">
-                                            <iframe src="{{ $video->embed_link }}?rel=0&controls=0&modestbranding=1&showinfo=0&iv_load_policy=3" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
-                                        </div>
-                                        <br>
-                                        <div class="col-md-12">
-                                            <div class="row d-flex flex-row">
-                                                <a href="{{ route('video_edit', $video->id) }}" class="btn btn-warning m-3 col-md-6">تعديل</a>
-                                                <button class="btn btn-danger m-3 col-md-6" wire:click="confirmDelete({{ $video->id }})">حذف</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            @endforeach
+                        <div class="table-responsive">
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>اسم الفيديو</th>
+                                        <th>الوحدة</th>
+                                        <th>القسم</th>
+                                        <th>الإجراءات</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($videos as $video)
+                                        <tr>
+                                            <td>{{ $video->name_video }}</td>
+                                            <td>{{ $video->unit->name }}</td>
+                                            <td>{{ $video->lecture->name }}</td>
+                                            <td>
+                                                <button class="btn btn-success" wire:click="playVideo('{{ $video->embed_link }}')">تشغيل</button>
+                                                <a href="{{ route('video_edit', $video->id) }}" class="btn btn-warning">تعديل</a>
+                                                <button class="btn btn-danger" wire:click="confirmDelete({{ $video->id }})">حذف</button>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
                         </div>
                     @else
                         <p class="text-center mt-4">لا توجد فيديوهات متاحة للقسم المختار.</p>
                     @endif
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Video Modal -->
+    <div wire:ignore.self class="modal fade" id="videoModal" tabindex="-1" role="dialog" aria-labelledby="videoModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="videoModalLabel">تشغيل الفيديو</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="إغلاق">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="plyr__video-embed">
+                        <iframe id="videoFrame" src="" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+                    </div>
                 </div>
             </div>
         </div>
@@ -90,8 +115,16 @@
         <script src="https://cdn.plyr.io/3.6.8/plyr.polyfilled.js"></script>
         <script>
             document.addEventListener('livewire:load', () => {
-                Livewire.hook('message.processed', (message, component) => {
-                    const players = Array.from(document.querySelectorAll('.plyr__video-embed')).map(p => new Plyr(p));
+                // Initialize Plyr on modal load
+                let player;
+                Livewire.on('playVideo', (url) => {
+                    $('#videoModal').modal('show');
+                    document.getElementById('videoFrame').src = url + '?rel=0&controls=1&modestbranding=1';
+                    player = new Plyr(document.getElementById('videoFrame'));
+                });
+
+                $('#videoModal').on('hidden.bs.modal', function () {
+                    document.getElementById('videoFrame').src = ''; // Stop video when modal is closed
                 });
 
                 window.addEventListener('show-delete-modal', event => {
