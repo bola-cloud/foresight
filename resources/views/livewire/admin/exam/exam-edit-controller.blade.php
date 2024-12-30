@@ -56,13 +56,13 @@
                         <div wire:ignore class="form-group">
                           <label for="select2-dropdown">الوحدات المرتبطة</label>
                           <select class="select2 form-control" id="select2-dropdown" multiple>
-                              @foreach($units as $unit)
-                              <option value="{{ $unit->id }}" 
-                                  @if(in_array($unit->id, $unit_selected)) selected @endif>
-                                  {{ $unit->name }}
-                              </option>
-                              @endforeach
-                          </select>
+                            @foreach($units as $unit)
+                            <option value="{{ $unit->id }}"
+                                @if(is_array($unit_selected) && in_array($unit->id, $unit_selected)) selected @endif>
+                                {{ $unit->name }}
+                            </option>
+                            @endforeach
+                          </select>                        
                         </div>                      
                       </div>
                     </div>
@@ -86,15 +86,14 @@
 
 <script>
   $(document).ready(function () {
-      // Initialize select2
       $('#select2-dropdown').select2();
 
       // Pre-fill selected units
-      $('#select2-dropdown').val(@json($unit_selected)).trigger('change');
+      $('#select2-dropdown').val(@json($unit_selected ?? [])).trigger('change');
 
       // Update Livewire property when select2 changes
       $('#select2-dropdown').on('change', function (e) {
-          var data = $(this).val();
+          var data = $(this).val() || []; // Default to an empty array
           @this.set('unit_selected', data);
       });
   });
@@ -102,9 +101,10 @@
   document.addEventListener("livewire:load", function (event) {
       window.livewire.hook('afterDomUpdate', () => {
           $('#select2-dropdown').select2();
-          $('#select2-dropdown').val(@json($unit_selected)).trigger('change');
+          $('#select2-dropdown').val(@json($unit_selected ?? [])).trigger('change');
       });
   });
+
 </script>
 
 @endpush

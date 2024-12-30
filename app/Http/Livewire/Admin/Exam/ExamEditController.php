@@ -30,11 +30,11 @@ class ExamEditController extends Component
     }
     
 
-
     protected $rules = [
         'name_exam' => 'required',
-        'time'=>'required|integer'
-    ];
+        'time' => 'required|integer',
+        'unit_selected' => 'required|array|min:1', // Ensure at least one unit is selected
+    ];    
 
     public function edit_exam()
     {
@@ -42,28 +42,26 @@ class ExamEditController extends Component
     
         // Fetch the exam
         $exam = Exam::find($this->id_exam);
-    
+
         if (!$exam) {
             session()->flash("message", "Exam not found");
             return redirect()->route("show_exam");
         }
-    
+
         // Update exam details
         $exam->name_exam = $this->name_exam;
         $exam->time = $this->time;
         $exam->save();
-    
+
         // Detach old relationships
         $exam->units()->detach();
-    
+
         // Attach new relationships
-        if (!empty($this->unit_selected)) {
-            $exam->units()->attach($this->unit_selected);
-        }
-    
+        $exam->units()->attach($this->unit_selected);
+
         session()->flash("message", "Exam updated successfully");
         return redirect()->route("show_exam");
-    }
+    }    
     
     public function render()
     {
