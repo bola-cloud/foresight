@@ -72,6 +72,11 @@ class LectureVideos extends Component
         return $videoId ? "https://www.youtube.com/embed/{$videoId}" : null;
     }
 
+    public function playVideo($link)
+    {
+        $this->dispatchBrowserEvent('playVideo', ['link' => $link]);
+    }
+
     public function confirmDelete($videoId)
     {
         $this->videoToDelete = $videoId;

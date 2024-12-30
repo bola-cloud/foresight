@@ -8,8 +8,8 @@
             <div class="col-md-12">
                 <div class="row mt-4">
                     <div class="col-md-5">
-                        <label for="exampleFormControlInput1" class="form-label">التصفية حسب الوحدة</label>
-                        <select class="form-select" aria-label="Default select example" id="unid_id" wire:model="unid_id">
+                        <label for="unid_id" class="form-label">التصفية حسب الوحدة</label>
+                        <select class="form-select" id="unid_id" wire:model="unid_id">
                             <option value="">اختر الوحدة</option>
                             @foreach ($units as $unit)
                                 <option value="{{ $unit->id }}">{{ $unit->name }}</option>
@@ -17,8 +17,8 @@
                         </select>
                     </div>
                     <div class="col-md-5">
-                        <label for="exampleFormControlInput1" class="form-label">التصفية حسب الاقسام</label>
-                        <select class="form-select" aria-label="Default select example" id="lecture_id" wire:model="lecture_id">
+                        <label for="lecture_id" class="form-label">التصفية حسب الاقسام</label>
+                        <select class="form-select" id="lecture_id" wire:model="lecture_id">
                             <option value="">اختر القسم</option>
                             @foreach ($lectures as $lecture)
                                 <option value="{{ $lecture['id'] }}">{{ $lecture['name'] }}</option>
@@ -50,7 +50,7 @@
                                                 <a href="{{ route('video_edit', $video->id) }}" class="btn btn-warning">تعديل</a>
                                                 <button class="btn btn-danger" wire:click="confirmDelete({{ $video->id }})">حذف</button>
                                             </td>
-                                        </tr>                                    
+                                        </tr>
                                     @endforeach
                                 </tbody>
                             </table>
@@ -103,13 +103,15 @@
         <script src="https://cdn.plyr.io/3.6.8/plyr.polyfilled.js"></script>
         <script>
             document.addEventListener('livewire:load', () => {
-                Livewire.on('playVideo', (url) => {
+                Livewire.on('playVideo', (event) => {
+                    const videoFrame = document.getElementById('videoFrame');
+                    videoFrame.src = `${event.link}?rel=0&controls=1&modestbranding=1`;
                     $('#videoModal').modal('show');
-                    document.getElementById('videoFrame').src = url + '?rel=0&controls=1&modestbranding=1';
                 });
 
                 $('#videoModal').on('hidden.bs.modal', function () {
-                    document.getElementById('videoFrame').src = '';
+                    const videoFrame = document.getElementById('videoFrame');
+                    videoFrame.src = ''; // Clear the iframe when the modal is closed
                 });
             });
         </script>
