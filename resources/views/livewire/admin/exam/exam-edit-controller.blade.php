@@ -86,16 +86,25 @@
 
 <script>
   $(document).ready(function () {
+      // Initialize select2
       $('#select2-dropdown').select2();
+
+      // Pre-fill selected units
+      $('#select2-dropdown').val(@json($unit_selected)).trigger('change');
+
+      // Update Livewire property when select2 changes
       $('#select2-dropdown').on('change', function (e) {
-          var data = $('#select2-dropdown').select2("val");
+          var data = $(this).val();
           @this.set('unit_selected', data);
       });
   });
+
   document.addEventListener("livewire:load", function (event) {
       window.livewire.hook('afterDomUpdate', () => {
           $('#select2-dropdown').select2();
+          $('#select2-dropdown').val(@json($unit_selected)).trigger('change');
       });
   });
 </script>
+
 @endpush

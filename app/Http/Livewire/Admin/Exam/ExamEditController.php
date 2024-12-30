@@ -36,17 +36,35 @@ class ExamEditController extends Component
         'time'=>'required|integer'
     ];
 
-    public function edit_exam(){
+    public function edit_exam()
+    {
         $this->validate();
-        $exam=Exam::where("id",$this->id_exam)->first();
-        $exam->name_exam=$this->name_exam;
-        $exam->time=$this->time;
+    
+        // Fetch the exam
+        $exam = Exam::find($this->id_exam);
+    
+        if (!$exam) {
+            session()->flash("message", "Exam not found");
+            return redirect()->route("show_exam");
+        }
+    
+        // Update exam details
+        $exam->name_exam = $this->name_exam;
+        $exam->time = $this->time;
         $exam->save();
-        $unitIds=$this->unit_selected;
-        $exam->units()->attach($unitIds);
-        session()->flash("message","you add exam");
+    
+        // Detach old relationships
+        $exam->units()->detach();
+    
+        // Attach new relationships
+        if (!empty($this->unit_selected)) {
+            $exam->units()->attach($this->unit_selected);
+        }
+    
+        session()->flash("message", "Exam updated successfully");
         return redirect()->route("show_exam");
     }
+    
     public function render()
     {
         $this->units=Unit::all();
