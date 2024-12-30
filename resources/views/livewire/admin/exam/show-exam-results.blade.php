@@ -22,7 +22,7 @@
                         <td>{{ $result->users->student_code }}</td>
                         <td>{{ $result->result }}</td>
                         <td>
-                            <a href="{{ route('show_student_answers', ['id_exam' => $id_exam, 'user_id' => $result->user->id]) }}" 
+                            <a href="{{ route('show_student_answers', ['id_exam' => $id_exam, 'user_id' => $result->users->id]) }}" 
                                class="btn btn-success">
                                 عرض الإجابات
                             </a>
