@@ -50,6 +50,12 @@
                       @foreach ($questions as $question )
                         <tr>
                           <td>{!!$question->question!!}</td>
+                          @if (empty($question->image))
+                              <td>لا يوجد صورة</td>
+                          @else
+                          <td><img src="{{ asset($question->image) }}" alt="image"
+                            style="width: 100px; height: 100px;"></td>
+                          @endif
                           <td>{{ $question->image ? asset($question->image) : 'لا توجد صورة' }}</td>
                           <td>{{ $question->a }}</td>
                           <td>{{ $question->b }}</td>
