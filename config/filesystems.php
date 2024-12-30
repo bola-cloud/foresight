@@ -64,7 +64,7 @@ return [
 
         'questions' => [
             'driver' => 'local',
-            'root' => public_path('units-images'),
+            'root' => public_path('question-images'),
             'url' => env('APP_URL').'/question-images',
             'visibility' => 'public',
         ],
