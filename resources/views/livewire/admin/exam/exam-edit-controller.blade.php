@@ -29,7 +29,8 @@
 
                     <h4 class="form-section"><i class="ft-user"></i> معلومات الامتحان</h4>
                     @error('name_exam') <span class="error">{{ $message }}</span> @enderror
-                    @error('year_exam') <span class="error">{{ $message }}</span> @enderror
+                    @error('time') <span class="error">{{ $message }}</span> @enderror
+                    @error('unit_selected') <span class="error">{{ $message }}</span> @enderror
 
                     @if(Session::has("message"))
                     <span class="error">{{ Session::get("message") }}</span>
