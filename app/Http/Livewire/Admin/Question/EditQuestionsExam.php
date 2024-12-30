@@ -64,7 +64,7 @@ class EditQuestionsExam extends Component
     
             // Save the new image to the `public/question-images` directory
             $filename = $this->newimage->getClientOriginalName();
-            $this->newimage->storeAs('question-images', $filename, 'public');
+            $this->image->storeAs('', $filename, 'questions');
             $question->image = 'question-images/' . $filename; // Update the image path in the database
         }
     
