@@ -100,15 +100,16 @@
             <script src="https://cdn.plyr.io/3.6.8/plyr.polyfilled.js"></script>
             <script>
                 document.addEventListener('livewire:load', () => {
-                    Livewire.on('playVideo', (event) => {
-                        const videoFrame = document.getElementById('videoFrame');
-                        videoFrame.src = `${event.link}?rel=0&controls=1&modestbranding=1`;
-                        $('#videoModal').modal('show');
+                    Livewire.hook('message.processed', (message, component) => {
+                        const players = Array.from(document.querySelectorAll('.plyr__video-embed')).map(p => new Plyr(p));
                     });
-    
-                    $('#videoModal').on('hidden.bs.modal', function () {
-                        const videoFrame = document.getElementById('videoFrame');
-                        videoFrame.src = ''; // Clear the iframe when the modal is closed
+
+                    window.addEventListener('show-delete-modal', event => {
+                        $('#deleteModal').modal('show');
+                    });
+
+                    window.addEventListener('hide-delete-modal', event => {
+                        $('#deleteModal').modal('hide');
                     });
                 });
             </script>
