@@ -18,8 +18,8 @@
             <tbody>
                 @foreach ($results as $result)
                     <tr>
-                        <td>{{ $result->user->name }}</td>
-                        <td>{{ $result->user->student_code }}</td>
+                        <td>{{ $result->users->name }}</td>
+                        <td>{{ $result->users->student_code }}</td>
                         <td>{{ $result->result }}</td>
                         <td>
                             <a href="{{ route('show_student_answers', ['id_exam' => $id_exam, 'user_id' => $result->user->id]) }}" 

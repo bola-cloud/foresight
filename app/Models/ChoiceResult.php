@@ -20,9 +20,9 @@ class ChoiceResult extends Model
     'result'];
 
 
-protected $casts = [
-    'choices' => 'array',
-];
+    protected $casts = [
+        'choices' => 'array',
+    ];
 
 
     public function exam()

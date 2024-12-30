@@ -19,7 +19,7 @@ class ShowExamResults extends Component
     {
         // Fetch choice results for the exam
         $results = ChoiceResult::where('exam_id', $this->id_exam)
-            ->with('user') // Ensure the user relationship is loaded
+            ->with('users') // Ensure the user relationship is loaded
             ->get();
 
         return view('livewire.admin.exam.show-exam-results', [
