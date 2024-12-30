@@ -36,6 +36,7 @@
                     <thead class="table table-bordered mb-0">
                       <tr>
                         <th>السؤال</th>
+                        <th>الصورة</th>
                         <th>أ</th>
                         <th>ب</th>
                         <th>ج</th>
@@ -48,19 +49,20 @@
                     <tbody>
                       @foreach ($questions as $question )
                         <tr>
-                             <td>{!!$question->question!!}</td>
-                              <td>{{ $question->a }}</td>
-                              <td>{{ $question->b }}</td>
-                              <td>{{ $question->c }}</td>
-                              <td>{{ $question->d }}</td>
-                              <td>{{$question->trueanswer->ans }}</td>
-                              <td>{{ $question->mark_question }}</td>
-  
-                              <td>
-                                  <a class="btn btn-primary" href="{{route('edit_question',['question_id'=>$question->id])}}"  >تعديل</a>
-  
-                                  <a href="#"  class="btn btn-danger manual" onclick="confirm('هل أنت متأكد من أنك تريد حذفه؟') || event.stopImmediatePropagation()"  wire:click.prevent="delete_questionchoice({{$question->id}})">حذف</a>
-                              </td>
+                          <td>{!!$question->question!!}</td>
+                          <td>{{ $question->image ? asset($question->image) : 'لا توجد صورة' }}</td>
+                          <td>{{ $question->a }}</td>
+                          <td>{{ $question->b }}</td>
+                          <td>{{ $question->c }}</td>
+                          <td>{{ $question->d }}</td>
+                          <td>{{$question->trueanswer->ans }}</td>
+                          <td>{{ $question->mark_question }}</td>
+
+                          <td>
+                              <a class="btn btn-primary" href="{{route('edit_question',['question_id'=>$question->id])}}"  >تعديل</a>
+
+                              <a href="#"  class="btn btn-danger manual" onclick="confirm('هل أنت متأكد من أنك تريد حذفه؟') || event.stopImmediatePropagation()"  wire:click.prevent="delete_questionchoice({{$question->id}})">حذف</a>
+                          </td>
                         </tr>
                       @endforeach
   

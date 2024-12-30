@@ -59,7 +59,7 @@ class ExamEditController extends Component
         // Attach new relationships
         $exam->units()->attach($this->unit_selected);
 
-        session()->flash("message", "Exam updated successfully");
+        session()->flash("message", "تم تعديل الامتحان بنجاح");
         return redirect()->route("show_exam");
     }    
     
