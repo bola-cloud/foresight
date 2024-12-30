@@ -57,7 +57,7 @@ class ShowExamComponent extends Component
     {
         // Fetch all units for filtering
         $units = Unit::all();
-
+    
         // Fetch exams with search and filter applied
         $exams = Exam::query()
             ->when($this->search, function ($query) {
@@ -65,14 +65,15 @@ class ShowExamComponent extends Component
             })
             ->when($this->filterUnit, function ($query) {
                 $query->whereHas('units', function ($subQuery) {
-                    $subQuery->where('id', $this->filterUnit);
+                    $subQuery->where('units.id', $this->filterUnit); // Specify the table for 'id'
                 });
             })
             ->paginate(10);
-
+    
         return view('livewire.admin.exam.show-exam-component', [
             'exams' => $exams,
             'units' => $units,
         ])->layout('layouts.admin');
     }
+    
 }
