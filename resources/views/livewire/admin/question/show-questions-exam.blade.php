@@ -18,16 +18,24 @@
               </div>
   
               @if(Session::has("message"))
-  
-  
-                      <div class="col-md-4 mb-2">
-                          <div class="alert alert-danger" role="alert">
-                              {{ Session::get("message") }}
-                            <a class="alertAnimation float-right" data-animation="zoomIn">
-                              <i class="icon-arrow-right"></i>
-                            </a>
-                          </div>
-                        </div>
+                <div class="col-md-4 mb-2">
+                    <div class="alert alert-danger" role="alert">
+                        {{ Session::get("message") }}
+                      <a class="alertAnimation float-right" data-animation="zoomIn">
+                        <i class="icon-arrow-right"></i>
+                      </a>
+                    </div>
+                  </div>
+              @endif
+              @if(Session::has("success"))
+                <div class="col-md-4 mb-2">
+                    <div class="alert alert-success" role="alert">
+                        {{ Session::get("success") }}
+                      <a class="alertAnimation float-right" data-animation="zoomIn">
+                        <i class="icon-arrow-right"></i>
+                      </a>
+                    </div>
+                  </div>
               @endif
               <div class="card-content collapse show">
   

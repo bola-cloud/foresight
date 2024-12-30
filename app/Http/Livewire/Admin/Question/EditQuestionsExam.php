@@ -80,7 +80,7 @@ class EditQuestionsExam extends Component
         $true_ans->ans = $this->true_ans;
         $true_ans->save();
     
-        session()->flash('message', 'Question is edited');
+        session()->flash('success', 'تم تعديل السوال');
         return redirect()->route('show_question', ['id_exam' => $question->exam->id]);
     }
     

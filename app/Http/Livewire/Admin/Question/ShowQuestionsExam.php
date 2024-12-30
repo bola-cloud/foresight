@@ -18,7 +18,7 @@ class ShowQuestionsExam extends Component
     public function delete_questionchoice($id){
         $question=QuestionChoice::find($id);
         $question->delete();
-        return redirect()->back()->with('message','َQuestion is deleted');
+        return redirect()->back()->with('message','َتم حذف السوال');
     }
     #public function delete_questionpargraph($id){
         #$parg=QuestionParagraph::find($id);
