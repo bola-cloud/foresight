@@ -122,8 +122,13 @@
         Livewire.hook('message.processed', (message, component) => {
             const players = Array.from(document.querySelectorAll('.plyr__video-embed')).map(p => new Plyr(p));
         });
+        window.addEventListener('show-delete-modal', event => {
+            $('#deleteModal').modal('show');
+        });
 
-
+        window.addEventListener('hide-delete-modal', event => {
+            $('#deleteModal').modal('hide');
+        });
     });
 </script>
 <script>
@@ -137,14 +142,6 @@
         $('#videoModal').on('hidden.bs.modal', function () {
             const videoFrame = document.getElementById('videoFrame');
             videoFrame.src = '';
-        });
-
-        window.addEventListener('show-delete-modal', event => {
-            $('#deleteModal').modal('show');
-        });
-
-        window.addEventListener('hide-delete-modal', event => {
-            $('#deleteModal').modal('hide');
         });
     });
 </script>
