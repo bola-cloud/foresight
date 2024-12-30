@@ -78,7 +78,8 @@
                                         <a href="#" class="btn btn-danger"
                                            onclick="confirm('هل أنت متأكد أنك تريد حذف هذا الامتحان؟') || event.stopImmediatePropagation()"
                                            wire:click.prevent="delete_exam({{ $exam->id }})">حذف <span></span><i class="fas fa-trash-alt"></i></a>
-                                    </td>
+                                        <a href="{{ route('show_exam_results', ['id_exam' => $exam->id]) }}" class="btn btn-success">عرض النتائج</a>
+                                    </td>                                    
                                 </tr>
                             @endforeach
                         </tbody>

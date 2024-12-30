@@ -42,7 +42,8 @@ use App\Http\Livewire\Admin\Exam\ShowExamComponent;
 use App\Http\Livewire\Admin\Exam\ExamEditController;
 use App\Http\Livewire\Admin\Exam\PasswordExamComponent;
 use App\Http\Livewire\Admin\Exam\PasswordPrintComponent;
-
+use App\Http\Livewire\Admin\Exam\ShowExamResults;
+use App\Http\Livewire\Admin\Exam\ShowStudentAnswers;
 
 //question
 use App\Http\Livewire\Admin\Question\AddQuestionChoice;
@@ -162,6 +163,8 @@ Route::middleware(['auth:sanctum','verified','authadmin'])->group(function(){
   Route::get('show_exams', ShowExamComponent::class)->name("show_exam");
   Route::get('password_exam/{id_exam}',PasswordExamComponent::class)->name("password_exam");
   Route::get('printpass/{id_exam}',PasswordPrintComponent::class)->name("print_pass");
+  Route::get('/exam/{id_exam}/results', ShowExamResults::class)->name('show_exam_results');
+  Route::get('/exam/{id_exam}/student/{user_id}/answers', ShowStudentAnswers::class)->name('show_student_answers');
 
 
 
