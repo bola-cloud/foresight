@@ -93,40 +93,60 @@
                 </div>
             </div>
         </div>
-    </div>
-    
-    
-        @push('scripts')
-            <script src="https://cdn.plyr.io/3.6.8/plyr.polyfilled.js"></script>
-            <script>
-                document.addEventListener('livewire:load', () => {
-                    Livewire.on('playVideo', (event) => {
-                        const videoFrame = document.getElementById('videoFrame');
-                        videoFrame.src = `${event.link}?rel=0&controls=1&modestbranding=1`;
-                        $('#videoModal').modal('show');
-                    });
-    
-                    $('#videoModal').on('hidden.bs.modal', function () {
-                        const videoFrame = document.getElementById('videoFrame');
-                        videoFrame.src = ''; // Clear the iframe when the modal is closed
-                    });
-                });
-            </script>
-            <script>
-                function openVideoModal(videoLink) {
-                    const videoFrame = document.getElementById('videoFrame');
-                    videoFrame.src = `${videoLink}?rel=0&controls=1&modestbranding=1`;
-                }
-            
-                // Clear the video when the modal is closed
-                document.addEventListener('DOMContentLoaded', () => {
-                    $('#videoModal').on('hidden.bs.modal', function () {
-                        const videoFrame = document.getElementById('videoFrame');
-                        videoFrame.src = '';
-                    });
-                });
-            </script>
-            
-        @endpush
+            <!-- Delete Confirmation Modal -->
+        <div wire:ignore.self class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="deleteModalLabel">تأكيد الحذف</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="إغلاق">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        هل أنت متأكد أنك تريد حذف هذا الفيديو؟
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">إلغاء</button>
+                        <button type="button" class="btn btn-danger" wire:click="deleteVideo">حذف</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>    
+@push('scripts')
+<script src="https://cdn.plyr.io/3.6.8/plyr.polyfilled.js"></script>
+<script>
+    document.addEventListener('livewire:load', () => {
+        Livewire.hook('message.processed', (message, component) => {
+            const players = Array.from(document.querySelectorAll('.plyr__video-embed')).map(p => new Plyr(p));
+        });
+
+
+    });
+</script>
+<script>
+    function openVideoModal(videoLink) {
+        const videoFrame = document.getElementById('videoFrame');
+        videoFrame.src = `${videoLink}?rel=0&controls=1&modestbranding=1`;
+    }
+
+    // Clear the video when the modal is closed
+    document.addEventListener('DOMContentLoaded', () => {
+        $('#videoModal').on('hidden.bs.modal', function () {
+            const videoFrame = document.getElementById('videoFrame');
+            videoFrame.src = '';
+        });
+
+        window.addEventListener('show-delete-modal', event => {
+            $('#deleteModal').modal('show');
+        });
+
+        window.addEventListener('hide-delete-modal', event => {
+            $('#deleteModal').modal('hide');
+        });
+    });
+</script>
+
+@endpush
