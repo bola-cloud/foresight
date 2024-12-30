@@ -54,7 +54,7 @@
                               <td>لا يوجد صورة</td>
                           @else
                           <td><img src="{{ asset($question->image) }}" alt="image"
-                            style="width: 90px; height: 90px;"></td>
+                            style="width: 120px; height: 100px;"></td>
                           @endif
                           <td>{{ $question->a }}</td>
                           <td>{{ $question->b }}</td>
