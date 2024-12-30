@@ -58,7 +58,7 @@
                 </div>
                 <div class="modal-body">
                     <div class="plyr__video-embed">
-                        <iframe id="videoFrame" src="" allowfullscreen></iframe>
+                        <iframe id="videoFrame" src="" height="300" width="600" allowfullscreen></iframe>
                     </div>
                 </div>
             </div>
