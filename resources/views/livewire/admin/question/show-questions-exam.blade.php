@@ -56,7 +56,6 @@
                           <td><img src="{{ asset($question->image) }}" alt="image"
                             style="width: 100px; height: 100px;"></td>
                           @endif
-                          <td>{{ $question->image ? asset($question->image) : 'لا توجد صورة' }}</td>
                           <td>{{ $question->a }}</td>
                           <td>{{ $question->b }}</td>
                           <td>{{ $question->c }}</td>
