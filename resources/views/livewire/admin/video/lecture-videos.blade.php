@@ -15,9 +15,9 @@
             <div class="col-md-12">
                 <div class="row mt-4">
                     <div class="col-md-5">
-                        <label for="unid_id" class="form-label">التصفية حسب الوحدة</label>
+                        <label for="unid_id" class="form-label">التصفية حسب الكورس</label>
                         <select class="form-select" id="unid_id" wire:model="unid_id">
-                            <option value="">اختر الوحدة</option>
+                            <option value="">اختر الكورس</option>
                             @foreach ($units as $unit)
                                 <option value="{{ $unit->id }}">{{ $unit->name }}</option>
                             @endforeach
@@ -41,7 +41,7 @@
                                 <thead>
                                     <tr>
                                         <th>اسم الفيديو</th>
-                                        <th>الوحدة</th>
+                                        <th>الكورس</th>
                                         <th>القسم</th>
                                         <th>الإجراءات</th>
                                     </tr>

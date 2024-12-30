@@ -70,7 +70,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    هل أنت متأكد أنك تريد حذف هذه الوحدة؟
+                    هل أنت متأكد أنك تريد حذف هذه الكورس ؟
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">إلغاء</button>
