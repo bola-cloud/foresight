@@ -55,7 +55,7 @@
                       <div class="col-md-12">
 
                           <div wire:ignore class="form-group">
-                              <select class="select2 form-control" id="select2-dropdown" multiple>
+                              <select class="select2 form-control" id="select2-dropdown">
                                   @foreach($units as $unit)
                                   <option value="{{ $unit->id }}">{{ $unit->name }}</option>
                                   @endforeach

@@ -21,7 +21,7 @@ class ExamEditController extends Component
          $this->units=$uni->name;
         }
         $this->id_exam=$exam->id;
-        dd($this->units);
+        // dd($this->units);
     }
 
 
