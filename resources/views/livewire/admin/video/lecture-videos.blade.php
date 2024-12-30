@@ -53,7 +53,13 @@
                                             <td>{{ $video->lecture->unit->name ?? 'غير متوفر' }}</td>
                                             <td>{{ $video->lecture->name ?? 'غير متوفر' }}</td>
                                             <td>
-                                                <button class="btn btn-success" wire:click="playVideo('{{ $video->embed_link }}')">تشغيل</button>
+                                                <button 
+                                                    class="btn btn-success" 
+                                                    data-toggle="modal" 
+                                                    data-target="#videoModal" 
+                                                    onclick="openVideoModal('{{ $video->embed_link }}')">
+                                                    تشغيل
+                                                </button>
                                                 <a href="{{ route('video_edit', $video->id) }}" class="btn btn-warning">تعديل</a>
                                                 <button class="btn btn-danger" wire:click="confirmDelete({{ $video->id }})">حذف</button>
                                             </td>
@@ -70,12 +76,14 @@
         </div>
     
         <!-- Video Modal -->
-        <div wire:ignore.self class="modal fade" id="videoModal" tabindex="-1" role="dialog">
+        <div class="modal fade" id="videoModal" tabindex="-1" role="dialog" aria-labelledby="videoModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title">تشغيل الفيديو</h5>
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h5 class="modal-title" id="videoModalLabel">تشغيل الفيديو</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
                     </div>
                     <div class="modal-body">
                         <div class="plyr__video-embed">
@@ -85,25 +93,8 @@
                 </div>
             </div>
         </div>
+    </div>
     
-        <!-- Delete Confirmation Modal -->
-        <div wire:ignore.self class="modal fade" id="deleteModal" tabindex="-1" role="dialog">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title">تأكيد الحذف</h5>
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    </div>
-                    <div class="modal-body">
-                        هل أنت متأكد أنك تريد حذف هذا الفيديو؟
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">إلغاء</button>
-                        <button type="button" class="btn btn-danger" wire:click="deleteVideo">حذف</button>
-                    </div>
-                </div>
-            </div>
-        </div>
     
         @push('scripts')
             <script src="https://cdn.plyr.io/3.6.8/plyr.polyfilled.js"></script>
@@ -121,6 +112,21 @@
                     });
                 });
             </script>
+            <script>
+                function openVideoModal(videoLink) {
+                    const videoFrame = document.getElementById('videoFrame');
+                    videoFrame.src = `${videoLink}?rel=0&controls=1&modestbranding=1`;
+                }
+            
+                // Clear the video when the modal is closed
+                document.addEventListener('DOMContentLoaded', () => {
+                    $('#videoModal').on('hidden.bs.modal', function () {
+                        const videoFrame = document.getElementById('videoFrame');
+                        videoFrame.src = '';
+                    });
+                });
+            </script>
+            
         @endpush
     </div>
 </div>    
