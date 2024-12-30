@@ -23,8 +23,11 @@ class ShowStudentAnswers extends Component
             ->where('user_id', $this->user_id)
             ->first();
 
-        // Decode the choices JSON
-        $answers = $result ? json_decode($result->choices, true) : [];
+        // Ensure $result->choices is a valid array
+        $answers = [];
+        if ($result && $result->choices) {
+            $answers = is_string($result->choices) ? json_decode($result->choices, true) : $result->choices;
+        }
 
         // Fetch correct answers for the questions
         $correctAnswers = TrueAnswer::whereIn('question_id', array_column($answers, 'question_id'))
