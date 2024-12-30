@@ -16,45 +16,21 @@ class LectureVideos extends Component
     {
         $this->units = Unit::all();
         $this->lectures = Lecture::all()->toArray();
-        $this->loadAllVideos(); // Load all videos initially
     }
 
     public function updated($propertyName)
     {
         if ($propertyName == 'unid_id' && $this->unid_id) {
             $this->lectures = Lecture::where('unit_id', $this->unid_id)->get()->toArray();
-            $this->filterVideos();
         }
 
         if ($propertyName == 'lecture_id' && $this->lecture_id) {
-            $this->filterVideos();
+            $lecture = Lecture::find($this->lecture_id);
+            $this->videos = $lecture ? $lecture->videos->map(function($video) {
+                $video->embed_link = $this->convertToEmbedLink($video->link);
+                return $video;
+            }) : null;
         }
-    }
-
-    private function loadAllVideos()
-    {
-        $this->videos = Video::with('lecture', 'lecture.unit')->get()->map(function ($video) {
-            $video->embed_link = $this->convertToEmbedLink($video->link);
-            return $video;
-        });
-    }
-
-    private function filterVideos()
-    {
-        $query = Video::query();
-
-        if ($this->lecture_id) {
-            $query->where('lecture_id', $this->lecture_id);
-        } elseif ($this->unid_id) {
-            $query->whereHas('lecture', function ($query) {
-                $query->where('unit_id', $this->unid_id);
-            });
-        }
-
-        $this->videos = $query->with('lecture', 'lecture.unit')->get()->map(function ($video) {
-            $video->embed_link = $this->convertToEmbedLink($video->link);
-            return $video;
-        });
     }
 
     private function convertToEmbedLink($link)
@@ -70,12 +46,7 @@ class LectureVideos extends Component
             return null; // Invalid YouTube link
         }
         return $videoId ? "https://www.youtube.com/embed/{$videoId}" : null;
-    }
-
-    public function playVideo($link)
-    {
-        $this->dispatchBrowserEvent('playVideo', ['link' => $link]);
-    }
+    }    
 
     public function confirmDelete($videoId)
     {
@@ -88,7 +59,8 @@ class LectureVideos extends Component
         $video = Video::findOrFail($this->videoToDelete);
         $video->delete();
         session()->flash('message', 'Video deleted successfully.');
-        $this->loadAllVideos(); // Reload all videos after deletion
+        $this->dispatchBrowserEvent('hide-delete-modal');
+        $this->updated('lecture_id');
     }
 
     public function render()

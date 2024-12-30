@@ -1,8 +1,15 @@
 <div>
     @push('style')
         <link rel="stylesheet" href="https://cdn.plyr.io/3.6.8/plyr.css" />
+        <style>
+            a.ytp-watermark.yt-uix-sessionlink {
+                display: none !important;
+            }
+            .ytp-chrome-top.ytp-show-cards-title {
+                display: none !important;
+            }
+        </style>
     @endpush
-
     <div class="container">
         <div class="row card">
             <div class="col-md-12">
@@ -17,7 +24,7 @@
                         </select>
                     </div>
                     <div class="col-md-5">
-                        <label for="lecture_id" class="form-label">التصفية حسب الاقسام</label>
+                        <label for="lecture_id" class="form-label">التصفية حسب الأقسام</label>
                         <select class="form-select" id="lecture_id" wire:model="lecture_id">
                             <option value="">اختر القسم</option>
                             @foreach ($lectures as $lecture)
@@ -26,7 +33,7 @@
                         </select>
                     </div>
                 </div>
-
+    
                 <div class="row mt-4 mb-5">
                     @if ($videos && count($videos) > 0)
                         <div class="table-responsive">
@@ -61,61 +68,59 @@
                 </div>
             </div>
         </div>
-    </div>
-
-    <!-- Video Modal -->
-    <div wire:ignore.self class="modal fade" id="videoModal" tabindex="-1" role="dialog">
-        <div class="modal-dialog modal-lg" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">تشغيل الفيديو</h5>
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                </div>
-                <div class="modal-body">
-                    <div class="plyr__video-embed">
-                        <iframe id="videoFrame" src="" allowfullscreen></iframe>
+    
+        <!-- Video Modal -->
+        <div wire:ignore.self class="modal fade" id="videoModal" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">تشغيل الفيديو</h5>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="plyr__video-embed">
+                            <iframe id="videoFrame" src="" allowfullscreen></iframe>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-
-    <!-- Delete Confirmation Modal -->
-    <div wire:ignore.self class="modal fade" id="deleteModal" tabindex="-1" role="dialog">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">تأكيد الحذف</h5>
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                </div>
-                <div class="modal-body">
-                    هل أنت متأكد أنك تريد حذف هذا الفيديو؟
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">إلغاء</button>
-                    <button type="button" class="btn btn-danger" wire:click="deleteVideo">حذف</button>
+    
+        <!-- Delete Confirmation Modal -->
+        <div wire:ignore.self class="modal fade" id="deleteModal" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">تأكيد الحذف</h5>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        هل أنت متأكد أنك تريد حذف هذا الفيديو؟
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">إلغاء</button>
+                        <button type="button" class="btn btn-danger" wire:click="deleteVideo">حذف</button>
+                    </div>
                 </div>
             </div>
         </div>
+    
+        @push('scripts')
+            <script src="https://cdn.plyr.io/3.6.8/plyr.polyfilled.js"></script>
+            <script>
+                document.addEventListener('livewire:load', () => {
+                    Livewire.on('playVideo', (event) => {
+                        const videoFrame = document.getElementById('videoFrame');
+                        videoFrame.src = `${event.link}?rel=0&controls=1&modestbranding=1`;
+                        $('#videoModal').modal('show');
+                    });
+    
+                    $('#videoModal').on('hidden.bs.modal', function () {
+                        const videoFrame = document.getElementById('videoFrame');
+                        videoFrame.src = ''; // Clear the iframe when the modal is closed
+                    });
+                });
+            </script>
+        @endpush
     </div>
-
-    @push('scripts')
-        <script src="https://cdn.plyr.io/3.6.8/plyr.polyfilled.js"></script>
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
-        <script>
-            document.addEventListener('livewire:load', () => {
-                Livewire.on('playVideo', (event) => {
-                    const videoFrame = document.getElementById('videoFrame');
-                    videoFrame.src = `${event.link}?rel=0&controls=1&modestbranding=1`;
-                    $('#videoModal').modal('show');
-                });
-
-                $('#videoModal').on('hidden.bs.modal', function () {
-                    const videoFrame = document.getElementById('videoFrame');
-                    videoFrame.src = ''; // Clear the iframe when the modal is closed
-                });
-            });
-        </script>
-    @endpush
-</div>
+</div>    
