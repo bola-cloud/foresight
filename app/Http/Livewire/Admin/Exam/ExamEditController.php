@@ -13,16 +13,22 @@ class ExamEditController extends Component
     public $units;
     public $year;
     public $time;
-    public function mount($id_exam){
-        $exam=Exam::where("id",$id_exam)->first();
-        $this->name_exam=$exam->name_exam;
-        $this->time=$exam->time;
-        foreach($exam->units as $uni){
-         $this->units=$uni->name;
+
+    public function mount($id_exam)
+    {
+        $exam = Exam::with('units')->where('id', $id_exam)->first();
+    
+        if ($exam) {
+            $this->name_exam = $exam->name_exam;
+            $this->time = $exam->time;
+            $this->id_exam = $exam->id;
+            $this->unit_selected = $exam->units->pluck('id')->toArray(); // Pre-fill selected units
+        } else {
+            session()->flash('message', 'Exam not found');
+            return redirect()->route('show_exam');
         }
-        $this->id_exam=$exam->id;
-        // dd($this->units);
     }
+    
 
 
     protected $rules = [

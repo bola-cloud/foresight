@@ -53,14 +53,17 @@
                         </div>
 
                       <div class="col-md-12">
-
-                          <div wire:ignore class="form-group">
-                              <select class="select2 form-control" id="select2-dropdown">
-                                  @foreach($units as $unit)
-                                  <option value="{{ $unit->id }}">{{ $unit->name }}</option>
-                                  @endforeach
-                              </select>
-                          </div>
+                        <div wire:ignore class="form-group">
+                          <label for="select2-dropdown">الوحدات المرتبطة</label>
+                          <select class="select2 form-control" id="select2-dropdown" multiple>
+                              @foreach($units as $unit)
+                              <option value="{{ $unit->id }}" 
+                                  @if(in_array($unit->id, $unit_selected)) selected @endif>
+                                  {{ $unit->name }}
+                              </option>
+                              @endforeach
+                          </select>
+                        </div>                      
                       </div>
                     </div>
                   </div>
