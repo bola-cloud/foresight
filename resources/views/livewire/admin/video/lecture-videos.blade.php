@@ -94,7 +94,7 @@
             </div>
         </div>
             <!-- Delete Confirmation Modal -->
-        <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+        <div wire:ignore.self class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -107,7 +107,7 @@
                         هل أنت متأكد أنك تريد حذف هذا الفيديو؟
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">إلغاء</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">إلغاء</button>
                         <button type="button" class="btn btn-danger" wire:click="deleteVideo">حذف</button>
                     </div>
                 </div>
