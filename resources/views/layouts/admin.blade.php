@@ -44,7 +44,7 @@
   <!-- BEGIN Page Level CSS-->
   <link rel="stylesheet" type="text/css" href="{{asset("admin/app-assets/fonts/simple-line-icons/style.css")}}">
   <link rel="stylesheet" type="text/css"href="{{asset("admin/assets/css/style-rtl.css")}}">
-  <link rel="stylesheet" type="text/css"href="{{asset("admin/assets/css/custom.css")}}">  
+  <link rel="stylesheet" type="text/css"href="{{asset("admin/assets/css/custom.css")}}">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" integrity="sha512-nMNlpuaDPrqlEls3IX/Q56H36qvBASwb3ipuo3MxeWbsQB1881ox0cRv7UPTgBlriqoynt35KjEwgGUeUXIPnw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -152,7 +152,7 @@ data-open="click" data-menu="vertical-content-menu" data-col="2-columns">
       <div class="main-menu menu-static menu-light menu-accordion menu-shadow" data-scroll-to-active="true">
         <div class="main-menu-content">
           <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
-            <li class=" navigation-header"> 
+            <li class=" navigation-header">
               <span data-i18n="nav.category.layouts">ادارة الكورسات و الفيديوهات</span><i class="la la-ellipsis-h ft-minus" data-toggle="tooltip"
               data-placement="right" data-original-title="Layouts"></i>
             </li>
@@ -201,7 +201,7 @@ data-open="click" data-menu="vertical-content-menu" data-col="2-columns">
               </ul>
             </li>
 
-            <li class=" navigation-header"> 
+            <li class=" navigation-header">
               <span data-i18n="nav.category.layouts">الاشتراكات</span><i class="la la-ellipsis-h ft-minus" data-toggle="tooltip"
               data-placement="right" data-original-title="Layouts"></i>
             </li>
@@ -218,7 +218,7 @@ data-open="click" data-menu="vertical-content-menu" data-col="2-columns">
               </ul>
             </li>
 
-            <li class=" navigation-header"> 
+            <li class=" navigation-header">
               <span data-i18n="nav.category.layouts">الماليات</span><i class="la la-ellipsis-h ft-minus" data-toggle="tooltip"
               data-placement="right" data-original-title="Layouts"></i>
             </li>
@@ -310,7 +310,7 @@ data-open="click" data-menu="vertical-content-menu" data-col="2-columns">
                 </ul>
               </li> --}}
 
-            {{-- <li class=" navigation-header"> 
+            {{-- <li class=" navigation-header">
               <span data-i18n="nav.category.layouts">Questions & Answers</span><i class="la la-ellipsis-h ft-minus" data-toggle="tooltip"
               data-placement="right" data-original-title="Layouts"></i>
             </li>
@@ -367,9 +367,16 @@ data-open="click" data-menu="vertical-content-menu" data-col="2-columns">
               <li class="{{ Route::currentRouteName() == "add_slider" ? 'active':'' }}">
                 <a class="menu-item" href="{{ route("add_slider") }}" data-i18n="nav.dash.ecommerce"><i class="la la-align-right"></i><span class="menu-title" data-i18n="nav.dash.main">ادارة الاعلانات</span></a>
               </li>
+
+              {{-- categories --}}
+              <li class=" nav-item {{ Route::currentRouteName() == "admin.categories" ? 'active':'' }}">
+                <a href="{{ route("admin.categories") }}"><i class="la la-align-right"></i><span class="menu-title" data-i18n="nav.dash.main">فئات المنتجات</span></a>
+              </li>
+
               <li class=" nav-item {{ Route::currentRouteName() == "product_manager" ? 'active':'' }}">
                 <a href="{{ route("product_manager") }}"><i class="la la-align-right"></i><span class="menu-title" data-i18n="nav.dash.main">المنتجات</span></a>
               </li>
+
         </div>
       </div>
       <div class="content-body">

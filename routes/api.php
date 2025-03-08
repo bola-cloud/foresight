@@ -52,7 +52,8 @@ Route::get('student/{id_user}',[ResultFinalComponent::class,'getResult']);
 Route::get('user/check/{id}',[AuthController::class,'check']);
 
 Route::get('/products', [ProductController::class, 'index']);
-
+Route::get('/products', [ProductController::class, 'index']);
+Route::get('/categories', [ProductController::class, 'categories']);
 
     Route::get('getunits/',[GetUnitComponent::class,'getcategory']);
     Route::get('videomena/{month}/{id_user}',[VideosShowComponent::class,'checkvalidate']);
@@ -78,7 +79,7 @@ Route::get('/products', [ProductController::class, 'index']);
     //free videos
     Route::get('/lecture/free/videos', [HandleVideo::class,'freeVideos']);
 
-    
+
     // student answers and correct answers
     Route::get('/student/answers/{exam_id}/{user_id}', [StudentAnswers::class,'show']);
 
