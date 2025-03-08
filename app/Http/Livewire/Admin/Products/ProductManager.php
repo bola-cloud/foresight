@@ -5,20 +5,27 @@ namespace App\Http\Livewire\Admin\Products;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 use App\Models\Product;
+use App\Models\Category;
 
 class ProductManager extends Component
 {
     use WithFileUploads;
 
-    public $products, $title, $description, $price, $image, $productId;
+    public $products, $categories, $title, $description, $price, $image, $category_id, $productId;
     public $isOpen = false;
     protected $listeners = ['deleteProduct' => 'delete'];
 
+    public function mount()
+    {
+        $this->categories = Category::all();
+    }
+
     public function render()
     {
-        $this->products = Product::all();
+        $this->products = Product::with('category')->get();
         return view('livewire.admin.products.product-manager')->layout('layouts.admin');
     }
+
     public function openModal()
     {
         $this->isOpen = true;
@@ -36,6 +43,7 @@ class ProductManager extends Component
         $this->description = '';
         $this->price = '';
         $this->image = null;
+        $this->category_id = null;
         $this->productId = null;
     }
 
@@ -43,44 +51,41 @@ class ProductManager extends Component
     {
         $rules = [
             'title' => 'required',
-            'description' => 'required',
+            'description' => 'nullable',
             'price' => 'required|numeric',
+            'category_id' => 'required|exists:categories,id',
         ];
-    
-        // Add image validation only for new products or if a new image is uploaded
+
         if (!$this->productId || ($this->image instanceof \Livewire\TemporaryUploadedFile)) {
-            $rules['image'] = 'required|image|max:1024'; // Required only when creating a new product or replacing the image
+            $rules['image'] = 'required|image|max:1024';
         }
-    
+
         $this->validate($rules);
-    
+
         $new_file = null;
-    
+
         if ($this->image instanceof \Livewire\TemporaryUploadedFile) {
-            // Handle image upload only if a new image is provided
             $filename = $this->image->getClientOriginalName();
             $this->image->storeAs('', $filename, 'public_product');
             $new_file = 'product-images/' . $filename;
         }
-    
-        // Prepare data for updating/creating
+
         $data = [
             'title' => $this->title,
             'description' => $this->description,
             'price' => $this->price,
+            'category_id' => $this->category_id,
         ];
-    
-        // Add image to the data array only if a new image is provided
+
         if ($new_file) {
             $data['image'] = $new_file;
         }
-    
+
         Product::updateOrCreate(['id' => $this->productId], $data);
-    
+
         session()->flash('message', $this->productId ? 'Product updated.' : 'Product created.');
         $this->closeModal();
     }
-      
 
     public function edit($id)
     {
@@ -90,13 +95,13 @@ class ProductManager extends Component
         $this->description = $product->description;
         $this->price = $product->price;
         $this->image = $product->image;
+        $this->category_id = $product->category_id;
         $this->openModal();
     }
-
 
     public function delete($id)
     {
         Product::find($id)->delete();
-        session()->flash('message', 'تم حذف الاعلان بنجاح.');
+        session()->flash('message', 'تم حذف المنتج بنجاح.');
     }
 }

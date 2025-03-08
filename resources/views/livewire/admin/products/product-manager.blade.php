@@ -1,7 +1,15 @@
 <div class="container-fluid">
     <div class="card p-3">
-        <div class="card-header d-flex justify-content-start">
+        <div class="card-header d-flex justify-content-between">
             <button wire:click="openModal" class="btn btn-primary">إضافة منتج</button>
+
+            <!-- Category Filter -->
+            <select class="form-select w-25" wire:model="selectedCategory">
+                <option value="">كل الفئات</option>
+                @foreach ($categories as $category)
+                    <option value="{{ $category->id }}">{{ $category->name }}</option>
+                @endforeach
+            </select>
         </div>
 
         @if($isOpen)
@@ -30,6 +38,16 @@
                                     @error('price') <span class="text-danger">{{ $message }}</span> @enderror
                                 </div>
                                 <div class="form-group">
+                                    <label>الفئة</label>
+                                    <select wire:model="category_id" class="form-control">
+                                        <option value="">اختر الفئة</option>
+                                        @foreach ($categories as $category)
+                                            <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                        @endforeach
+                                    </select>
+                                    @error('category_id') <span class="text-danger">{{ $message }}</span> @enderror
+                                </div>
+                                <div class="form-group">
                                     <label>الصورة</label>
                                     <input type="file" wire:model="image" class="form-control" accept="image/*">
                                     @error('image') <span class="text-danger">{{ $message }}</span> @enderror
@@ -54,6 +72,7 @@
             <thead class="thead-dark">
                 <tr>
                     <th>العنوان</th>
+                    <th>الفئة</th>
                     <th>الوصف</th>
                     <th>السعر</th>
                     <th>الصورة</th>
@@ -64,6 +83,7 @@
                 @foreach($products as $product)
                     <tr>
                         <td>{{ $product->title }}</td>
+                        <td>{{ $product->category ? $product->category->name : 'بدون فئة' }}</td>
                         <td style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 250px;">
                             {{ \Illuminate\Support\Str::limit($product->description, 50) }}
                         </td>
@@ -82,60 +102,3 @@
         </table>
     </div>
 </div>
-
-<!-- Image Modal -->
-<div id="imageModal" class="modal" tabindex="-1" role="dialog" style="display: none;">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">عرض الصورة</h5>
-                <button type="button" class="close" onclick="closeImageModal()">
-                    <span>&times;</span>
-                </button>
-            </div>
-            <div class="modal-body text-center">
-                <img id="modalImage" src="" alt="Product Image" style="max-width: 100%; max-height: 80vh;">
-            </div>
-        </div>
-    </div>
-</div>
-
-@push('style')
-    <style>
-        .table td {
-            vertical-align: middle;
-        }
-
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            z-index: 1050;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            background-color: rgba(0, 0, 0, 0.5);
-        }
-    </style>
-@endpush
-
-<script>
-    function openImageModal(imageUrl) {
-        const modal = document.getElementById('imageModal');
-        const modalImage = document.getElementById('modalImage');
-        modalImage.src = imageUrl;
-        modal.style.display = 'block';
-    }
-
-    function closeImageModal() {
-        const modal = document.getElementById('imageModal');
-        modal.style.display = 'none';
-    }
-
-    function confirmDelete(id) {
-        if (confirm('هل أنت متأكد أنك تريد حذف هذا المنتج؟')) {
-            Livewire.emit('deleteProduct', id); // Trigger Livewire event to delete
-        }
-    }
-</script>

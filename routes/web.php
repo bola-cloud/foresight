@@ -10,7 +10,7 @@ use App\Http\Controllers\Auth\CustomLoginController;
 
 
 //Home
- 
+
 use App\Http\Livewire\CoursesComponent;
 use App\Http\Livewire\AboutHome;
 use App\Http\Livewire\ContactHome;
@@ -116,6 +116,9 @@ use App\Http\Livewire\Admin\StudentQuestion\AnswerQuestion;
 //Products
 use App\Http\Livewire\Admin\Products\ProductManager;
 
+//Categories
+use App\Http\Livewire\Admin\Categories\CategoryManager;
+
 use App\Http\Livewire\HOME;
 
 
@@ -128,6 +131,7 @@ Route::get('/home-about',AboutHome::class)->name("home_about");
 Route::get('/home-contact',ContactHome::class)->name("home_contact");
 
 Route::get('/product-manager',ProductManager::class)->name("product_manager");
+Route::get('/admin/categories', CategoryManager::class)->name('admin.categories');
 
 Route::get('login', [CustomLoginController::class, 'showLoginForm'])->name('login');
 Route::post('login', [CustomLoginController::class, 'login']);
@@ -140,8 +144,8 @@ Route::middleware(['auth:sanctum','verified','authadmin'])->group(function(){
   Route::get('showunits',UnitShowComonent::class)->name("show_unit");
   Route::get('addunit',UnitAddComonent::class)->name("add_unit");
   Route::get('editunit/{ide}',EditAddComponent::class)->name("edit_unit");
-  
-  ///video 
+
+  ///video
   // Route::get('add_year_video',SELECTYEARVIDEO::class)->name("select_year_video");
   Route::get('free/video/add',AddFreeVideo::class)->name("add_free_video");
   Route::get('free/video/show',ShowFreeVideos::class)->name("show_free_video");
