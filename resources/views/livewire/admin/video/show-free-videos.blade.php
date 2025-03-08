@@ -2,6 +2,29 @@
     <div class="container-fluid">
         <div class="card">
             <div class="row m-3">
+                <!-- Search & Filters -->
+                <div class="col-md-4">
+                    <input type="text" class="form-control" wire:model="search" placeholder="بحث عن فيديو...">
+                </div>
+                <div class="col-md-4">
+                    <select class="form-select" wire:model="selectedUnit">
+                        <option value="">اختر الكورس</option>
+                        @foreach ($units as $unit)
+                            <option value="{{ $unit->id }}">{{ $unit->name }}</option>
+                        @endforeach
+                    </select>
+                </div>
+                <div class="col-md-4">
+                    <select class="form-select" wire:model="selectedLecture">
+                        <option value="">اختر القسم</option>
+                        @foreach ($lectures as $lecture)
+                            <option value="{{ $lecture->id }}">{{ $lecture->name }}</option>
+                        @endforeach
+                    </select>
+                </div>
+            </div>
+
+            <div class="row m-3">
                 @if($freeVideos->isEmpty())
                     <p class="text-center mt-4">لا توجد فيديوهات مجانية متوفرة.</p>
                 @else
@@ -10,27 +33,23 @@
                             <thead>
                                 <tr>
                                     <th>العنوان</th>
-                                    <th>الحالة</th>
+                                    <th>القسم</th>
+                                    <th>الكورس</th>
                                     <th>الإجراءات</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach($freeVideos as $freeVideo)
                                     <tr>
-                                        <td>{{ $freeVideo->name }}</td>
+                                        <td>{{ $freeVideo->name_video }}</td>
+                                        <td>{{ $freeVideo->lecture ? $freeVideo->lecture->name : 'غير محدد' }}</td>
+                                        <td>{{ $freeVideo->lecture && $freeVideo->lecture->unit ? $freeVideo->lecture->unit->name : 'غير محدد' }}</td>
                                         <td>
-                                            @if ($freeVideo->status == 1)
-                                                <span class="text-success">نشط</span>
-                                            @elseif($freeVideo->status == 0)
-                                                <span class="text-danger">غير نشط</span>
-                                            @endif
-                                        </td>
-                                        <td>
-                                            <button 
+                                            <button
                                                 class="btn btn-success"
                                                 data-toggle="modal"
                                                 data-target="#videoModal"
-                                                onclick="openVideoModal('{{ $freeVideo->embed_link }}')">
+                                                onclick="openVideoModal('{{ $freeVideo->link }}')">
                                                 عرض الفيديو
                                             </button>
                                             <a href="{{ route('edit_free_video', $freeVideo->id) }}" class="btn btn-warning">تعديل</a>
@@ -59,9 +78,7 @@
                 <div class="modal-body">
                     <div class="row">
                         <div class="col-md-12 d-flex justify-content-center">
-                            <div class="plyr__video-embed">
-                                <iframe id="videoFrame" src="" height="450" width="700" allowfullscreen></iframe>
-                            </div>
+                            <iframe id="videoFrame" width="700" height="450" frameborder="0" allowfullscreen></iframe>
                         </div>
                     </div>
                 </div>
@@ -94,17 +111,35 @@
         <script>
             function openVideoModal(videoLink) {
                 const videoFrame = document.getElementById('videoFrame');
-                videoFrame.src = `${videoLink}?rel=0&controls=1&modestbranding=1`;
+
+                if (!videoFrame) {
+                    console.error("Error: videoFrame element not found!");
+                    return;
+                }
+
+                let videoId = null;
+
+                if (videoLink.includes('youtu.be')) {
+                    videoId = videoLink.split('/').pop().split('?')[0];
+                } else if (videoLink.includes('watch?v=')) {
+                    videoId = new URL(videoLink).searchParams.get("v");
+                }
+
+                if (videoId) {
+                    videoFrame.src = `https://www.youtube.com/embed/${videoId}?rel=0&controls=1&modestbranding=1`;
+                }
+
+                $('#videoModal').modal('show');
             }
 
-            document.addEventListener('DOMContentLoaded', () => {
+            document.addEventListener('DOMContentLoaded', function () {
                 $('#videoModal').on('hidden.bs.modal', function () {
                     const videoFrame = document.getElementById('videoFrame');
-                    videoFrame.src = ''; // Clear the iframe when the modal is closed
+                    if (videoFrame) {
+                        videoFrame.src = ''; // Clear video when modal is closed
+                    }
                 });
-            });
 
-            document.addEventListener('livewire:load', () => {
                 window.addEventListener('show-delete-modal', event => {
                     $('#deleteModal').modal('show');
                 });

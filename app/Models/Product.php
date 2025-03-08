@@ -13,5 +13,11 @@ class Product extends Model
         'description',
         'price',
         'image',
+        'category_id', // Ensure category_id is fillable
     ];
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
 }

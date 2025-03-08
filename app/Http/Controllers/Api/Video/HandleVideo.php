@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Api\Video;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Lecture;
-use App\Models\FreeVideo;
+use App\Models\Video;
 
 class HandleVideo extends Controller
 {
@@ -75,7 +75,14 @@ class HandleVideo extends Controller
 
     public function freeVideos()
     {
-        $videos=FreeVideo::where('status',1)->get();
-        return $videos;
+        $freeVideos = Video::where('type', 'free')
+            ->with(['lecture.unit']) // Eager load lecture and unit
+            ->get();
+
+        return response()->json([
+            'status' => 'success',
+            'count' => $freeVideos->count(),
+            'videos' => $freeVideos,
+        ], 200);
     }
 }
