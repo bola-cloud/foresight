@@ -1,54 +1,77 @@
 <?php
+
 namespace App\Http\Livewire\Admin\Video;
 
 use Livewire\Component;
-use App\Models\FreeVideo;
+use App\Models\Video;
+use App\Models\Lecture;
+use App\Models\Unit;
 
 class EditFreeVideo extends Component
 {
     public $videoId;
-    public $name, $status, $description, $link;
-    
+    public $title, $description, $link;
+    public $selectedUnit, $selectedLecture;
+    public $units, $lectures;
+
     protected $rules = [
-        'link' => 'required',
-        'name' => 'required',
-        'description' => 'required',
-        'status' => 'boolean',
+        'title' => 'required',
+        'description' => 'nullable',
+        'link' => 'required|url',
+        'selectedLecture' => 'required',
     ];
 
-    public function mount(FreeVideo $video)
+    public function mount(Video $video)
     {
+        if ($video->type !== 'free') {
+            abort(403, 'Unauthorized');
+        }
+
         $this->videoId = $video->id;
-        $this->name = $video->name;
+        $this->title = $video->name_video;
         $this->description = $video->description;
         $this->link = $video->link;
-        $this->status = $video->status;
+        $this->selectedLecture = $video->lecture_id;
+        $this->selectedUnit = optional($video->lecture)->unit_id;
+
+        $this->units = Unit::all();
+        $this->lectures = collect();
+
+        if ($this->selectedUnit) {
+            $this->loadLectures();
+        }
+    }
+
+    public function updatedSelectedUnit()
+    {
+        $this->selectedLecture = null;
+        $this->loadLectures();
+    }
+
+    public function loadLectures()
+    {
+        $this->lectures = $this->selectedUnit ? Lecture::where('unit_id', $this->selectedUnit)->get() : collect();
     }
 
     public function update()
     {
         $this->validate();
 
-        $video = FreeVideo::find($this->videoId);
-        $video->name = $this->name;
+        $video = Video::findOrFail($this->videoId);
+        $video->name_video = $this->title;
         $video->description = $this->description;
         $video->link = $this->link;
-        $video->status = (int) $this->status;
+        $video->lecture_id = $this->selectedLecture;
         $video->save();
 
-        return redirect()->route('show_free_video');
-    }
-
-    public function delete()
-    {
-        $video = FreeVideo::find($this->videoId);
-        $video->delete();
-
-        return redirect()->route('free_videos_show');
+        return redirect()->route('show_free_video')->with('success', 'تم تحديث الفيديو المجاني بنجاح.');
     }
 
     public function render()
     {
-        return view('livewire.admin.video.edit-free-video')->layout('layouts.admin');
+        return view('livewire.admin.video.edit-free-video', [
+            'units' => $this->units,
+            'lectures' => $this->lectures,
+        ])->layout('layouts.admin');
     }
 }

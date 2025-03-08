@@ -29,7 +29,7 @@ class VideoAddController extends Component
     public $fileId;
     public $description;
     public $selectedLecture ,$selectedUnit,$selectedYear ;
-   
+
     protected $rules = [
         'title' => 'required',
         'image_video' => 'required'
@@ -55,6 +55,7 @@ class VideoAddController extends Component
         $new_video->description = $this->description;
         $new_video->link = $this->link;
         $new_video->lecture_id = $this->selectedLecture;
+        $new_video->type = 'paid'; // Explicitly setting it as a paid video
         $new_video->save();
 
         return redirect()->route('show_lecture_videos');
