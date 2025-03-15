@@ -90,12 +90,26 @@ class LectureController extends Controller
     {
         $target_unit = $this->target_unit->find($id);
 
-        // Filter lectures that have at least one paid video
+        if (!$target_unit) {
+            return response()->json(['error' => 'Unit not found'], 404);
+        }
+
+        // Debugging: Check if the unit has lectures
+        if ($target_unit->lectures->isEmpty()) {
+            return response()->json(['error' => 'No lectures found for this unit'], 404);
+        }
+
+        // Debugging: Fetch lectures and check if they contain videos
         $lectures = $target_unit->lectures()->whereHas('videos', function ($query) {
             $query->where('type', 'paid');
         })->get();
 
-        return $lectures;
+        if ($lectures->isEmpty()) {
+            return response()->json(['error' => 'No lectures with paid videos found'], 404);
+        }
+
+        return response()->json($lectures);
     }
+
 
 }
