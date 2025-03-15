@@ -12,9 +12,9 @@ class ProductController extends Controller
     /**
      * Get all products with their categories
      */
-    public function index()
+    public function index($category_id)
     {
-        $products = Product::with('category')->get();
+        $products = Product::where('category_id', $category_id)->with('category')->get();
 
         return response()->json([
             'success' => true,

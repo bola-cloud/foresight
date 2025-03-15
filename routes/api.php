@@ -51,7 +51,7 @@ Route::get('student/{id_user}',[ResultFinalComponent::class,'getResult']);
 
 Route::get('user/check/{id}',[AuthController::class,'check']);
 
-Route::get('/products', [ProductController::class, 'index']);
+Route::get('/products/{category_id}', [ProductController::class, 'index']);
 Route::get('/categories', [ProductController::class, 'categories']);
 
     Route::get('getunits/',[GetUnitComponent::class,'getcategory']);
