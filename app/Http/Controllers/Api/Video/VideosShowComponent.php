@@ -11,14 +11,14 @@ class VideosShowComponent extends Controller
 {
 
     public function checkvalidate($month,$id_user){
-       
+
         if(User::where('id',$id_user)->first()->case_reverse=="0"){
             return response(
                 ['message'=>'يجب عليك الشراء اولا الباقه']
             ,400);
         }else{
 
-            $videos=Video::where('month',$month)->get();
+            $videos=Video::where('month',$month)->where('type','paid')->get();
 
             return response(
                 $videos
