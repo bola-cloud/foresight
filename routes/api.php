@@ -86,7 +86,8 @@ Route::get('/categories', [ProductController::class, 'categories']);
     Route::get('lecture/{id}',[LectureController::class,'show']);
 
     // lectures of one units
-    Route::get('unit/lectures/{id}',[LectureController::class,'unitLectures']);
+    Route::get('unit/lectures/{id}',[LectureController::class,'unitLecturesPaid']);
+    Route::get('unit/free/lectures/{id}',[LectureController::class,'unitLecturesFree']);
 
     // wallet  -- buy lectures and monthes
     Route::post('buy/lecture',[BuyController::class,'buy_lecture']);

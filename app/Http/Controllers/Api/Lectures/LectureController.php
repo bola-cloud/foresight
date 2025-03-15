@@ -23,7 +23,7 @@ class LectureController extends Controller
         $this->target_unit=new Unit;
     }
 
-     
+
     public function index()
     {
         //
@@ -74,10 +74,28 @@ class LectureController extends Controller
     {
         //
     }
-    public function unitLectures($id)
+    public function unitLecturesFree($id)
     {
         $target_unit = $this->target_unit->find($id);
-        $lectures = $target_unit->lectures;
+
+        // Filter lectures that have at least one free video
+        $lectures = $target_unit->lectures()->whereHas('videos', function ($query) {
+            $query->where('type', 'free');
+        })->get();
+
         return $lectures;
     }
+
+    public function unitLecturesPaid($id)
+    {
+        $target_unit = $this->target_unit->find($id);
+
+        // Filter lectures that have at least one paid video
+        $lectures = $target_unit->lectures()->whereHas('videos', function ($query) {
+            $query->where('type', 'paid');
+        })->get();
+
+        return $lectures;
+    }
+
 }
